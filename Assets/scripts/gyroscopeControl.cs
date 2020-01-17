@@ -9,12 +9,13 @@ public class gyroscopeControl : MonoBehaviour
 
     private GameObject cameraContainer;
     private Quaternion rotate;
-
-    private void Start()
+     
+    private void Awake()
     {
         cameraContainer = new GameObject("Camera Container");
+        cameraContainer.gameObject.tag = "Player";
         cameraContainer.transform.position = transform.position;
-        transform.SetParent(cameraContainer.transform); 
+        transform.SetParent(cameraContainer.transform);
 
         gyroEnabled = enableGyro();
     }
@@ -26,7 +27,7 @@ public class gyroscopeControl : MonoBehaviour
             gyro = Input.gyro;
             gyro.enabled = true;
 
-            cameraContainer.transform.rotation = Quaternion.Euler(90f,90f,0);
+            cameraContainer.transform.rotation = Quaternion.Euler(90f, 90f, 0);
             rotate = new Quaternion(0, 0, 1, 0);
 
             return true;
@@ -36,9 +37,9 @@ public class gyroscopeControl : MonoBehaviour
 
     private void Update()
     {
-        if(gyroEnabled)
+        if (gyroEnabled)
         {
-            transform.localRotation = gyro.attitude * rotate; 
+            transform.localRotation = gyro.attitude * rotate;
         }
     }
 }
