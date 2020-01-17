@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class gyroscopeControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool gyroEnabled;
+    private Gyroscope gyro;
+
+    private GameObject cameraContainer;
+    private Quaternion rotate;
+
+    private void Start()
     {
-        
+        cameraContainer = new GameObject("Camera Container");
+        cameraContainer.transform.position = transform.position;
+        transform.SetParent(cameraContainer.transform); 
+
+        gyroEnabled = enableGyro();
     }
 
-    // Update is called once per frame
-    void Update()
+    private bool enableGyro()
     {
-        
+        if (SystemInfo.supportsGyroscope)
+        {
+            gyro = Input.gyro;
+            gyro.enabled = true;
+
+            cameraContainer.transform.rotation = Quaternion.Euler(90f,90f,0);
+            rotate = new Quaternion(0, 0, 1, 0);
+
+            return true;
+        }
+        return false;
+    }
+
+    private void Update()
+    {
+        if(gyroEnabled)
+        {
+            transform.localRotation = gyro.attitude * rotate; 
+        }
     }
 }
