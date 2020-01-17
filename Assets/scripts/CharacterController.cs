@@ -6,6 +6,8 @@ public class CharacterController : MonoBehaviour
 {   
     private const float speed = .1f;
     private Animator anim;
+
+
     // Start is called before the first frame update
     void Start()
     {
