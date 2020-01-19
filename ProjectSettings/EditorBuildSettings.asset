@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Printto Test Scene/VuforiaTest.unity
+    guid: 272c355d96b264b55aedc2b4cf03c783
   m_configObjects: {}
