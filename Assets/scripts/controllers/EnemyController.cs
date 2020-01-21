@@ -48,4 +48,12 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("MainCamera"))
+        {
+            Destroy(transform.parent.gameObject);
+        }
+    }
 }
