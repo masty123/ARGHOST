@@ -36,6 +36,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //Enemy turn their face at player
     void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;
@@ -43,12 +44,14 @@ public class EnemyController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
+    //display range of enemy
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
+    //do something when enemy hit player (Orignally jumpscare) right now, kill themself.
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("MainCamera"))
