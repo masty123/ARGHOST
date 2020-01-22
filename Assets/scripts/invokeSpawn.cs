@@ -7,6 +7,8 @@ public class invokeSpawn : MonoBehaviour
      public GameObject enemy;
      public int xPos;
      public int zPos;
+     public int xSpawn;
+     public int zSpawn;
      public float minT, maxT;
      public List<GameObject> enemies;
 
@@ -55,9 +57,9 @@ public class invokeSpawn : MonoBehaviour
         {
             float spawnTime = Random.Range(minT, maxT);
             Invoke("spawnEnemy", spawnTime);
-            xPos = Random.Range(0, 20);
-            zPos = Random.Range(0, 20);
-            GameObject ghost = Instantiate(enemy, new Vector3(xPos, 0.26f, zPos), Quaternion.identity);
+            xSpawn = Random.Range(0, xPos-2);
+            zSpawn = Random.Range(0, zPos-2);
+            GameObject ghost = Instantiate(enemy, new Vector3(xSpawn, 0.26f, zSpawn), Quaternion.identity);
             Debug.Log("Spawned");
             enemies.Add(ghost.gameObject);
         }
