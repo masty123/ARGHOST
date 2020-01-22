@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10f;
 
+    Renderer m_renderer;
     Transform target;
     NavMeshAgent agent ;
 
@@ -16,6 +17,7 @@ public class EnemyController : MonoBehaviour
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        m_renderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -34,6 +36,12 @@ public class EnemyController : MonoBehaviour
                 FaceTarget();
             }
         }
+
+        if (m_renderer.isVisible)
+        {
+            Debug.Log("Object is visible");
+        }
+        else Debug.Log("Object is no longer visible");
     }
 
     //Enemy turn their face at player
