@@ -53,7 +53,7 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
         //TODO: Countdown the cooldown here.
         if(cooldown > 0)
         {
-            cooldown -= Time.deltaTime;
+            remainingCooldown -= Time.deltaTime;
             cooldownText.text = (int)cooldown + "";
             cooldownText.enabled = true;
         }
@@ -71,9 +71,10 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
     {
         Debug.Log("Tracking");
         Debug.Log("Create particle");
-        if (cooldown <= 0 && isPutDown)
+        if (remainingCooldown <= 0 && isPutDown)
         {
             attackParticleGraphics = Instantiate(attackParticlePrefab, transform);
+            remainingCooldown = cooldown;
         }
         //particleGraphics = Instantiate(particlePrefab, transform);
         //TODO: Attack and cooldown here? It will not attack again if the card is not lost the tracking even if the cooldown is done.
