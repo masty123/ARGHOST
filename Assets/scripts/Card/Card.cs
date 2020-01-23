@@ -57,6 +57,10 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
         {
             cooldownText.text = ((int)remainingCooldown + 1) + "";
             cooldownText.gameObject.SetActive(true);
+            if (particleGraphics != null)
+            {
+                Destroy(particleGraphics);
+            }
         }
         else
         {
