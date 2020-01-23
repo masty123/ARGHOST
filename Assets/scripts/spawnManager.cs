@@ -70,38 +70,20 @@ public class spawnManager : MonoBehaviour
     {
 
 
-
-        //if (isAlive())
-        //{
-
-        //}
-        Debug.Log(enemies.Count.ToString());
-
         if (state == SpawnState.WAITING)
         {
+            RemoveDestroyedEnemy();
+
             if (!isAlive())
             {
 
-               
+
                 //Begin a new round
-                for (int i = enemies.Count - 1; i >= 0; i--)
-                {
-                    if (enemies[i] == null)
-                    {
-                        //Debug.Log(enemies.Count.ToString());
-                        enemies.Remove(enemies[i]);
-                    }
-                }
                 WaveCompleted();
-
-                Debug.Log("Wave Completed");
-                return;
-
             }
             else
             {
                
-
                 return;
             }
         }
@@ -114,7 +96,6 @@ public class spawnManager : MonoBehaviour
                 StartCoroutine(spawnWave(waves[nextWave]));
 
             }
-
         }
         else
         {
@@ -124,11 +105,24 @@ public class spawnManager : MonoBehaviour
      
     }
 
-
-    void WaveCompleted()
+    //Destroy enemies will be removed from the list.
+    public void RemoveDestroyedEnemy()
     {
-        Debug.Log("Wave Completed");
+        for (int i = enemies.Count - 1; i >= 0; i--)
+        {
+            {
+                if (enemies[i] == null)
+                {
+                    enemies.RemoveAt(i);
+                }
+            }
 
+        }
+    }
+
+    //Spawning next or reset the wave.
+    public void WaveCompleted()
+    {
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
@@ -168,6 +162,7 @@ public class spawnManager : MonoBehaviour
         if (isAlive())
         {
             float spawnTime = Random.Range(minTime, maxTime);
+            timeBetweenWaves = spawnTime;
             int randomRange = Random.Range(0, _enemy.Length);
             xSpawn = Random.Range(0, xPosition-2);
             zSpawn = Random.Range(0, zPosition-2);
@@ -185,7 +180,8 @@ public class spawnManager : MonoBehaviour
         if (searchCountdown <= 0f)
         {
             searchCountdown = 1f;
-            if (GameObject.FindGameObjectWithTag("Enemy") == null)
+            //if (GameObject.FindGameObjectWithTag("Enemy") == null)
+            if(enemies.Count == 0)
             {
                 return false;
             }
@@ -201,6 +197,5 @@ public class spawnManager : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position - new Vector3(xPosition, 0, 0), transform.position + new Vector3(xPosition, 0, 0));
         Gizmos.DrawLine(transform.position - new Vector3(0, 0, zPosition), transform.position + new Vector3(0, 0, zPosition));
-
     }
 }
