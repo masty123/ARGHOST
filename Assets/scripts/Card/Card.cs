@@ -75,9 +75,13 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
         {
             attackParticleGraphics = Instantiate(attackParticlePrefab, transform);
             remainingCooldown = cooldown;
+            //TODO: Attack here
+        }
+        if (particleGraphics != null)
+        {
+            particleGraphics.SetActive(true);
         }
         //particleGraphics = Instantiate(particlePrefab, transform);
-        //TODO: Attack and cooldown here? It will not attack again if the card is not lost the tracking even if the cooldown is done.
         isPutDown = false;
     }
 
@@ -89,8 +93,10 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
         {
             Debug.Log("Destroy particle");
             Destroy(particleGraphics);
-            //TODO: Release cooldown or do something when it is gone?
-            //TODO: Attack here
+        }
+        if (particleGraphics != null)
+        {
+            particleGraphics.SetActive(false);
         }
     }
 
