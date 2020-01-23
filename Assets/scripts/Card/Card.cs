@@ -15,6 +15,7 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
     protected GameObject attackParticleGraphics;
     protected float remainingCooldown = 0f;
     protected bool isPutDown = true;
+    protected bool isTracking = false;
 
     private TrackableBehaviour mTrackableBehaviour;
 
@@ -51,16 +52,20 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
     private void Update()
     {
         //TODO: Countdown the cooldown here.
-        if(cooldown > 0)
+        remainingCooldown -= Time.deltaTime;
+        if (remainingCooldown > 0 && remainingCooldown <= cooldown - 1)
         {
-            cooldown -= Time.deltaTime;
-            cooldownText.text = (int)cooldown + "";
-            cooldownText.enabled = true;
+            cooldownText.text = ((int)remainingCooldown + 1) + "";
+            cooldownText.gameObject.SetActive(true);
+            if (particleGraphics != null)
+            {
+                Destroy(particleGraphics);
+            }
         }
         else
         {
-            cooldownText.enabled = false;
-            if (particleGraphics == null)
+            cooldownText.gameObject.SetActive(false);
+            if (particleGraphics == null && isTracking)
             {
                 particleGraphics = Instantiate(particlePrefab, transform);
             }
@@ -71,13 +76,15 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
     {
         Debug.Log("Tracking");
         Debug.Log("Create particle");
-        if (cooldown <= 0 && isPutDown)
+        if (remainingCooldown <= 0 && isPutDown)
         {
             attackParticleGraphics = Instantiate(attackParticlePrefab, transform);
+            remainingCooldown = cooldown;
         }
         //particleGraphics = Instantiate(particlePrefab, transform);
         //TODO: Attack and cooldown here? It will not attack again if the card is not lost the tracking even if the cooldown is done.
         isPutDown = false;
+        isTracking = true;
     }
 
     public virtual void OnTrackingLost()
@@ -91,6 +98,7 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
             //TODO: Release cooldown or do something when it is gone?
             //TODO: Attack here
         }
+        isTracking = false;
     }
 
 }
