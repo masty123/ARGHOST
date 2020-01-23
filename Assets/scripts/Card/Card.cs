@@ -52,15 +52,15 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
     private void Update()
     {
         //TODO: Countdown the cooldown here.
-        if(remainingCooldown > 0)
+        remainingCooldown -= Time.deltaTime;
+        if (remainingCooldown > 0 && remainingCooldown <= cooldown - 1)
         {
-            remainingCooldown -= Time.deltaTime;
-            cooldownText.text = (int)remainingCooldown + "";
-            cooldownText.enabled = true;
+            cooldownText.text = ((int)remainingCooldown + 1) + "";
+            cooldownText.gameObject.SetActive(true);
         }
         else
         {
-            cooldownText.enabled = false;
+            cooldownText.gameObject.SetActive(false);
             if (particleGraphics == null && isTracking)
             {
                 particleGraphics = Instantiate(particlePrefab, transform);
