@@ -39,9 +39,9 @@ public class EnemyController : MonoBehaviour
 
         if (m_renderer.isVisible)
         {
-            Debug.Log("Object is visible");
+            //Debug.Log("Object is visible");
         }
-        else Debug.Log("Object is no longer visible");
+        //else Debug.Log("Object is no longer visible");
     }
 
     //Enemy turn their face at player
