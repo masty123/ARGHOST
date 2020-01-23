@@ -51,10 +51,10 @@ public abstract class Card : MonoBehaviour, ITrackableEventHandler
     private void Update()
     {
         //TODO: Countdown the cooldown here.
-        if(cooldown > 0)
+        if(remainingCooldown > 0)
         {
             remainingCooldown -= Time.deltaTime;
-            cooldownText.text = (int)cooldown + "";
+            cooldownText.text = (int)remainingCooldown + "";
             cooldownText.enabled = true;
         }
         else
