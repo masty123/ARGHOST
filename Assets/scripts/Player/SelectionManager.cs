@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
-{
-    [SerializeField] private string selectableTag = "Enemy";
-    [SerializeField] private Material highlightmaterial;
-    [SerializeField] private Material defaultMaterial;
-
-    private Transform _selection;
+{   
 
     // Start is called before the first frame update
     void Start()
@@ -19,33 +14,25 @@ public class SelectionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_selection != null)
+        //if (Input.GetMouseButtonDown(0));
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
         {
-            var selectionRenderer = _selection.GetComponent<Renderer>();
-            selectionRenderer.material = default;
-            _selection = null;
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit Hit;
+            if (Physics.Raycast(ray, out Hit))
+            {
+                Destroy(Hit.transform.parent.gameObject);
+                //Debug.Log(Hit.transform.tag.ToString());
+
+            }
+            else Debug.Log("can't see 'em...");
         }
 
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            var selection = hit.transform;
-            if(selection.CompareTag(selectableTag))
-            {
-                var selectionRenderer = selection.GetComponent<Renderer>();
-                if (selectionRenderer != null)
-                {
-                    //check flashlight/cross button then //do something
-                    selectionRenderer.material = highlightmaterial;
-                }
-            }
-          
-        }
     }
 
     void pushGhost()
     {
-       
+
     }
 }

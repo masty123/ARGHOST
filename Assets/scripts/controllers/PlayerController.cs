@@ -22,16 +22,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(enemy == null)
-        {
-            //Add enemy into the enemy gameObject.
-            enemy = GameObject.FindGameObjectWithTag("Enemy");
-            isEnemyActive = true;
-        }
-        else
-        {
-            Debug.Log("don't see any ghost...");
-        }
+
+
+       //if(enemy == null)
+       // {
+       //     //Add enemy into the enemy gameObject.
+       //     enemy = GameObject.FindGameObjectWithTag("Enemy");
+       //     isEnemyActive = true;
+       // }
+       // else
+       // {
+       //     Debug.Log("don't see any ghost...");
+       // }
 
         
         //if (m_renderer.isVisible)
