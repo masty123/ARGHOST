@@ -5,10 +5,11 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    //vision radius of enemy.
     public float lookRadius = 10f;
+    //check if enemy is a trigger box collider.
     public bool EnteredTrigger;
-
-    Renderer m_renderer;
+   
     Transform target;
     NavMeshAgent agent ;
 
@@ -20,7 +21,6 @@ public class EnemyController : MonoBehaviour
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-        m_renderer = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -34,17 +34,10 @@ public class EnemyController : MonoBehaviour
 
             if(distance <= agent.stoppingDistance)
             {
-                //Attack the target
-                // Face the target;
+                //Attack the target.
                 FaceTarget();
             }
         }
-
-        if (m_renderer.isVisible)
-        {
-            //Debug.Log("Object is visible");
-        }
-        else Debug.Log("Object is no longer visible");
     }
 
     //Enemy turn their face at player
@@ -69,7 +62,6 @@ public class EnemyController : MonoBehaviour
         {
             EnteredTrigger = true;
             Destroy(transform.parent.gameObject);
-            //Destroy(this,2f);
         }
     }
 }
