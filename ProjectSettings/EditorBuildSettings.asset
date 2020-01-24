@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Printto Test Scene/VuforiaTest.unity
     guid: 272c355d96b264b55aedc2b4cf03c783
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/gyroTest/gyroTest.unity
     guid: 3b73dffac1bbf46358c4601c32f3b709
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/gyroTest/NonVulforiaTest.unity
     guid: 9b60542302dc9b74aaa6b48adefb5c2d
   m_configObjects: {}
