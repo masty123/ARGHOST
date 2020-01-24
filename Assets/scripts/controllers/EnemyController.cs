@@ -6,10 +6,13 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10f;
+    public bool EnteredTrigger;
 
     Renderer m_renderer;
     Transform target;
     NavMeshAgent agent ;
+
+
 
 
     // Start is called before the first frame update
@@ -39,7 +42,7 @@ public class EnemyController : MonoBehaviour
 
         if (m_renderer.isVisible)
         {
-            Debug.Log("Object is visible");
+            //Debug.Log("Object is visible");
         }
         else Debug.Log("Object is no longer visible");
     }
@@ -64,7 +67,9 @@ public class EnemyController : MonoBehaviour
     {
         if (other.tag.Equals("MainCamera"))
         {
+            EnteredTrigger = true;
             Destroy(transform.parent.gameObject);
+            //Destroy(this,2f);
         }
     }
 }
