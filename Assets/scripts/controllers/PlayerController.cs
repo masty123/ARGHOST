@@ -27,12 +27,13 @@ public class PlayerController : MonoBehaviour
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit Hit;
-            if (Physics.Raycast(ray, out Hit))
+            if (Physics.Raycast(ray, out Hit) && Input.GetMouseButtonDown(0))
             {
-                StartCoroutine(Hit.transform.GetComponent<EnemyController>().dying());
+                if(Hit.transform.tag.Equals("Enemy"))
+                Hit.transform.GetComponent<EnemyController>().isHit = true;
                 //Debug.Log(Hit.transform.tag.ToString());
             }
-            else Debug.Log("can't see 'em...");
+            //else Debug.Log("can't see 'em...");
         }
     }
 }

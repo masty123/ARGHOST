@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float shakeRate;
     [SerializeField] private float deathTime;
     private float currentTime;
+    public bool isHit;
 
 
     [Header("AI Movement")]
@@ -30,6 +31,7 @@ public class EnemyController : MonoBehaviour
     Transform target;
     //for enemy moving.
     NavMeshAgent agent ;
+    //
     private Rigidbody rb;
 
 
@@ -50,11 +52,13 @@ public class EnemyController : MonoBehaviour
     {   
         
 
-        if(target != null)
+        if(target != null && agent.enabled == true)
         {
+            //hunting the player.
             float distance = Vector3.Distance(target.position, transform.position);
             if (distance <= lookRadius)
             {
+
                 agent.SetDestination(target.position);
 
                 if (distance <= agent.stoppingDistance)
@@ -63,6 +67,10 @@ public class EnemyController : MonoBehaviour
                     FaceTarget();
                 }
             }
+        }
+        if(isHit)
+        {
+            StartCoroutine(dying());
         }
     }
 
@@ -89,6 +97,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //count down before destroying itself.
     public IEnumerator dying()
     {
         enemyHurt();
@@ -97,14 +106,14 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    // Hurting like hell!
     void enemyHurt()
     {       
 
-        agent.isStopped = true;
-        transform.position = Vector3.Lerp(new Vector3(left, transform.position.y, 0), new Vector3(right, transform.position.y, 0), (Mathf.Sin(shakeSpeed * Time.time) + 1.0f) / shakeRate);
-        shakeSpeed += 15 * Time.deltaTime;
-        shakeRate += 4 * Time.deltaTime;
-
+        agent.enabled = false;
+        transform.localPosition = Vector3.Lerp(new Vector3(transform.localPosition.x + left,  transform.localPosition.y, transform.localPosition.z),
+                                               new Vector3(transform.localPosition.x + right, transform.localPosition.y, transform.localPosition.z),
+                                              (Mathf.Sin(shakeSpeed * Time.time) + 1.0f) / shakeRate);
     }
 
 
