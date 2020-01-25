@@ -141,6 +141,8 @@ MonoBehaviour:
   shakeRate: 2
   deathTime: 0.75
   isHit: 0
+  defeatParticlePrefab: {fileID: 6454576854534941436, guid: 7c6e1354371411d4eb14fb469fc1c921,
+    type: 3}
 --- !u!136 &4515210901873620847
 CapsuleCollider:
   m_ObjectHideFlags: 0
