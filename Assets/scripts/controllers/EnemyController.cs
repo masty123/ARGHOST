@@ -6,13 +6,23 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     //vision radius of enemy.
+    [Header("AI Vision")]
     public float lookRadius = 10f;
-    //check if enemy is a trigger box collider.
-    public bool EnteredTrigger;
-   
-    Transform target;
-    NavMeshAgent agent ;
 
+    [Header("AI Behaviors")]
+    //check if enemy catch the player.
+    public bool EnteredTrigger;
+    //check if player show cross.
+    public bool showCross;
+
+
+
+    [Header("AI Movement")]
+    //Attach player
+    Transform target;
+    //for enemy moving.
+    NavMeshAgent agent ;
+    public Rigidbody rb;
 
 
 
@@ -21,6 +31,7 @@ public class EnemyController : MonoBehaviour
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        rb = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -54,6 +65,17 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
+
+    public void Defeat()
+    {
+        if(showCross)
+        {
+            agent.isStopped = true;
+            //transform.
+        }
+    }
+
+    
 
     //do something when enemy hit player (Orignally jumpscare) right now, kill themself.
     private void OnTriggerEnter(Collider other)
