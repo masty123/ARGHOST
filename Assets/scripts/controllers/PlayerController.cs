@@ -10,41 +10,29 @@ public class PlayerController : MonoBehaviour
     //show status if the enemy is visible
     public bool isVisible;
 
-    //Renderer m_renderer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //m_renderer = GetComponent<Renderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-       //if(enemy == null)
-       // {
-       //     //Add enemy into the enemy gameObject.
-       //     enemy = GameObject.FindGameObjectWithTag("Enemy");
-       //     isEnemyActive = true;
-       // }
-       // else
-       // {
-       //     Debug.Log("don't see any ghost...");
-       // }
-
-        
-        //if (m_renderer.isVisible)
-        //{
-        //    Debug.Log("Object is visible");
-        //    isVisible = true;
-        //}
-        //else
-        //{
-        //    isVisible = false;
-        //    Debug.Log("Object is no longer visible");
-        //}
+        //if (Input.GetMouseButtonDown(0));
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+        {
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit Hit;
+            if (Physics.Raycast(ray, out Hit))
+            {
+                StartCoroutine(Hit.transform.GetComponent<EnemyController>().dying());
+                //Debug.Log(Hit.transform.tag.ToString());
+            }
+            else Debug.Log("can't see 'em...");
+        }
     }
 }

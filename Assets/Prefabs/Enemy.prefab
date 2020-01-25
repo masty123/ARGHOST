@@ -134,6 +134,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 40
   EnteredTrigger: 0
+  showCross: 0
+  left: 4
+  right: -4
+  shakeSpeed: 50
+  shakeRate: 2
 --- !u!136 &4515210901873620847
 CapsuleCollider:
   m_ObjectHideFlags: 0

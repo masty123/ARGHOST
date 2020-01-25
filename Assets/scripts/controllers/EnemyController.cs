@@ -16,37 +16,52 @@ public class EnemyController : MonoBehaviour
     public bool showCross;
 
 
+    [Header("Dying Behaviors")]
+    [SerializeField] private float left;
+    [SerializeField] private float right;
+    [SerializeField] private float shakeSpeed;
+    [SerializeField] private float shakeRate;
+    [SerializeField] private float deathTime;
+    private float currentTime;
+
 
     [Header("AI Movement")]
     //Attach player
     Transform target;
     //for enemy moving.
     NavMeshAgent agent ;
-    public Rigidbody rb;
+    private Rigidbody rb;
+
+
 
 
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         rb = this.GetComponent<Rigidbody>();
+        currentTime = deathTime;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        float distance = Vector3.Distance(target.position, transform.position);
+    {   
+        
 
-        if(distance <= lookRadius)
+        if(target != null)
         {
-            agent.SetDestination(target.position);
-
-            if(distance <= agent.stoppingDistance)
+            float distance = Vector3.Distance(target.position, transform.position);
+            if (distance <= lookRadius)
             {
-                //Attack the target.
-                FaceTarget();
+                agent.SetDestination(target.position);
+
+                if (distance <= agent.stoppingDistance)
+                {
+                    //Attack the target.
+                    FaceTarget();
+                }
             }
         }
     }
@@ -70,12 +85,31 @@ public class EnemyController : MonoBehaviour
     {
         if(showCross)
         {
-            agent.isStopped = true;
-            //transform.
+           //react something.
         }
     }
 
-    
+    public IEnumerator dying()
+    {
+        enemyHurt();
+        yield return new WaitForSeconds(deathTime);
+        Destroy(transform.parent.gameObject);
+
+    }
+
+    void enemyHurt()
+    {       
+
+        agent.isStopped = true;
+        transform.position = Vector3.Lerp(new Vector3(left, transform.position.y, 0), new Vector3(right, transform.position.y, 0), (Mathf.Sin(shakeSpeed * Time.time) + 1.0f) / shakeRate);
+        shakeSpeed += 15 * Time.deltaTime;
+        shakeRate += 4 * Time.deltaTime;
+
+    }
+
+
+
+
 
     //do something when enemy hit player (Orignally jumpscare) right now, kill themself.
     private void OnTriggerEnter(Collider other)
