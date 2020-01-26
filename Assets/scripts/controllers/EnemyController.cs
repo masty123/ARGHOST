@@ -34,9 +34,9 @@ public class EnemyController : MonoBehaviour
     //
     private Rigidbody rb;
 
-
-
-
+    [Header("Particle Effect")]
+    [SerializeField] protected GameObject defeatParticlePrefab;
+    protected GameObject defeatParticleGraphics;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +94,9 @@ public class EnemyController : MonoBehaviour
         if(showCross)
         {
            //react something.
+            defeatParticleGraphics = Instantiate(defeatParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(transform.parent.gameObject);   // destroy this enemy
+            Destroy(defeatParticlePrefab, 1.5f);    // destroy particle object
         }
     }
 
