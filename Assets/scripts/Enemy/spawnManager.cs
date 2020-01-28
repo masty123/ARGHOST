@@ -164,8 +164,8 @@ public class spawnManager : MonoBehaviour
             float spawnTime = Random.Range(minTime, maxTime);
             timeBetweenWaves = spawnTime;
             int randomRange = Random.Range(0, _enemy.Length);
-            xSpawn = Random.Range(0, xPosition-2);
-            zSpawn = Random.Range(0, zPosition-2);
+            xSpawn = Random.Range(-xPosition+1, xPosition-1);
+            zSpawn = Random.Range(-zPosition+1, zPosition-1);
             GameObject ghost = Instantiate(_enemy[randomRange], new Vector3(xSpawn, 0.26f, zSpawn), Quaternion.identity);
             Debug.Log(ghost.name+"Spawned");
             enemies.Add(ghost.gameObject);
