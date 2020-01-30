@@ -38,13 +38,18 @@ public class spawnManager : MonoBehaviour
 
     [Header("Range of spawning position")]
     [SerializeField]
-    public int xPosition;
-    public int zPosition;
+    public float xPosition;
+    public float zPosition;
+
+    [Header("Radius away from the player")]
+    [SerializeField]
+    public float xRadius;
+    public float zRadius;
 
     [Header("Previously randomized Position")]
     [SerializeField]
-    public int xSpawn;
-    public int zSpawn;
+    public float xSpawn;
+    public float zSpawn;
 
 
     [Header("Range of spawning time")]
@@ -59,6 +64,8 @@ public class spawnManager : MonoBehaviour
     //countdown of search time.
     private float searchCountdown = 1f;
 
+
+
     //Randomly spawn enemies.
     private void Start()
     {
@@ -69,7 +76,7 @@ public class spawnManager : MonoBehaviour
     private void Update()
     {
 
-
+        
         if (state == SpawnState.WAITING)
         {
             RemoveDestroyedEnemy();
@@ -88,6 +95,7 @@ public class spawnManager : MonoBehaviour
             }
         }
 
+        //Check if all waves are done.
         if (waveCountdown <= 0)
         {
             if (state == SpawnState.COUNTING)
@@ -161,13 +169,32 @@ public class spawnManager : MonoBehaviour
     {
         if (isAlive())
         {
+            List<float> spawnAreaX = new List<float>();
+            List<float> spawnAreaZ = new List<float>();
+
             float spawnTime = Random.Range(minTime, maxTime);
             timeBetweenWaves = spawnTime;
             int randomRange = Random.Range(0, _enemy.Length);
-            xSpawn = Random.Range(-xPosition+1, xPosition-1);
-            zSpawn = Random.Range(-zPosition+1, zPosition-1);
+
+            float positiveX = Random.Range(xRadius, xPosition);
+            spawnAreaX.Add(positiveX);
+
+            float negativeX = Random.Range(-xPosition, -xRadius);
+            spawnAreaX.Add(negativeX);
+
+            float positiveZ = Random.Range(zRadius, zPosition );
+            spawnAreaZ.Add(positiveZ);
+
+            float negativeZ = Random.Range(-zPosition, -zRadius);
+            spawnAreaZ.Add(negativeZ);
+
+            int Xindex = Random.Range(0, spawnAreaX.Count);
+            xSpawn = spawnAreaX[Xindex];
+
+            int Zindex = Random.Range(0, spawnAreaZ.Count);
+            zSpawn = spawnAreaZ[Zindex];
+
             GameObject ghost = Instantiate(_enemy[randomRange], new Vector3(xSpawn, 0.26f, zSpawn), Quaternion.identity);
-            Debug.Log(ghost.name+"Spawned");
             enemies.Add(ghost.gameObject);
         }
     }
@@ -175,12 +202,10 @@ public class spawnManager : MonoBehaviour
     //Check whether if enemies are alive.
     bool isAlive()
     {
-
         searchCountdown -= Time.deltaTime;
         if (searchCountdown <= 0f)
         {
             searchCountdown = 1f;
-            //if (GameObject.FindGameObjectWithTag("Enemy") == null)
             if(enemies.Count == 0)
             {
                 return false;
