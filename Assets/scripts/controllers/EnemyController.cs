@@ -119,10 +119,6 @@ public class EnemyController : MonoBehaviour
                                               (Mathf.Sin(shakeSpeed * Time.time) + 1.0f) / shakeRate);
     }
 
-
-
-
-
     //do something when enemy hit player (Orignally jumpscare) right now, kill themself.
     private void OnTriggerEnter(Collider other)
     {
