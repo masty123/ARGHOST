@@ -1,84 +1,84 @@
 ﻿using System;
 using UnityEngine;
-using Vuforia;
+//using Vuforia;
 
 public class DeployStageOnce : MonoBehaviour
 {
 
-    public GameObject AnchorStage;
-    private PositionalDeviceTracker _deviceTracker;
-    private GameObject _previousAnchor;
+    //public GameObject AnchorStage;
+    //private PositionalDeviceTracker _deviceTracker;
+    //private GameObject _previousAnchor;
 
-    public void Start()
-    {
-        if (AnchorStage == null)
-        {
-            Debug.Log("AnchorStage must be specified");
-            return;
-        }
+    //public void Start()
+    //{
+    //    if (AnchorStage == null)
+    //    {
+    //        Debug.Log("AnchorStage must be specified");
+    //        return;
+    //    }
 
-        AnchorStage.SetActive(false);
-    }
+    //    AnchorStage.SetActive(false);
+    //}
 
-    public void Awake()
-    {
-        VuforiaARController.Instance.RegisterVuforiaStartedCallback(OnVuforiaStarted);
-    }
+    //public void Awake()
+    //{
+    //    VuforiaARController.Instance.RegisterVuforiaStartedCallback(OnVuforiaStarted);
+    //}
 
-    public void OnDestroy()
-    {
-        VuforiaARController.Instance.UnregisterVuforiaStartedCallback(OnVuforiaStarted);
-    }
+    //public void OnDestroy()
+    //{
+    //    VuforiaARController.Instance.UnregisterVuforiaStartedCallback(OnVuforiaStarted);
+    //}
 
-    private void OnVuforiaStarted()
-    {
-        _deviceTracker = TrackerManager.Instance.GetTracker<PositionalDeviceTracker>();
-    }
+    //private void OnVuforiaStarted()
+    //{
+    //    _deviceTracker = TrackerManager.Instance.GetTracker<PositionalDeviceTracker>();
+    //}
 
-    public void OnInteractiveHitTest(HitTestResult result)
-    {
-        if (result == null || AnchorStage == null)
-        {
-            Debug.LogWarning("Hit test is invalid or AnchorStage not set");
-            return;
-        }
+    //public void OnInteractiveHitTest(HitTestResult result)
+    //{
+    //    if (result == null || AnchorStage == null)
+    //    {
+    //        Debug.LogWarning("Hit test is invalid or AnchorStage not set");
+    //        return;
+    //    }
 
-        var anchor = _deviceTracker.CreatePlaneAnchor(Guid.NewGuid().ToString(), result);
+    //    var anchor = _deviceTracker.CreatePlaneAnchor(Guid.NewGuid().ToString(), result);
 
-        // but now the anchor doesn't create a GameObject, so we will have to with the HitTestResult position and rotation values
+    //    // but now the anchor doesn't create a GameObject, so we will have to with the HitTestResult position and rotation values
 
-        GameObject anchorGO = new GameObject();
+    //    GameObject anchorGO = new GameObject();
 
-        anchorGO.transform.position = result.Position;
+    //    anchorGO.transform.position = result.Position;
 
-        anchorGO.transform.rotation = result.Rotation;
+    //    anchorGO.transform.rotation = result.Rotation;
 
-        // Parent the stage to the new GameObject like you would have the anchor before
+    //    // Parent the stage to the new GameObject like you would have the anchor before
 
-        if (anchor != null)
-        {
+    //    if (anchor != null)
+    //    {
 
-            AnchorStage.transform.parent = anchorGO.transform;
+    //        AnchorStage.transform.parent = anchorGO.transform;
 
-            AnchorStage.transform.localPosition = Vector3.zero;
+    //        AnchorStage.transform.localPosition = Vector3.zero;
 
-            AnchorStage.transform.localRotation = Quaternion.identity;
+    //        AnchorStage.transform.localRotation = Quaternion.identity;
 
-            AnchorStage.SetActive(true);
+    //        AnchorStage.SetActive(true);
 
-        }
+    //    }
 
-        // Clean up
+    //    // Clean up
 
-        if (_previousAnchor != null)
-        {
+    //    if (_previousAnchor != null)
+    //    {
 
-            Destroy(_previousAnchor);
+    //        Destroy(_previousAnchor);
 
-        }
+    //    }
 
-        // Save it
+    //    // Save it
 
-        _previousAnchor = anchorGO;
-    }
+    //    _previousAnchor = anchorGO;
+    //}
 }
