@@ -50,8 +50,7 @@ public class spawnManager : MonoBehaviour
     [Header("Range of spawning time")]
     [SerializeField]
     public float minTime;
-    public float maxTime;    
- 
+    public float maxTime;
 
     [Header("Live display of enemies in the scene")]
     public List<GameObject> enemies;
@@ -83,7 +82,6 @@ public class spawnManager : MonoBehaviour
             }
             else
             {
-               
                 return;
             }
         }
