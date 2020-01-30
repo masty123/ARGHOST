@@ -105,7 +105,7 @@ public class EnemyController : MonoBehaviour
     {
         enemyHurt();
         yield return new WaitForSeconds(deathTime);
-        Destroy(transform.parent.gameObject);
+        //Destroy(transform.parent.gameObject);
 
     }
 
@@ -129,7 +129,8 @@ public class EnemyController : MonoBehaviour
         if (other.tag.Equals("MainCamera"))
         {
             EnteredTrigger = true;
-            Destroy(transform.parent.gameObject);
+            dying();
+            //Destroy(transform.parent.gameObject);
         }
     }
 }
