@@ -20,7 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GroundPlaneTest.unity
     guid: 011e2ae45fb1a4128b2b426295eec32e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Imported Assets/GoogleARCore/Examples/HelloAR/Scenes/HelloAR/HelloAR.unity
     guid: e6a6fa04348cb45c9b0221eb19c946da
+  - enabled: 1
+    path: Assets/Scenes/NoNavMeshScene/HelloAR.unity
+    guid: 24a4644d8e11d4a218155843b50f7d42
   m_configObjects: {}
