@@ -71,9 +71,7 @@ public class IndependentEnemyController : MonoBehaviour
         if (showCross)
         {
             //react something.
-            defeatParticleGraphics = Instantiate(defeatParticlePrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject);   // destroy this enemy
-            Destroy(defeatParticlePrefab, 1.5f);    // destroy particle object
+            DeadEffect();
         }
     }
 
@@ -83,9 +81,15 @@ public class IndependentEnemyController : MonoBehaviour
 
         enemyHurt();
         yield return new WaitForSeconds(deathTime);
-        Defeat();
-        Destroy(gameObject);
+        DeadEffect();
+    }
 
+    // Effect play when this enemy is dead.
+    void DeadEffect()
+    {
+        defeatParticleGraphics = Instantiate(defeatParticlePrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);                    // destroy this enemy
+        Destroy(defeatParticleGraphics, 1.5f);  // destroy particle object
     }
 
     // Hurting like hell!

@@ -93,10 +93,8 @@ public class EnemyController : MonoBehaviour
     {
         if(showCross)
         {
-           //react something.
-            defeatParticleGraphics = Instantiate(defeatParticlePrefab, transform.position, Quaternion.identity);
-            Destroy(transform.parent.gameObject);   // destroy this enemy
-            Destroy(defeatParticlePrefab, 1.5f);    // destroy particle object
+            //react something.
+            DeadEffect();
         }
     }
 
@@ -106,7 +104,15 @@ public class EnemyController : MonoBehaviour
         enemyHurt();
         yield return new WaitForSeconds(deathTime);
         //Destroy(transform.parent.gameObject);
+        DeadEffect();
+    }
 
+    // Effect play when this enemy is dead.
+    void DeadEffect()
+    {
+        defeatParticleGraphics = Instantiate(defeatParticlePrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);                    // destroy this enemy
+        Destroy(defeatParticleGraphics, 1.5f);  // destroy particle object
     }
 
     // Hurting like hell!
