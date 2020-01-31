@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * New Enemy Controller without navigation mesh. can be act as a flying enemy if not spawning on 0 Y-Axis
+ *
+ */
 public class IndependentEnemyController : MonoBehaviour
 {
 
@@ -23,12 +26,18 @@ public class IndependentEnemyController : MonoBehaviour
 
 
     [Header("Dying Behaviors")]
+    //Shaking left
     [SerializeField] private float left;
+    //Shaking right.
     [SerializeField] private float right;
+    //Shaking speed.
     [SerializeField] private float shakeSpeed;
+    //Shaking rate
     [SerializeField] private float shakeRate;
+    //Time before destroying the prefab
     [SerializeField] private float deathTime;
-    private float currentTime;
+
+    //Checking if got hit by player.
     public bool isHit;
 
     [Header("Particle Effect")]
@@ -50,6 +59,7 @@ public class IndependentEnemyController : MonoBehaviour
         //Move to Player
         transform.position += transform.forward * moveSpeed * Time.deltaTime;
 
+        //if got hit or touch player.
         if (isHit || EnteredTrigger)
         {
             StartCoroutine(dying());
@@ -62,7 +72,7 @@ public class IndependentEnemyController : MonoBehaviour
         {
             //react something.
             defeatParticleGraphics = Instantiate(defeatParticlePrefab, transform.position, Quaternion.identity);
-            Destroy(transform.parent.gameObject);   // destroy this enemy
+            Destroy(gameObject);   // destroy this enemy
             Destroy(defeatParticlePrefab, 1.5f);    // destroy particle object
         }
     }
@@ -70,17 +80,17 @@ public class IndependentEnemyController : MonoBehaviour
     //count down before destroying itself.
     public IEnumerator dying()
     {
+
         enemyHurt();
         yield return new WaitForSeconds(deathTime);
-        Destroy(transform.parent.gameObject);
+        Defeat();
+        Destroy(gameObject);
 
     }
 
     // Hurting like hell!
-    void enemyHurt()
+    public void enemyHurt()
     {
-
-        //agent.enabled = false;
         moveSpeed = 0;
         transform.localPosition = Vector3.Lerp(new Vector3(transform.localPosition.x + left, transform.localPosition.y, transform.localPosition.z),
                                                new Vector3(transform.localPosition.x + right, transform.localPosition.y, transform.localPosition.z),
@@ -94,7 +104,6 @@ public class IndependentEnemyController : MonoBehaviour
         {
             EnteredTrigger = true;
             dying();
-            //Destroy(transform.parent.gameObject);
         }
     }
 }
