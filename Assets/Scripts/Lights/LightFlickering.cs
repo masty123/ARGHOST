@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class LightFlickering : MonoBehaviour
 {
+    //light transform
     public Light light;
-
+    // minimum and maxmium time that light stay on.
     public float minTime, maxTime;
     public float Timer;
-
+    //source of the audio, duh
     public AudioSource source;
+    //Audio clip
     public AudioClip lightAudio;
+    //Ghost transform
     public Transform entity;
+    //Audio time range
+    public float audioTime;
 
     // Start is called before the first frame update.
     void Start()
     {
         Timer = Random.Range(minTime, maxTime);
+        source.time = audioTime;
     }
 
     // Update is called once per frame.
@@ -45,13 +51,18 @@ public class LightFlickering : MonoBehaviour
 
             Timer = Random.Range(minTime, maxTime);
             
-            if(lightAudio != null)
+            if(lightAudio != null && light.enabled)
+            {      
+                source.PlayOneShot(lightAudio);        
+            }
+            else
             {
-                source.PlayOneShot(lightAudio);
-
+                source.Stop();
             }
         }
     }
+
+    //Shoiuld the ghost appear.
     bool isVisible()
     {
         return (Random.value > 0.5f);

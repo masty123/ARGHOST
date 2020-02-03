@@ -321,8 +321,9 @@ MonoBehaviour:
   maxTime: 3
   Timer: 0
   source: {fileID: 290691898}
-  lightAudio: {fileID: 8300000, guid: 1c73275a3a2724fcf8a5a1d19dc31f22, type: 3}
+  lightAudio: {fileID: 8300000, guid: 1da4fb228e1424ba8a5247c19a8e58ab, type: 3}
   entity: {fileID: 1793651548}
+  audioTime: 0
 --- !u!82 &290691898
 AudioSource:
   m_ObjectHideFlags: 0
