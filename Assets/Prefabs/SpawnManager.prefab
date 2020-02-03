@@ -51,10 +51,15 @@ MonoBehaviour:
   timeBetweenWaves: 5
   waveCountdown: 3
   state: 2
-  xPosition: 20
-  zPosition: 20
-  xSpawn: 0
-  zSpawn: 0
+  xPosition: 40
+  yPosition: 20
+  zPosition: 40
+  xRadius: 0
+  yRadius: 0
+  zRadius: 0
+  xSpawn: 10
+  ySpawn: 10
+  zSpawn: 10
   minTime: 5
   maxTime: 10
   enemies: []

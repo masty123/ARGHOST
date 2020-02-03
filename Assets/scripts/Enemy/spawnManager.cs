@@ -39,16 +39,19 @@ public class spawnManager : MonoBehaviour
     [Header("Range of spawning position")]
     [SerializeField]
     public float xPosition;
+    public float yPosition;
     public float zPosition;
 
     [Header("Radius away from the player")]
     [SerializeField]
     public float xRadius;
+    public float yRadius;
     public float zRadius;
 
     [Header("Previously randomized Position")]
     [SerializeField]
     public float xSpawn;
+    public float ySpawn;
     public float zSpawn;
 
 
@@ -170,7 +173,9 @@ public class spawnManager : MonoBehaviour
         if (isAlive())
         {
             List<float> spawnAreaX = new List<float>();
+            List<float> spawnAreaY = new List<float>();
             List<float> spawnAreaZ = new List<float>();
+
 
             float spawnTime = Random.Range(minTime, maxTime);
             timeBetweenWaves = spawnTime;
@@ -182,6 +187,11 @@ public class spawnManager : MonoBehaviour
             float negativeX = Random.Range(-xPosition, -xRadius);
             spawnAreaX.Add(negativeX);
 
+            //No underground spawning
+            float positiveY = Random.Range(yRadius, yPosition);
+            spawnAreaY.Add(positiveY);
+
+
             float positiveZ = Random.Range(zRadius, zPosition );
             spawnAreaZ.Add(positiveZ);
 
@@ -191,10 +201,13 @@ public class spawnManager : MonoBehaviour
             int Xindex = Random.Range(0, spawnAreaX.Count);
             xSpawn = spawnAreaX[Xindex];
 
+            int Yindex = Random.Range(0, spawnAreaY.Count);
+            ySpawn = spawnAreaY[Yindex];
+
             int Zindex = Random.Range(0, spawnAreaZ.Count);
             zSpawn = spawnAreaZ[Zindex];
 
-            GameObject ghost = Instantiate(_enemy[randomRange], new Vector3(xSpawn, 0.26f, zSpawn), Quaternion.identity);
+            GameObject ghost = Instantiate(_enemy[randomRange], new Vector3(xSpawn, ySpawn, zSpawn), Quaternion.identity);
             enemies.Add(ghost.gameObject);
         }
     }
