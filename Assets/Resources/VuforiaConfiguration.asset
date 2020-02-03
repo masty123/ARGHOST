@@ -21,14 +21,13 @@ MonoBehaviour:
     maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
     modelTargetRecoWhileExtendedTracked: 1
-    version: 8.5.9
+    version: 0.0
     eulaAcceptedVersions: '{"Values":["8.5"]}'
   database:
     disableModelExtraction: 0
   videoBackground:
     numDivisions: 2
-    videoBackgroundShader: {fileID: 4800000, guid: f40623b353e2f1943b1b3ba42975db7a,
-      type: 3}
+    videoBackgroundShader: {fileID: 0}
     videoBackgroundEnabled: 1
   deviceTracker:
     autoInitTracker: 1
@@ -40,5 +39,5 @@ MonoBehaviour:
     autoStartTracker: 0
   webcam:
     deviceNameSetInEditor: 
-    turnOffWebCam: 0
+    turnOffWebCam: 1
     renderTextureLayer: 30

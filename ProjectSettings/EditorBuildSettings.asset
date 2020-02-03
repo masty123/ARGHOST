@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Gyroscopes/NonVulforiaTest.unity
     guid: 9b60542302dc9b74aaa6b48adefb5c2d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gyroscopes/gyroTest/AI Test Scene.unity
     guid: b582f08d24d9b42beae26bcf1f1544ae
+  - enabled: 1
+    path: Assets/Imported Assets/GoogleARCore/Examples/AugmentedImage/Scenes/AugmentedImage.unity
+    guid: be567d47d3ab94b3badc5b211f535a24
   m_configObjects: {}
