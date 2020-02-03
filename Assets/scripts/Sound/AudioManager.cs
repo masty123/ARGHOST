@@ -5,10 +5,13 @@ using System;
 //For Ambient, menu theme, non object related only.
 public class AudioManager : MonoBehaviour
 {
+    //Sound subclass
     public Sound[] sounds;
 
+    //Audio Manager singleton
     public static AudioManager instance;
 
+    //Play audio on awake
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -27,13 +30,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    //Play ambient theme
     private void Start()
     {
         //Do some ambient scary theme I guess.
         Play("Ambient");
     }
 
-
+    //Check and play the audio
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, Sound => Sound.name == name);
@@ -47,6 +51,7 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    //??
     private void Update()
     {
 
