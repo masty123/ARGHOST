@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Gyroscopes/gyroTest/AI Test Scene.unity
     guid: b582f08d24d9b42beae26bcf1f1544ae
   - enabled: 0
-    path: Assets/Scenes/GroundPlaneTest.unity
+    path: Assets/Scenes/NoNavMeshScene/GroundPlaneTest.unity
     guid: 011e2ae45fb1a4128b2b426295eec32e
   - enabled: 0
     path: Assets/Imported Assets/GoogleARCore/Examples/HelloAR/Scenes/HelloAR/HelloAR.unity
