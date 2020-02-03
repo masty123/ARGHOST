@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 290691898}
   - component: {fileID: 290691897}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290691894}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2.3572571, y: 7.74, z: 28.3}
+  m_LocalPosition: {x: -2.3572571, y: 7.74, z: 9.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1543615601}
@@ -320,8 +320,8 @@ MonoBehaviour:
   minTime: 0.1
   maxTime: 3
   Timer: 0
-  source: {fileID: 0}
-  lightAudio: {fileID: 0}
+  source: {fileID: 290691898}
+  lightAudio: {fileID: 8300000, guid: 1c73275a3a2724fcf8a5a1d19dc31f22, type: 3}
   entity: {fileID: 1793651548}
 --- !u!82 &290691898
 AudioSource:
@@ -1003,7 +1003,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 234d8dd00b3ff4e53a92be6fde0aeb56,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.004997
+      value: 9.644997
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 234d8dd00b3ff4e53a92be6fde0aeb56,
         type: 3}

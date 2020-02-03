@@ -12,18 +12,20 @@ public class LightFlickering : MonoBehaviour
     public AudioSource source;
     public AudioClip lightAudio;
     public Transform entity;
-    // Start is called before the first frame update
+
+    // Start is called before the first frame update.
     void Start()
     {
         Timer = Random.Range(minTime, maxTime);
     }
 
-    // Update is called once per frame
+    // Update is called once per frame.
     void Update()
     {
         flickeringLight();
     }
 
+    //Randomize the entity appearance.
     void flickeringLight()
     {
         if (Timer > 0) Timer -= Time.deltaTime;
