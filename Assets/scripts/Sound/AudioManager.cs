@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         //Do some ambient scary theme I guess.
+        Play("Ambient");
     }
 
 
@@ -48,6 +49,6 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 }
