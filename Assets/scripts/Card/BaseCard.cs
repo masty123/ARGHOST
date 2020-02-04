@@ -20,6 +20,7 @@ public class BaseCard : MonoBehaviour
     {
         if (Image != null)
         {
+            Debug.Log(Image.TrackingMethod.ToString());
             if (Image.TrackingState == TrackingState.Tracking && Image.TrackingMethod == AugmentedImageTrackingMethod.FullTracking)
             {
                 if (particleGraphics == null)
@@ -42,14 +43,6 @@ public class BaseCard : MonoBehaviour
                 Destroy(particleGraphics.gameObject);
             }
         }
-        /*
-        else if (Image == null || Image.TrackingState != TrackingState.Tracking || Image.TrackingMethod == AugmentedImageTrackingMethod.LastKnownPose)
-        {
-            if (particleGraphics != null)
-            {
-                Destroy(particleGraphics.gameObject);
-            }
-        }
-        */
+
     }
 }
