@@ -61,13 +61,13 @@ public class ImageDetection : MonoBehaviour
         // not previously have a visualizer. Remove visualizers for stopped images.
         foreach (var image in m_TempAugmentedImages)
         {
-            BaseCard visualizer = null;
+            AugmentedImageVisualizer visualizer = null;
             m_Visualizers.TryGetValue(image.DatabaseIndex, out visualizer);
             if (image.TrackingState == TrackingState.Tracking && visualizer == null)
             {
                 // Create an anchor to ensure that ARCore keeps tracking this augmented image.
                 Anchor anchor = image.CreateAnchor(image.CenterPose);
-                visualizer = (BaseCard)Instantiate(
+                visualizer = (AugmentedImageVisualizer)Instantiate(
                     AugmentedImageVisualizerPrefab, anchor.transform);
                 visualizer.Image = image;
                 m_Visualizers.Add(image.DatabaseIndex, visualizer);
