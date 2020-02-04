@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7710640151009426630
 Transform:
   m_ObjectHideFlags: 0
@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134867474935947681}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -41,10 +41,6 @@ PrefabInstance:
     - target: {fileID: 122498, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
       propertyPath: m_Name
       value: Spiral_02.4 Domain
-      objectReference: {fileID: 0}
-    - target: {fileID: 122498, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 402308, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -163,15 +159,7 @@ PrefabInstance:
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 19839572, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19839572, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
       propertyPath: scalingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19845590, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
-      propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19845590, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
@@ -179,15 +167,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19849546, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19849546, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
       propertyPath: scalingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19863458, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
-      propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19863458, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
@@ -195,15 +175,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19877080, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19877080, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
       propertyPath: scalingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19885778, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
-      propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19885778, guid: 5f20420a36c817f4f8328369cb4883a8, type: 3}
@@ -236,17 +208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198224690847387226, guid: 5f20420a36c817f4f8328369cb4883a8,
         type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198224690847387226, guid: 5f20420a36c817f4f8328369cb4883a8,
-        type: 3}
       propertyPath: scalingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198599713631215930, guid: 5f20420a36c817f4f8328369cb4883a8,
-        type: 3}
-      propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198599713631215930, guid: 5f20420a36c817f4f8328369cb4883a8,

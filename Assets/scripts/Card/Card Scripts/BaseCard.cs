@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using GoogleARCore;
+using GoogleARCore.Examples.AugmentedImage;
 using GoogleARCoreInternal;
 using UnityEngine;
 
-public class BaseCard : MonoBehaviour
+public class BaseCard : AugmentedImageVisualizer
 {
 
-    public AugmentedImage Image;
+    //public AugmentedImage Image;
+
     public GameObject particlePrefab;
 
     private GameObject particleGraphics;
 
+    /*
     /// <summary>
     /// The Unity Update method.
     /// </summary>
@@ -45,4 +48,22 @@ public class BaseCard : MonoBehaviour
         }
 
     }
+    */
+
+    public void OnDetected()
+    {
+        if (particleGraphics == null)
+        {
+            particleGraphics = Instantiate(particlePrefab, transform);
+        }
+    }
+
+    public void OnUndetected()
+    {
+        if (particleGraphics != null)
+        {
+            Destroy(particleGraphics.gameObject);
+        }
+    }
+
 }

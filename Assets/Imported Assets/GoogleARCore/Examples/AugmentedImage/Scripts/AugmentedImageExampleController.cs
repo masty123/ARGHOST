@@ -50,7 +50,7 @@ namespace GoogleARCore.Examples.AugmentedImage
         /// </summary>
         public GameObject FitToScanOverlay;
 
-        private Dictionary<int, AugmentedImageVisualizer> m_Visualizers
+        protected Dictionary<int, AugmentedImageVisualizer> m_Visualizers
             = new Dictionary<int, AugmentedImageVisualizer>();
 
         private List<AugmentedImage> m_TempAugmentedImages = new List<AugmentedImage>();

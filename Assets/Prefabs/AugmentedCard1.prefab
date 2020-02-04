@@ -33,7 +33,7 @@ Transform:
   - {fileID: 4277606606183526}
   - {fileID: 4668203562779366}
   - {fileID: 4595226678624372}
-  - {fileID: 1652775278629662933}
+  - {fileID: 9074300278941109332}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -515,11 +515,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card Charge Particle
       objectReference: {fileID: 0}
-    - target: {fileID: 1134867474935947681, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7710640151009426630, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -577,7 +572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80c9d05c2eaa144a6a9e493bc234c7f9, type: 3}
---- !u!4 &1652775278629662933 stripped
+--- !u!4 &9074300278941109332 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7710640151009426630, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
     type: 3}
