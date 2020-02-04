@@ -577,5 +577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06a3783ac1944c84b6774bb9f00645b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AugmentedImageVisualizerPrefab: {fileID: 0}
-  FitToScanOverlay: {fileID: 0}
+  AugmentedImageVisualizerPrefab: {fileID: 736789002042308298, guid: 0204c49329d4b41858218e119e4fbd49,
+    type: 3}
+  FitToScanOverlay: {fileID: 1622737808}
