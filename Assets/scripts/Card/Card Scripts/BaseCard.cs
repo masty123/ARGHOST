@@ -52,16 +52,20 @@ public class BaseCard : AugmentedImageVisualizer
 
     public void OnDetected()
     {
+        VDebug.Instance.Log("Base card: OnDetected got called");
         if (particleGraphics == null)
         {
+            VDebug.Instance.Log("Base card: ParticleGraphics is not null and instantiating");
             particleGraphics = Instantiate(particlePrefab, transform);
         }
     }
 
     public void OnUndetected()
     {
+        VDebug.Instance.Log("Base card: OnUndetected got called");
         if (particleGraphics != null)
         {
+            VDebug.Instance.Log("Base card: ParticleGraphics is not null and destroying");
             Destroy(particleGraphics.gameObject);
         }
     }
