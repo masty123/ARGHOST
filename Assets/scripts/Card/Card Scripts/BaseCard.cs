@@ -14,6 +14,7 @@ public class BaseCard : AugmentedImageVisualizer
     public GameObject particlePrefab;
 
     private GameObject particleGraphics;
+    [HideInInspector] public Anchor anchor;
 
     /*
     /// <summary>
@@ -53,10 +54,11 @@ public class BaseCard : AugmentedImageVisualizer
     public void OnDetected()
     {
         VDebug.Instance.Log("Base card: OnDetected got called");
-        if (particleGraphics == null)
+        Anchor anchor = Image.CreateAnchor(Image.CenterPose);
+        if (particleGraphics == null && anchor != null)
         {
             VDebug.Instance.Log("Base card: ParticleGraphics is not null and instantiating");
-            particleGraphics = Instantiate(particlePrefab, transform);
+            particleGraphics = Instantiate(particlePrefab, anchor.transform);
         }
     }
 
