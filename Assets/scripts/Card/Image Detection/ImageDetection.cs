@@ -82,17 +82,20 @@ public class ImageDetection : MonoBehaviour
         // Show the fit-to-scan overlay if there are no images that are Tracking.
         foreach (var visualizer in m_Visualizers.Values)
         {
-            if (visualizer.Image.TrackingState == TrackingState.Tracking)
+            if (visualizer.Image.TrackingMethod == AugmentedImageTrackingMethod.FullTracking)
             {
                 FitToScanOverlay.SetActive(false);
-                VDebug.Instance.Log("Card got tracked in card detection");
+                VDebug.Instance.Log("Card detection: Card got tracked in card detection");
                 AugmentedImageVisualizerPrefab.OnDetected();
                 return;
             }
-            else
+            else if (visualizer.Image.TrackingMethod == AugmentedImageTrackingMethod.LastKnownPose)
             {
-                VDebug.Instance.Log("Card got untracked in card detection");
+                VDebug.Instance.Log("Card detection: Card tracking method is last known position");
                 AugmentedImageVisualizerPrefab.OnUndetected();
+            }
+            else {
+                //VDebug.Instance.Log("Card detection: Card tracking method is not tranked");
             }
         }
 
