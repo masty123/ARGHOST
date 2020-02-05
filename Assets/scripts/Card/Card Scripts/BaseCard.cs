@@ -6,7 +6,7 @@ using GoogleARCore.Examples.AugmentedImage;
 using GoogleARCoreInternal;
 using UnityEngine;
 
-public class BaseCard : AugmentedImageVisualizer
+public class BaseCard : MonoBehaviour
 {
 
     //public AugmentedImage Image;
@@ -16,6 +16,9 @@ public class BaseCard : AugmentedImageVisualizer
     private GameObject particleGraphics;
     [HideInInspector] public Anchor anchor;
 
+    public AugmentedImage Image;
+
+    #region Backups
     /*
     /// <summary>
     /// The Unity Update method.
@@ -50,6 +53,7 @@ public class BaseCard : AugmentedImageVisualizer
 
     }
     */
+    #endregion
 
     public void OnDetected()
     {
@@ -57,8 +61,18 @@ public class BaseCard : AugmentedImageVisualizer
         Anchor anchor = Image.CreateAnchor(Image.CenterPose);
         if (particleGraphics == null && anchor != null)
         {
-            VDebug.Instance.Log("Base card: ParticleGraphics is not null and instantiating");
+            VDebug.Instance.Log("Base card: ParticleGraphics is null and instantiating");
             particleGraphics = Instantiate(particlePrefab, anchor.transform);
+        }
+        else if (particleGraphics != null) {
+            VDebug.Instance.Log("Base card: ParticleGraphics is not null, cannot instantiate");
+        }
+        else if (anchor == null) {
+            VDebug.Instance.Log("Base card: Anchor is null, cannot instantiate");
+        }
+        else
+        {
+            VDebug.Instance.Log("Base card: Something else, cannot instantiate");
         }
     }
 
@@ -69,6 +83,10 @@ public class BaseCard : AugmentedImageVisualizer
         {
             VDebug.Instance.Log("Base card: ParticleGraphics is not null and destroying");
             Destroy(particleGraphics.gameObject);
+        }
+        else if (particleGraphics == null)
+        {
+            VDebug.Instance.Log("Base card: ParticleGraphics is null, cannot destroy");
         }
     }
 
