@@ -28,15 +28,29 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        Damage(.1f);
+        
     }
 
     public void Damage(float dmg)
     {
+        if(dmg <= 0) {
+            return;
+        }
         hp -= dmg;
         if(hp <= 0) 
         {
             GameOver();
+        }
+    }
+
+    public void Heal(float heal)
+    {
+        if(heal <= 0) {
+            return;
+        }
+        hp += heal;
+        if(hp >= maxHP) {
+            hp = maxHP;
         }
     }
 
