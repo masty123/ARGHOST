@@ -12,7 +12,7 @@ public class IndependentEnemyController : MonoBehaviour
     //rotation speed
     [SerializeField] private float rotationSpeed = 3.0f;
     //movement speed
-    [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] public float moveSpeed = 3.0f;
 
     //vision radius of enemy.
     [Header("AI Vision")]
@@ -40,6 +40,8 @@ public class IndependentEnemyController : MonoBehaviour
     //Checking if got hit by player.
     public bool isHit;
 
+    public bool isOutPortal = false;
+
     [Header("Particle Effect")]
     [SerializeField] protected GameObject defeatParticlePrefab;
     protected GameObject defeatParticleGraphics;
@@ -53,17 +55,23 @@ public class IndependentEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Look at player
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
-
-        //Move to Player
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
-
-        //if got hit or touch player.
-        if (isHit || EnteredTrigger)
+        //if(GetComponentInParent<MoveFromPortal>().outPortal)
+        if(isOutPortal)
         {
-            StartCoroutine(dying());
+
+            //Look at player
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
+
+            //Move to Player
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+
+            //if got hit or touch player.
+            if (isHit || EnteredTrigger)
+            {
+                StartCoroutine(dying());
+            }
         }
+    
     }
 
     public void Defeat()
