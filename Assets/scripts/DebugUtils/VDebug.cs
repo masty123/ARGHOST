@@ -47,6 +47,7 @@ public class VDebug : MonoBehaviour
 
     public void Log(string text)
     {
+        Debug.Log(text);
         if (debugs.Count > Line)
         {
             debugs.RemoveAt(0);

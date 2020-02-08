@@ -465,7 +465,7 @@ MonoBehaviour:
   shakeAcceleration: 3
   restrictLogCount: 0
   maxLogCount: 1000
-  logFontSize: 12
+  logFontSize: 50
 --- !u!1 &1791921639
 GameObject:
   m_ObjectHideFlags: 0

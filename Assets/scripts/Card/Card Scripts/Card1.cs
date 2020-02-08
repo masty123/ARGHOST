@@ -32,7 +32,6 @@ public class Card1 : BaseCard
                 {
                     VDebug.Instance.Log("Particle stopped");
                     particle.Stop();
-                    Destroy(particle);
                 }
             }
         }
