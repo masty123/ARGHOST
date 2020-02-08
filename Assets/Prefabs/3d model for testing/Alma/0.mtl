@@ -1,0 +1,138 @@
+# Blender MTL File: 'MRL-279.blend'
+# Material Count: 10
+
+newmtl 24_+almanoglow_0.5_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.433109 0.563742 0.767607
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\almabody_d.dds
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_n.dds
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_s.dds
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_d.dds
+
+newmtl 24_almadress_0.6_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.574118 0.630299 0.491674
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\almabody_d.dds
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_n.dds
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_s.dds
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_d.dds
+
+newmtl 24_almaface_0.6_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.431054 0.492498 0.508532
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\almabody_d.dds
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_n.dds
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_s.dds
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_d.dds
+
+newmtl 24_almalegs_0.6_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.769532 0.705822 0.532950
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\almabody_d.dds
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_n.dds
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_s.dds
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_d.dds
+
+newmtl 25_almahair_0.3_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.488098 0.671625 0.764359
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\almahair_d.dds
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almahair_n.dds
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almahair_s.dds
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almahair_d.dds
+
+newmtl 25_almahands_0.1_16_16
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.516653 0.463237 0.652991
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\Alma_body_d.dds
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\Alma_body_n.dds
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\Alma_body_s.dds
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\Alma_body_d.dds
+
+newmtl 2_mouth_0.1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.586798 0.606116 0.457221
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\mouth_diffuse.png
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\mouth_bump.png
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\mouth_diffuse.png
+
+newmtl 38_-almaglow_0.6_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.627924 0.589233 0.501326
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\almabody_d.dds
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_n.dds
+map_Ke D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almaeye_e.dds
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_s.dds
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_d.dds
+
+newmtl 5_eyelids_0.1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.495640 0.765157 0.554861
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\almabody_d.dds
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almabody_d.dds
+
+newmtl 7_almahairs_0_3_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.730375 0.557285 0.780432
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade,FEAR 2\almahair2.dds
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade,FEAR 2\\almahair2.dds
