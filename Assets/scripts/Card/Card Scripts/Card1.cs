@@ -7,6 +7,8 @@ public class Card1 : BaseCard
 
     public ParticleSystem[] particleGameObjects;
 
+    [SerializeField] private GameObject debugGameObject;
+
     private void Start()
     {
         Debug.Log("New particle intantiated");
@@ -28,19 +30,27 @@ public class Card1 : BaseCard
         {
             foreach(ParticleSystem particle in particleGameObjects)
             {
-                if (play && !particle.isPlaying)
+                if (play)
                 {
-                    VDebug.Instance.Log("Particle Started");
-                    particle.Play();
+                    //VDebug.Instance.Log("Particle Started");
+                    //particle.Play();
+                    particle.gameObject.SetActive(true);
+                    if(debugGameObject != null) {
+                        debugGameObject.SetActive(true);
+                    }
                 }
-                else if(!particle.isStopped)
+                else
                 {
-                    VDebug.Instance.Log("Particle stopped");
-                    particle.Stop();
+                    //VDebug.Instance.Log("Particle stopped");
+                    //particle.Stop();
+                    particle.gameObject.SetActive(false);
+                    if (debugGameObject != null)
+                    {
+                        debugGameObject.SetActive(false);
+                    }
                 }
             }
         }
-        Debug.Log(particleGameObjects[0].isPlaying);
     }
 
 }

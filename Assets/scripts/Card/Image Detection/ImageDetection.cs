@@ -86,22 +86,21 @@ public class ImageDetection : MonoBehaviour
             {
                 FitToScanOverlay.SetActive(false);
                 //VDebug.Instance.Log("Card detection: Card got tracked in card detection");
-                visualizer.OnDetected();
+                m_Visualizers[0].OnDetected();
             }
             else if (visualizer.Image.TrackingMethod == AugmentedImageTrackingMethod.LastKnownPose)
             {
                 VDebug.Instance.Log("Card detection: Card tracking method is last known position");
-                visualizer.OnUndetected();
+                m_Visualizers[0].OnUndetected();
                 FitToScanOverlay.SetActive(true);
             }
-            else {
+            else
+            {
                 VDebug.Instance.Log("Card detection: Card tracking method is not tranked");
-                visualizer.OnUndetected();
+                m_Visualizers[0].OnUndetected();
                 FitToScanOverlay.SetActive(true);
             }
         }
-
-        //FitToScanOverlay.SetActive(true);
     }
 
 }
