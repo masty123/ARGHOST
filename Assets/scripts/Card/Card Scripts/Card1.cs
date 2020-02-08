@@ -7,6 +7,11 @@ public class Card1 : BaseCard
 
     public ParticleSystem[] particleGameObjects;
 
+    private void Start()
+    {
+        Debug.Log("New particle intantiated");
+    }
+
     public override void OnDetected()
     {
         SetParticleEnabled(true);
@@ -23,18 +28,19 @@ public class Card1 : BaseCard
         {
             foreach(ParticleSystem particle in particleGameObjects)
             {
-                if (play)
+                if (play && !particle.isPlaying)
                 {
                     VDebug.Instance.Log("Particle Started");
                     particle.Play();
                 }
-                else
+                else if(!particle.isStopped)
                 {
                     VDebug.Instance.Log("Particle stopped");
                     particle.Stop();
                 }
             }
         }
+        Debug.Log(particleGameObjects[0].isPlaying);
     }
 
 }
