@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00db80c58b7948cbbe2ea92482410bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleGameObject: {fileID: 1901766640779765718}
+  particleGameObjects:
+  - {fileID: 1901766640779765718}
+  - {fileID: 1901766640779775060}
+  - {fileID: 1901766640779761482}
+  - {fileID: 1901766640779663570}
+  - {fileID: 1901766640779682210}
 --- !u!1001 &202069847528183973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56,6 +61,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card Charge Particle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777105303454728051, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
+        type: 3}
+      propertyPath: stopAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777105303454733553, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777105303454733553, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7710640151009426630, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
         type: 3}
@@ -123,6 +143,30 @@ Transform:
 --- !u!198 &1901766640779765718 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1777105303454728051, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 202069847528183973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1901766640779775060 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1777105303454733553, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 202069847528183973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1901766640779761482 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1777105303454715887, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 202069847528183973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1901766640779663570 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1777105303454613623, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 202069847528183973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1901766640779682210 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1777105303454644487, guid: 80c9d05c2eaa144a6a9e493bc234c7f9,
     type: 3}
   m_PrefabInstance: {fileID: 202069847528183973}
   m_PrefabAsset: {fileID: 0}

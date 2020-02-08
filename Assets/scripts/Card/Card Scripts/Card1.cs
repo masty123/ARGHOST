@@ -5,21 +5,37 @@ using UnityEngine;
 public class Card1 : BaseCard
 {
 
-    public ParticleSystem particleGameObject;
+    public ParticleSystem[] particleGameObjects;
 
     public override void OnDetected()
     {
-        if(particleGameObject != null)
-        {
-            particleGameObject.Play();
-        }
+        SetParticleEnabled(true);
     }
 
     public override void OnUndetected()
     {
-        if (particleGameObject != null)
+        SetParticleEnabled(false);
+    }
+
+    void SetParticleEnabled(bool play)
+    {
+        if (particleGameObjects.Length != 0)
         {
-            particleGameObject.Stop();
+            foreach(ParticleSystem particle in particleGameObjects)
+            {
+                if (play)
+                {
+                    VDebug.Instance.Log("Particle Started");
+                    particle.Play();
+                }
+                else
+                {
+                    VDebug.Instance.Log("Particle stopped");
+                    particle.Stop();
+                    Destroy(particle);
+                }
+            }
         }
     }
+
 }
