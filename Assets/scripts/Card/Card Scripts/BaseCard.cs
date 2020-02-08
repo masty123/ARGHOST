@@ -55,38 +55,33 @@ public class BaseCard : MonoBehaviour
     */
     #endregion
 
+    private void Update()
+    {
+        if (particleGraphics != null)
+        {
+            VDebug.Instance.Log("Card particle wposition: " + particleGraphics.transform.position.x + " , " + particleGraphics.transform.position.y + " , " + particleGraphics.transform.position.z);
+            VDebug.Instance.Log("Card particle lposition: " + particleGraphics.transform.localPosition.x + " , " + particleGraphics.transform.localPosition.y + " , " + particleGraphics.transform.localPosition.z);
+        }
+    }
+
     public void OnDetected()
     {
-        VDebug.Instance.Log("Base card: OnDetected got called");
-        Anchor anchor = Image.CreateAnchor(Image.CenterPose);
-        if (particleGraphics == null && anchor != null)
+        //VDebug.Instance.Log("Base card: OnDetected got called");
+        //Anchor anchor = Image.CreateAnchor(Image.CenterPose);
+        if (particleGraphics == null)
         {
             VDebug.Instance.Log("Base card: ParticleGraphics is null and instantiating");
-            particleGraphics = Instantiate(particlePrefab, anchor.transform);
-        }
-        else if (particleGraphics != null) {
-            VDebug.Instance.Log("Base card: ParticleGraphics is not null, cannot instantiate");
-        }
-        else if (anchor == null) {
-            VDebug.Instance.Log("Base card: Anchor is null, cannot instantiate");
-        }
-        else
-        {
-            VDebug.Instance.Log("Base card: Something else, cannot instantiate");
+            particleGraphics = Instantiate(particlePrefab, transform);
         }
     }
 
     public void OnUndetected()
     {
-        VDebug.Instance.Log("Base card: OnUndetected got called");
+        //VDebug.Instance.Log("Base card: OnUndetected got called");
         if (particleGraphics != null)
         {
             VDebug.Instance.Log("Base card: ParticleGraphics is not null and destroying");
             Destroy(particleGraphics.gameObject);
-        }
-        else if (particleGraphics == null)
-        {
-            VDebug.Instance.Log("Base card: ParticleGraphics is null, cannot destroy");
         }
     }
 
