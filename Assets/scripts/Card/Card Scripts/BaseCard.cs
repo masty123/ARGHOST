@@ -59,6 +59,7 @@ public class BaseCard : MonoBehaviour
     {
         if (particleGraphics != null)
         {
+            VDebug.Instance.Log("Card position: " + transform.position.x + " , " + transform.position.y + " , " + transform.position.z);
             VDebug.Instance.Log("Card particle wposition: " + particleGraphics.transform.position.x + " , " + particleGraphics.transform.position.y + " , " + particleGraphics.transform.position.z);
             VDebug.Instance.Log("Card particle lposition: " + particleGraphics.transform.localPosition.x + " , " + particleGraphics.transform.localPosition.y + " , " + particleGraphics.transform.localPosition.z);
         }
