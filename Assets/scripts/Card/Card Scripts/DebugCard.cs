@@ -16,8 +16,6 @@ public class DebugCard : BaseCard
     private GameObject particleGraphics;
     [HideInInspector] public Anchor anchor;
 
-    public AugmentedImage Image;
-
     #region Backups
     /*
     /// <summary>
