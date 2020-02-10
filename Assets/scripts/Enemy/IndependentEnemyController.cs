@@ -53,9 +53,10 @@ public class IndependentEnemyController : MonoBehaviour
 
     public Animator animator;
 
+
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
 
         foreach (Transform child in transform)
@@ -72,7 +73,9 @@ public class IndependentEnemyController : MonoBehaviour
     {
 
         if (isOutPortal)
-        {
+        {   
+
+
             Debug.Log(isRandom.ToString());
             if(!isRandom)
             {
@@ -88,7 +91,8 @@ public class IndependentEnemyController : MonoBehaviour
             animator.SetInteger("isRunningInt",randomPattern);
             //if(this.animator.GetCurrentAnimatorStateInfo(0).IsName("floating"))
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
-            {
+            {   
+                
                 //Look at player
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
 

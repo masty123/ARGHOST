@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 4357131094140767199}
   - component: {fileID: 5980112233924224677}
   m_Layer: 0
-  m_Name: alma@Idle
+  m_Name: Alma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,7 +442,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b2e4d3232a2e534095d27a7e0cfaa65, type: 2}
+  - {fileID: 2100000, guid: 7d82653845eea4a4b9a6139ee24e241b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
