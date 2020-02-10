@@ -25,9 +25,10 @@ public class MoveFromPortal : MonoBehaviour
     {
         if(childGhost != null)
         {
-            if (childGhost.transform.localPosition.y < 1)
+            if (childGhost.transform.localPosition.y < 2)
             {
-                childGhost.transform.position += childGhost.transform.up * childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 2 * Time.deltaTime;
+                float speed = childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 4;
+                childGhost.transform.position += childGhost.transform.up * speed  * Time.deltaTime;
                 outPortal = false;
             }
             else
