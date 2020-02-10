@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Card1 : BaseCard
@@ -7,48 +8,73 @@ public class Card1 : BaseCard
 
     public ParticleSystem[] particleGameObjects;
     public ParticleSystem[] attackParticleGameObjects;
+    public TextMeshPro cooldownText;
+    public float maxCooldown = 3;
 
     [SerializeField] private GameObject debugGameObject;
+
+    protected float cooldown = 0f;
+
+    bool isTracking = false;
 
     private void Start()
     {
         Debug.Log("New particle intantiated");
     }
 
+    private void Update()
+    {
+        cooldown -= Time.deltaTime;
+        if (isTracking)
+        {
+            if (cooldown > 0 && cooldown <= maxCooldown - 1)
+            {
+                cooldownText.text = ((int)cooldown + 1) + "";
+                cooldownText.gameObject.SetActive(true);
+                SetParticlesEnabled(particleGameObjects, false);
+            }
+            else
+            {
+                cooldownText.gameObject.SetActive(false);
+                SetParticlesEnabled(particleGameObjects, false);
+            }
+        }
+        else
+        {
+            SetParticlesEnabled(false);
+        }
+    }
+
     public override void OnDetected()
     {
-        SetParticleEnabled(true);
+        if(cooldown <= 0)
+        {
+            SetParticlesEnabled(attackParticleGameObjects ,true);
+            cooldown = maxCooldown;
+            //TODO: Attack function called here
+        }
+        isTracking = true;
     }
 
     public override void OnUndetected()
     {
-        SetParticleEnabled(false);
+        isTracking = false;
     }
 
-    void SetParticleEnabled(bool play)
+    void SetParticlesEnabled(bool play)
     {
         if (particleGameObjects.Length != 0)
         {
-            if (play)
+            SetParticlesEnabled(particleGameObjects, play);
+            SetParticlesEnabled(attackParticleGameObjects, play);
+            if (debugGameObject != null)
             {
-                SetParticlesActive(particleGameObjects, true);
-                if (debugGameObject != null)
-                {
-                    debugGameObject.SetActive(true);
-                }
-            }
-            else
-            {
-                SetParticlesActive(particleGameObjects, false);
-                if (debugGameObject != null)
-                {
-                    debugGameObject.SetActive(false);
-                }
+                debugGameObject.SetActive(play);
             }
         }
     }
 
-    void SetParticlesActive(ParticleSystem[] particles, bool boolParam)
+    void SetParticlesEnabled(ParticleSystem[] particles, bool boolParam)
     {
         foreach (ParticleSystem toSetActive in particles)
         {
