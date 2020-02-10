@@ -6,6 +6,7 @@ public class Card1 : BaseCard
 {
 
     public ParticleSystem[] particleGameObjects;
+    public ParticleSystem[] attackParticleGameObjects;
 
     [SerializeField] private GameObject debugGameObject;
 
@@ -28,28 +29,30 @@ public class Card1 : BaseCard
     {
         if (particleGameObjects.Length != 0)
         {
-            foreach(ParticleSystem particle in particleGameObjects)
+            if (play)
             {
-                if (play)
+                SetParticlesActive(particleGameObjects, true);
+                if (debugGameObject != null)
                 {
-                    //VDebug.Instance.Log("Particle Started");
-                    //particle.Play();
-                    particle.gameObject.SetActive(true);
-                    if(debugGameObject != null) {
-                        debugGameObject.SetActive(true);
-                    }
-                }
-                else
-                {
-                    //VDebug.Instance.Log("Particle stopped");
-                    //particle.Stop();
-                    particle.gameObject.SetActive(false);
-                    if (debugGameObject != null)
-                    {
-                        debugGameObject.SetActive(false);
-                    }
+                    debugGameObject.SetActive(true);
                 }
             }
+            else
+            {
+                SetParticlesActive(particleGameObjects, false);
+                if (debugGameObject != null)
+                {
+                    debugGameObject.SetActive(false);
+                }
+            }
+        }
+    }
+
+    void SetParticlesActive(ParticleSystem[] particles, bool boolParam)
+    {
+        foreach (ParticleSystem toSetActive in particles)
+        {
+            toSetActive.gameObject.SetActive(boolParam);
         }
     }
 
