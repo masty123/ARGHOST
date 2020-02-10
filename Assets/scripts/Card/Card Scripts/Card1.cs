@@ -25,31 +25,38 @@ public class Card1 : BaseCard
     private void Update()
     {
         cooldown -= Time.deltaTime;
-        if (isTracking)
+        if (cooldown > 0 && cooldown <= maxCooldown)
         {
-            if (cooldown > 0 && cooldown <= maxCooldown - 1)
+            SetParticlesEnabled(particleGameObjects, false);
+            cooldownText.text = ((int)cooldown + 1) + "";
+            if (isTracking)
             {
-                cooldownText.text = ((int)cooldown + 1) + "";
                 cooldownText.gameObject.SetActive(true);
-                SetParticlesEnabled(particleGameObjects, false);
             }
             else
             {
                 cooldownText.gameObject.SetActive(false);
-                SetParticlesEnabled(particleGameObjects, false);
             }
         }
         else
         {
-            SetParticlesEnabled(false);
+            cooldownText.gameObject.SetActive(false);
+            if (isTracking)
+            {
+                SetParticlesEnabled(particleGameObjects, true);
+            }
+            else
+            {
+                SetParticlesEnabled(particleGameObjects, false);
+            }
         }
     }
 
     public override void OnDetected()
     {
-        if(cooldown <= 0)
+        if (cooldown <= 0 && !isTracking)
         {
-            SetParticlesEnabled(attackParticleGameObjects ,true);
+            SetParticlesEnabled(attackParticleGameObjects, true);
             cooldown = maxCooldown;
             //TODO: Attack function called here
         }
@@ -59,6 +66,7 @@ public class Card1 : BaseCard
     public override void OnUndetected()
     {
         isTracking = false;
+        SetParticlesEnabled(false);
     }
 
     void SetParticlesEnabled(bool play)
