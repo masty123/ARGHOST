@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GoogleARCore.Examples.Common;
 
 public class spawnManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class spawnManager : MonoBehaviour
     public class Wave
     {
         [Header("Types of enemies")]
-        public GameObject[] enemy;
+        public GameObject enemy;
         public int count;
         public float rate;
 
@@ -23,7 +24,7 @@ public class spawnManager : MonoBehaviour
     }
 
     //Wave properties
-    public Wave[] waves;
+    [SerializeField] public Wave[] waves;
     private int nextWave;
     [SerializeField] private float timeBetweenWaves = 5f;
     public float waveCountdown;
@@ -58,16 +59,15 @@ public class spawnManager : MonoBehaviour
     [Header("Range of spawning time")]
     [SerializeField]
     public float minTime;
-    public float maxTime;    
- 
+    public float maxTime;
 
     [Header("Live display of enemies in the scene")]
     public List<GameObject> enemies;
 
     //countdown of search time.
     private float searchCountdown = 1f;
-
-
+    
+    [SerializeField] DetectedPlaneGenerator planeGenerator;
 
     //Randomly spawn enemies.
     private void Start()
@@ -78,22 +78,16 @@ public class spawnManager : MonoBehaviour
     //Remove an enemy from the list if one dies.
     private void Update()
     {
-
-        
         if (state == SpawnState.WAITING)
         {
             RemoveDestroyedEnemy();
-
             if (!isAlive())
             {
-
-
                 //Begin a new round
                 WaveCompleted();
             }
             else
             {
-               
                 return;
             }
         }
@@ -103,17 +97,17 @@ public class spawnManager : MonoBehaviour
         {
             if (state == SpawnState.COUNTING)
             {
-                //Start spawning wave
-                StartCoroutine(spawnWave(waves[nextWave]));
-
+                if(planeGenerator.m_NewPlanes.Count > 0)
+                {
+                    //Start spawning wave
+                    StartCoroutine(spawnWave(waves[nextWave]));
+                }
             }
         }
         else
         {
             waveCountdown -= Time.deltaTime;
         }
-
-     
     }
 
     //Destroy enemies will be removed from the list.
@@ -127,7 +121,6 @@ public class spawnManager : MonoBehaviour
                     enemies.RemoveAt(i);
                 }
             }
-
         }
     }
 
@@ -152,36 +145,31 @@ public class spawnManager : MonoBehaviour
     IEnumerator spawnWave(Wave _wave)
     {
         state = SpawnState.SPAWNING;
-
         //spawning
         for (int i = 0; i < _wave.count; i++)
         {
             spawnEnemy(_wave.enemy);
             yield return new WaitForSeconds(1f / _wave.rate);
-
         }
 
-
         state = SpawnState.WAITING;
-
         yield break;
     }
 
     //Spawn enemies.
-    void spawnEnemy(GameObject[] _enemy)
+    void spawnEnemy(GameObject _enemy)
     {
-        if (isAlive())
+        // if (isAlive())
         {
             //Store 2 number of each axis.
             List<float> spawnAreaX = new List<float>();
             List<float> spawnAreaY = new List<float>();
             List<float> spawnAreaZ = new List<float>();
 
-
             //Random time to start spawning.
-            float spawnTime = Random.Range(minTime, maxTime);
-            timeBetweenWaves = spawnTime;
-            int randomRange = Random.Range(0, _enemy.Length);
+            // float spawnTime = Random.Range(minTime, maxTime);
+            // timeBetweenWaves = spawnTime;
+            // int randomRange = Random.Range(0, _enemy.Length);
 
             //Random X position and at it into a list
             float positiveX = Random.Range(xRadius, xPosition);
@@ -216,9 +204,16 @@ public class spawnManager : MonoBehaviour
             int Zindex = Random.Range(0, spawnAreaZ.Count);
             zSpawn = spawnAreaZ[Zindex];
 
+            // random Pose
+            int planeIndex = Random.Range(0, planeGenerator.m_NewPlanes.Count);
+            Vector3 spawnPoint = planeGenerator.m_NewPlanes[planeIndex].CenterPose.position;
+            spawnPoint.x += Random.Range(1, 5);
+            spawnPoint.z += Random.Range(1, 5);
+
             //Spawn ghost into the map and add into live display.
-            GameObject ghost = Instantiate(_enemy[randomRange], new Vector3(xSpawn, ySpawn, zSpawn), Quaternion.identity);
-            enemies.Add(ghost.gameObject);
+            // GameObject ghost = Instantiate(_enemy[randomRange], new Vector3(xSpawn, ySpawn, zSpawn), Quaternion.identity);
+            GameObject ghost = Instantiate(_enemy, spawnPoint, Quaternion.identity);
+            enemies.Add(ghost);
         }
     }
 
@@ -236,8 +231,6 @@ public class spawnManager : MonoBehaviour
         }
         return true;
     }
-
-
 
     //Check range of the spawn 
     public void OnDrawGizmos()

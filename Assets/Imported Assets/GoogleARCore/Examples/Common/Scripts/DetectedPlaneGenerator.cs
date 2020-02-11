@@ -39,7 +39,7 @@ namespace GoogleARCore.Examples.Common
         /// A list to hold new planes ARCore began tracking in the current frame. This object is
         /// used across the application to avoid per-frame allocations.
         /// </summary>
-        private List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
+        public List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
 
         private bool isStopped;
         private ARCoreSession aRCoreSession;

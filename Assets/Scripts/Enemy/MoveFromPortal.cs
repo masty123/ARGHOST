@@ -40,6 +40,5 @@ public class MoveFromPortal : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-       
     }
 }
