@@ -22,7 +22,18 @@ public class changeShader : MonoBehaviour
             {
                 if (child.tag.Equals("EnemyBody"))
                 {
-                    child.GetComponent<Renderer>().material.shader = shader;
+                    if(child.name.Equals("7_almahairs_0_3_0"))
+                    {
+                        child.GetComponent<Renderer>().material.shader = shader;
+                        child.GetComponent<Renderer>().material.SetFloat("_Mode", 2); //Fade
+                        child.GetComponent<Renderer>().material.SetInt("_ZWrite", 1);
+                        child.GetComponent<Renderer>().material.EnableKeyword("_ALPHATEST_ON");
+
+                    }
+                    else
+                    {
+                        child.GetComponent<Renderer>().material.shader = shader;
+                    }
                 }
             }
         }
