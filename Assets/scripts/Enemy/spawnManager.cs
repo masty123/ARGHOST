@@ -67,7 +67,10 @@ public class spawnManager : MonoBehaviour
     //countdown of search time.
     private float searchCountdown = 1f;
     
+    // Plane Generator, Parent Object of all detected plane.
     [SerializeField] DetectedPlaneGenerator planeGenerator;
+    // Visualizer, Hold DetectedPlane inside, can be found as child of DetectedPlaneGenerater Object.
+    DetectedPlaneVisualizer[] visualizer;
 
     //Randomly spawn enemies.
     private void Start()
@@ -78,6 +81,9 @@ public class spawnManager : MonoBehaviour
     //Remove an enemy from the list if one dies.
     private void Update()
     {
+        // get detected plane
+        visualizer = planeGenerator.GetComponentsInChildren<DetectedPlaneVisualizer>(); 
+
         if (state == SpawnState.WAITING)
         {
             RemoveDestroyedEnemy();
@@ -97,11 +103,13 @@ public class spawnManager : MonoBehaviour
         {
             if (state == SpawnState.COUNTING)
             {
-                if(planeGenerator.m_NewPlanes.Count > 0)
+                if(visualizer.Length > 0)
                 {
+                    Debug.Log("Plane Detected!!!");
                     //Start spawning wave
                     StartCoroutine(spawnWave(waves[nextWave]));
                 }
+                Debug.Log("Count is " + visualizer.Length);
             }
         }
         else
@@ -205,10 +213,11 @@ public class spawnManager : MonoBehaviour
             zSpawn = spawnAreaZ[Zindex];
 
             // random Pose
-            int planeIndex = Random.Range(0, planeGenerator.m_NewPlanes.Count);
-            Vector3 spawnPoint = planeGenerator.m_NewPlanes[planeIndex].CenterPose.position;
-            spawnPoint.x += Random.Range(1, 5);
-            spawnPoint.z += Random.Range(1, 5);
+            int planeIndex = Random.Range(0, visualizer.Length);
+            Vector3 spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
+            spawnPoint.x += Random.Range(0, .2f);
+            spawnPoint.z += Random.Range(0, .2f);
+            spawnPoint.y += 0.6f;
 
             //Spawn ghost into the map and add into live display.
             // GameObject ghost = Instantiate(_enemy[randomRange], new Vector3(xSpawn, ySpawn, zSpawn), Quaternion.identity);

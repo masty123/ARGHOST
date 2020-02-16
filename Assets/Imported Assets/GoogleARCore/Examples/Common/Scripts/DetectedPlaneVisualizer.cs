@@ -29,7 +29,7 @@ namespace GoogleARCore.Examples.Common
     /// </summary>
     public class DetectedPlaneVisualizer : MonoBehaviour
     {
-        private DetectedPlane m_DetectedPlane;
+        public DetectedPlane m_DetectedPlane;
 
         // Keep previous frame's mesh polygon to avoid mesh update every frame.
         private List<Vector3> m_PreviousFrameMeshVertices = new List<Vector3>();

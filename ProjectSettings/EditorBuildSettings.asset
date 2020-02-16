@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Gyroscopes/gyroTest/AI Test Scene.unity
     guid: b582f08d24d9b42beae26bcf1f1544ae
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/NoNavMeshScene/MainMenu.unity
     guid: 26818abbf228e7747889b15968ccf8e7
   - enabled: 1
