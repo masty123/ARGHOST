@@ -81,9 +81,6 @@ public class spawnManager : MonoBehaviour
     //Remove an enemy from the list if one dies.
     private void Update()
     {
-        // get detected plane
-        visualizer = planeGenerator.GetComponentsInChildren<DetectedPlaneVisualizer>(); 
-
         if (state == SpawnState.WAITING)
         {
             RemoveDestroyedEnemy();
@@ -103,13 +100,15 @@ public class spawnManager : MonoBehaviour
         {
             if (state == SpawnState.COUNTING)
             {
+                // get detected plane
+                visualizer = planeGenerator.GetComponentsInChildren<DetectedPlaneVisualizer>(); 
                 if(visualizer.Length > 0)
                 {
                     Debug.Log("Plane Detected!!!");
                     //Start spawning wave
                     StartCoroutine(spawnWave(waves[nextWave]));
                 }
-                Debug.Log("Count is " + visualizer.Length);
+                Debug.Log("Detected plane = " + visualizer.Length);
             }
         }
         else
@@ -215,8 +214,8 @@ public class spawnManager : MonoBehaviour
             // random Pose
             int planeIndex = Random.Range(0, visualizer.Length);
             Vector3 spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
-            spawnPoint.x += Random.Range(0, .2f);
-            spawnPoint.z += Random.Range(0, .2f);
+            spawnPoint.x += Random.Range(-.1f, .1f);
+            spawnPoint.z += Random.Range(-.1f, .1f);
             spawnPoint.y += 0.6f;
 
             //Spawn ghost into the map and add into live display.

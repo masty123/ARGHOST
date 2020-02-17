@@ -187,7 +187,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[0].enemy
       value: 
-      objectReference: {fileID: 4515210902083837825, guid: aa04d4ed9100ccf4d9475a5ff0181451,
+      objectReference: {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8,
         type: 3}
     - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
         type: 3}
@@ -305,11 +305,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstPersonCamera: {fileID: 896679035}
-  GameObjectVerticalPlanePrefab: {fileID: 4515210902083837825, guid: aa04d4ed9100ccf4d9475a5ff0181451,
+  GameObjectVerticalPlanePrefab: {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8,
     type: 3}
-  GameObjectHorizontalPlanePrefab: {fileID: 4515210902083837825, guid: aa04d4ed9100ccf4d9475a5ff0181451,
+  GameObjectHorizontalPlanePrefab: {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8,
     type: 3}
-  GameObjectPointPrefab: {fileID: 4515210902083837825, guid: aa04d4ed9100ccf4d9475a5ff0181451,
+  GameObjectPointPrefab: {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8,
     type: 3}
 --- !u!1001 &688001843
 PrefabInstance:
