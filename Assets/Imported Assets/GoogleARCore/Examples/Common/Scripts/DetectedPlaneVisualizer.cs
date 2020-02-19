@@ -186,6 +186,12 @@ namespace GoogleARCore.Examples.Common
             m_Mesh.SetVertices(m_MeshVertices);
             m_Mesh.SetTriangles(m_MeshIndices, 0);
             m_Mesh.SetColors(m_MeshColors);
+            
+            // Color code vertical plane to red color
+            if(m_DetectedPlane.PlaneType == DetectedPlaneType.Vertical)
+            {
+                m_MeshRenderer.materials[0].SetColor("_GridColor", Color.red);
+            }
         }
 
         private bool _AreVerticesListsEqual(List<Vector3> firstList, List<Vector3> secondList)

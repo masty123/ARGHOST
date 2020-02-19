@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore.Examples.Common;
+using GoogleARCore;
 
 public class spawnManager : MonoBehaviour
 {
@@ -101,7 +102,8 @@ public class spawnManager : MonoBehaviour
             if (state == SpawnState.COUNTING)
             {
                 // get detected plane
-                visualizer = planeGenerator.GetComponentsInChildren<DetectedPlaneVisualizer>(); 
+                visualizer = planeGenerator.GetComponentsInChildren<DetectedPlaneVisualizer>();
+                visualizer = FilterVerticalPlane(visualizer);
                 if(visualizer.Length > 0)
                 {
                     Debug.Log("Plane Detected!!!");
@@ -166,63 +168,33 @@ public class spawnManager : MonoBehaviour
     //Spawn enemies.
     void spawnEnemy(GameObject _enemy)
     {
-        // if (isAlive())
+        // random Plane from Detected Plane list
+        int planeIndex = Random.Range(0, visualizer.Length);
+        Debug.Log("PlaneType is " + visualizer[planeIndex].m_DetectedPlane.PlaneType);
+        // get center position from selected plane
+        Vector3 spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
+        // add random variation
+        // spawnPoint.x += Random.Range(-.1f, .1f);
+        // spawnPoint.z += Random.Range(-.1f, .1f);
+        // spawnPoint.y += 0.6f;
+
+        //Spawn ghost into the map and add into live display.
+        GameObject ghost = Instantiate(_enemy, spawnPoint, Quaternion.identity);
+        enemies.Add(ghost);
+    }
+
+    // Filter and output only vertical plane
+    DetectedPlaneVisualizer[] FilterVerticalPlane(DetectedPlaneVisualizer[] planes)
+    {
+        List<DetectedPlaneVisualizer> verticalPlane = new List<DetectedPlaneVisualizer>();
+        foreach(DetectedPlaneVisualizer p in planes)
         {
-            //Store 2 number of each axis.
-            List<float> spawnAreaX = new List<float>();
-            List<float> spawnAreaY = new List<float>();
-            List<float> spawnAreaZ = new List<float>();
-
-            //Random time to start spawning.
-            // float spawnTime = Random.Range(minTime, maxTime);
-            // timeBetweenWaves = spawnTime;
-            // int randomRange = Random.Range(0, _enemy.Length);
-
-            //Random X position and at it into a list
-            float positiveX = Random.Range(xRadius, xPosition);
-            spawnAreaX.Add(positiveX);
-
-            //Random -X position and at it into a list
-            float negativeX = Random.Range(-xPosition, -xRadius);
-            spawnAreaX.Add(negativeX);
-
-            //No underground spawning
-            //Random Y position and at it into a list
-            float positiveY = Random.Range(yRadius, yPosition);
-            spawnAreaY.Add(positiveY);
-
-            //Random Z position and at it into a list
-            float positiveZ = Random.Range(zRadius, zPosition );
-            spawnAreaZ.Add(positiveZ);
-
-            //Random -Z position and at it into a list
-            float negativeZ = Random.Range(-zPosition, -zRadius);
-            spawnAreaZ.Add(negativeZ);
-
-            //Get random X-axis number.
-            int Xindex = Random.Range(0, spawnAreaX.Count);
-            xSpawn = spawnAreaX[Xindex];
-
-            //Get random Y-axis number.
-            int Yindex = Random.Range(0, spawnAreaY.Count);
-            ySpawn = spawnAreaY[Yindex];
-
-            //Get random Z-axis number.
-            int Zindex = Random.Range(0, spawnAreaZ.Count);
-            zSpawn = spawnAreaZ[Zindex];
-
-            // random Pose
-            int planeIndex = Random.Range(0, visualizer.Length);
-            Vector3 spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
-            spawnPoint.x += Random.Range(-.1f, .1f);
-            spawnPoint.z += Random.Range(-.1f, .1f);
-            spawnPoint.y += 0.6f;
-
-            //Spawn ghost into the map and add into live display.
-            // GameObject ghost = Instantiate(_enemy[randomRange], new Vector3(xSpawn, ySpawn, zSpawn), Quaternion.identity);
-            GameObject ghost = Instantiate(_enemy, spawnPoint, Quaternion.identity);
-            enemies.Add(ghost);
+            if( p.m_DetectedPlane.PlaneType == DetectedPlaneType.Vertical )
+            {
+                verticalPlane.Add(p);
+            }
         }
+        return verticalPlane.ToArray();
     }
 
     //Check whether if enemies are alive.
