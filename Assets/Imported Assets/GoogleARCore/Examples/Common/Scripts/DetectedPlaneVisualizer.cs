@@ -187,10 +187,15 @@ namespace GoogleARCore.Examples.Common
             m_Mesh.SetTriangles(m_MeshIndices, 0);
             m_Mesh.SetColors(m_MeshColors);
             
-            // Color code vertical plane to red color
-            if(m_DetectedPlane.PlaneType == DetectedPlaneType.Vertical)
+            // Color code vertical plane to red color, downward plane to blue color
+            switch(m_DetectedPlane.PlaneType)
             {
-                m_MeshRenderer.materials[0].SetColor("_GridColor", Color.red);
+                case DetectedPlaneType.Vertical:
+                    m_MeshRenderer.materials[0].SetColor("_GridColor", Color.red);
+                    break;
+                case DetectedPlaneType.HorizontalDownwardFacing:
+                    m_MeshRenderer.materials[0].SetColor("_GridColor", Color.blue);
+                    break;
             }
         }
 

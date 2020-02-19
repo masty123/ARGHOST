@@ -173,13 +173,14 @@ public class spawnManager : MonoBehaviour
         Debug.Log("PlaneType is " + visualizer[planeIndex].m_DetectedPlane.PlaneType);
         // get center position from selected plane
         Vector3 spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
+        Quaternion spawnRotation = visualizer[planeIndex].m_DetectedPlane.CenterPose.rotation;
         // add random variation
         // spawnPoint.x += Random.Range(-.1f, .1f);
         // spawnPoint.z += Random.Range(-.1f, .1f);
         // spawnPoint.y += 0.6f;
 
         //Spawn ghost into the map and add into live display.
-        GameObject ghost = Instantiate(_enemy, spawnPoint, Quaternion.identity);
+        GameObject ghost = Instantiate(_enemy, spawnPoint, spawnRotation);
         enemies.Add(ghost);
     }
 
