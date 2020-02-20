@@ -64,7 +64,7 @@ public class detectGhost : MonoBehaviour
             float temp = distance / Vector3.Distance(transform.position, closeEnemy.transform.position);
             cameraEffect.intensity = 0.25f * temp;
             cameraEffect.flipIntensity = 0.25f * temp;
-            cameraEffect.intensity = 0.25f * temp;
+            cameraEffect.colorIntensity = 0.15f * temp;
     }
 
     public virtual void OnDrawGizmos()
