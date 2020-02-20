@@ -24,37 +24,47 @@ public class detectGhost : MonoBehaviour
             closeEnemy = GameObject.FindGameObjectWithTag("Enemy");
         }
 
-       if(closeEnemy != null)
-        {
-            if (Vector3.Distance(transform.position, closeEnemy.transform.position) < distance)
-            {
-                cameraEffect.intensity = 0.25f;
-                cameraEffect.flipIntensity = 0.25f;
-                cameraEffect.colorIntensity = 0.25f;
-            }
+        //if(closeEnemy != null)
+        // {
+        //     if (Vector3.Distance(transform.position, closeEnemy.transform.position) < distance)
+        //     {
+        //         cameraEffect.intensity = 0.25f;
+        //         cameraEffect.flipIntensity = 0.25f;
+        //         cameraEffect.colorIntensity = 0.25f;
+        //     }
 
-            if (Vector3.Distance(transform.position, closeEnemy.transform.position) < distance / 2)
-            {
-                cameraEffect.intensity = 0.5f;
-                cameraEffect.flipIntensity = 0.25f;
-                cameraEffect.colorIntensity = 0.5f;
-            }
+        //     if (Vector3.Distance(transform.position, closeEnemy.transform.position) < distance / 2)
+        //     {
+        //         cameraEffect.intensity = 0.5f;
+        //         cameraEffect.flipIntensity = 0.25f;
+        //         cameraEffect.colorIntensity = 0.5f;
+        //     }
 
-            if (Vector3.Distance(transform.position, closeEnemy.transform.position) < distance / 3)
-            {
-                cameraEffect.intensity = 0.75f;
-                cameraEffect.flipIntensity = 0.25f;
-                cameraEffect.colorIntensity = 0.75f;
-            }
+        //     if (Vector3.Distance(transform.position, closeEnemy.transform.position) < distance / 3)
+        //     {
+        //         cameraEffect.intensity = 0.75f;
+        //         cameraEffect.flipIntensity = 0.25f;
+        //         cameraEffect.colorIntensity = 0.75f;
+        //     }
 
-            if (Vector3.Distance(transform.position, closeEnemy.transform.position) < distance / 4)
-            {
-                cameraEffect.intensity = 1f;
-                cameraEffect.flipIntensity = 1f;
-                cameraEffect.colorIntensity = 1f;
-            }
+        //     if (Vector3.Distance(transform.position, closeEnemy.transform.position) < distance / 4)
+        //     {
+        //         cameraEffect.intensity = 1f;
+        //         cameraEffect.flipIntensity = 1f;
+        //         cameraEffect.colorIntensity = 1f;
+        //     }
 
-        }
+        // }
+        gitchIntensity();
+    }
+
+    public void gitchIntensity()
+    {
+
+            float temp = distance / Vector3.Distance(transform.position, closeEnemy.transform.position);
+            cameraEffect.intensity = 0.25f * temp;
+            cameraEffect.flipIntensity = 0.25f * temp;
+            cameraEffect.intensity = 0.25f * temp;
     }
 
     public virtual void OnDrawGizmos()

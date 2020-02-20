@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemy:
-    - {fileID: 4515210902083837825, guid: aa04d4ed9100ccf4d9475a5ff0181451, type: 3}
+    - {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8, type: 3}
     count: 1
     rate: 1
   timeBetweenWaves: 5
@@ -54,9 +54,9 @@ MonoBehaviour:
   xPosition: 40
   yPosition: 20
   zPosition: 40
-  xRadius: 0
-  yRadius: 0
-  zRadius: 0
+  xRadius: 10
+  yRadius: 10
+  zRadius: 10
   xSpawn: 10
   ySpawn: 10
   zSpawn: 10

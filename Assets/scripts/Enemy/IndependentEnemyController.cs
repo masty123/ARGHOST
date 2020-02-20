@@ -27,15 +27,15 @@ public class IndependentEnemyController : MonoBehaviour
 
 
     [Header("Dying Behaviors")]
-    //Shaking left
-    [SerializeField] private float left;
-    //Shaking right.
-    [SerializeField] private float right;
-    //Shaking speed.
-    [SerializeField] private float shakeSpeed;
-    //Shaking rate
-    [SerializeField] private float shakeRate;
-    //Time before destroying the prefab
+    ////Shaking left
+    //[SerializeField] private float left;
+    ////Shaking right.
+    //[SerializeField] private float right;
+    ////Shaking speed.
+    //[SerializeField] private float shakeSpeed;
+    ////Shaking rate
+    //[SerializeField] private float shakeRate;
+    ////Time before destroying the prefab
     [SerializeField] private float deathTime;
 
     //Checking if got hit by player.
@@ -107,6 +107,8 @@ public class IndependentEnemyController : MonoBehaviour
                 else if(EnteredTrigger)
                 {
                     StartCoroutine(scare());
+                    //StartCoroutine(dying());
+
                 }
             }
 

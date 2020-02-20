@@ -7,7 +7,7 @@ public class MoveFromPortal : MonoBehaviour
     public bool outPortal;
     private Transform childGhost;
     public ParticleSystem particleGameObject;
-    public GameObject blackholeGameObject;
+    public GameObject[] blackholeGameObject;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class MoveFromPortal : MonoBehaviour
         {
             if (childGhost.transform.localPosition.y < 2)
             {
-                float speed = childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 4;
+                float speed = childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 8;
                 childGhost.transform.position += childGhost.transform.up * speed  * Time.deltaTime;
                 outPortal = false;
             }
@@ -37,7 +37,10 @@ public class MoveFromPortal : MonoBehaviour
                 childGhost.GetComponent<IndependentEnemyController>().isOutPortal = true;
                 transform.DetachChildren();
                 particleGameObject.Stop();
-                Destroy(blackholeGameObject);
+                foreach(GameObject child in blackholeGameObject)
+                {
+                    Destroy(child);
+                }
                 Destroy(gameObject);
             }
         }
