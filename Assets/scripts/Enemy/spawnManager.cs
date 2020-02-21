@@ -103,7 +103,6 @@ public class spawnManager : MonoBehaviour
             {
                 // get detected plane
                 visualizer = planeGenerator.GetComponentsInChildren<DetectedPlaneVisualizer>();
-                visualizer = FilterVerticalPlane(visualizer);
                 if(visualizer.Length > 0)
                 {
                     Debug.Log("Plane Detected!!!");
@@ -170,7 +169,6 @@ public class spawnManager : MonoBehaviour
     {
         // random Plane from Detected Plane list
         int planeIndex = Random.Range(0, visualizer.Length);
-        Debug.Log("PlaneType is " + visualizer[planeIndex].m_DetectedPlane.PlaneType);
         // get center position from selected plane
         Vector3 spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
         Quaternion spawnRotation = visualizer[planeIndex].m_DetectedPlane.CenterPose.rotation;
@@ -182,20 +180,6 @@ public class spawnManager : MonoBehaviour
         //Spawn ghost into the map and add into live display.
         GameObject ghost = Instantiate(_enemy, spawnPoint, spawnRotation);
         enemies.Add(ghost);
-    }
-
-    // Filter and output only vertical plane
-    DetectedPlaneVisualizer[] FilterVerticalPlane(DetectedPlaneVisualizer[] planes)
-    {
-        List<DetectedPlaneVisualizer> verticalPlane = new List<DetectedPlaneVisualizer>();
-        foreach(DetectedPlaneVisualizer p in planes)
-        {
-            if( p.m_DetectedPlane.PlaneType == DetectedPlaneType.Vertical )
-            {
-                verticalPlane.Add(p);
-            }
-        }
-        return verticalPlane.ToArray();
     }
 
     //Check whether if enemies are alive.
