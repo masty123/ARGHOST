@@ -57,7 +57,12 @@ public class IndependentEnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
+        ChangeRotation();
+        //Debug.Log(transform.parent.localEulerAngles.x.ToString());
+        //Debug.Log(transform.localEulerAngles.x.ToString());
 
         foreach (Transform child in transform)
         {
@@ -68,37 +73,69 @@ public class IndependentEnemyController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void ChangeRotation()
+    {   
+
+        if(transform.parent.eulerAngles.x-360 == -90)
+        {
+            Debug.Log("Rotating");
+            transform.Rotate(270, 0, 180, Space.Self);
+            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        }
+
+
+        if (transform.parent.eulerAngles.x - 360 == -90 && transform.parent.eulerAngles.z - 360 == -90)
+        {
+            Debug.Log("Rotating");
+            transform.Rotate(270, 0, -180, Space.Self);
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        }
+
+
+        if (transform.parent.eulerAngles.x - 360 == -90 && transform.parent.eulerAngles.y - 360 == -180 && transform.parent.eulerAngles.z - 360 == -270)
+        {
+            Debug.Log("Rotating");
+            transform.Rotate(270, 90, -90, Space.Self);
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        }
+
+        if (transform.parent.eulerAngles.x - 360 == -90 && transform.parent.eulerAngles.y - 360 == -180 && transform.parent.eulerAngles.z - 360 == -180)
+        {
+            Debug.Log("Rotating");
+            transform.Rotate(270, -180, 0, Space.Self);
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        }
+
+
+
+        // if (transform.parent.rotation.x == 0)
+        // {
+        //     transform.Rotate(-90f, 180f, 0, Space.Self);
+        // }
+    }
+
+        // Update is called once per frame
+        void Update()
     {
 
         if (isOutPortal)
         {   
-
-
-            Debug.Log(isRandom.ToString());
             if(!isRandom)
             {
                 randomPattern = Random.Range(0, 2);
                 Debug.Log(randomPattern.ToString());
                 isRandom = true;
             }
-          
-            //StartCoroutine(changetoIdle());
+            
             animator.SetBool("isSpawning", true);
-            //yield return new WaitForSeconds(1f);
             animator.SetBool("isRunning", true);
             animator.SetInteger("isRunningInt",randomPattern);
-            //if(this.animator.GetCurrentAnimatorStateInfo(0).IsName("floating"))
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
-            {   
-                
+            {                
                 //Look at player
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
-
                 //Move to Player
                 transform.position += transform.forward * moveSpeed * Time.deltaTime;
-
                 //if got hit or touch player.
                 if (isHit)
                 {
@@ -108,16 +145,12 @@ public class IndependentEnemyController : MonoBehaviour
                 {
                     StartCoroutine(scare());
                     //StartCoroutine(dying());
-
                 }
             }
 
         }
 
     }
-
-   
-
 
     public void Defeat()
     {
@@ -145,7 +178,6 @@ public class IndependentEnemyController : MonoBehaviour
         SceneManager.LoadScene("GameOver");
 
     }
-
 
     // Effect play when this enemy is dead.
     void DeadEffect()
