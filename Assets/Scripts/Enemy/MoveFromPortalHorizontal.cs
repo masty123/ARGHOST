@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveFromPortal : MonoBehaviour
+public class MoveFromPortalHorizontal : MonoBehaviour
 {
     public bool outPortal;
     private Transform childGhost;
@@ -28,7 +28,7 @@ public class MoveFromPortal : MonoBehaviour
             if (childGhost.transform.localPosition.y < 1.5)
             {
                 float speed = childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 8;
-                childGhost.transform.localPosition += childGhost.transform.up * speed  * Time.deltaTime;
+                childGhost.transform.position += childGhost.transform.up * speed  * Time.deltaTime;
                 outPortal = false;
             }
             else
@@ -43,7 +43,6 @@ public class MoveFromPortal : MonoBehaviour
                 }
                 Destroy(gameObject);
             }
-        }
-       
+        }  
     }
 }

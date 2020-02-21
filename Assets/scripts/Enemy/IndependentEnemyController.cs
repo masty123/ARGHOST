@@ -60,8 +60,10 @@ public class IndependentEnemyController : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
 
-        ChangeRotation();
-        //Debug.Log(transform.parent.localEulerAngles.x.ToString());
+        Debug.Log(transform.parent.localEulerAngles.x.ToString());
+        Debug.Log(transform.parent.localEulerAngles.y.ToString());
+        Debug.Log(transform.parent.localEulerAngles.z.ToString());
+
         //Debug.Log(transform.localEulerAngles.x.ToString());
 
         foreach (Transform child in transform)
@@ -73,46 +75,8 @@ public class IndependentEnemyController : MonoBehaviour
         }
     }
 
-    void ChangeRotation()
-    {   
 
-        if(transform.parent.eulerAngles.x-360 == -90)
-        {
-            Debug.Log("Rotating");
-            transform.Rotate(270, 0, 180, Space.Self);
-            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
-        }
-
-
-        if (transform.parent.eulerAngles.x - 360 == -90 && transform.parent.eulerAngles.z - 360 == -90)
-        {
-            Debug.Log("Rotating");
-            transform.Rotate(270, 0, -180, Space.Self);
-            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-        }
-
-
-        if (transform.parent.eulerAngles.x - 360 == -90 && transform.parent.eulerAngles.y - 360 == -180 && transform.parent.eulerAngles.z - 360 == -270)
-        {
-            Debug.Log("Rotating");
-            transform.Rotate(270, 90, -90, Space.Self);
-            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-        }
-
-        if (transform.parent.eulerAngles.x - 360 == -90 && transform.parent.eulerAngles.y - 360 == -180 && transform.parent.eulerAngles.z - 360 == -180)
-        {
-            Debug.Log("Rotating");
-            transform.Rotate(270, -180, 0, Space.Self);
-            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-        }
-
-
-
-        // if (transform.parent.rotation.x == 0)
-        // {
-        //     transform.Rotate(-90f, 180f, 0, Space.Self);
-        // }
-    }
+    
 
         // Update is called once per frame
         void Update()
