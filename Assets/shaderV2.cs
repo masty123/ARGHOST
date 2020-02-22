@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class changeShader : MonoBehaviour
+public class shaderV2 : MonoBehaviour
 {
-
     private Shader shader;
     //Renderer rend;
     // Start is called before the first frame update
@@ -20,9 +19,7 @@ public class changeShader : MonoBehaviour
     }
 
     void ChangeShader()
-    {   
-            if (GetComponentInParent<IndependentEnemyController>().isOutPortal)
-            {
+    {
                 foreach (Transform child in transform)
                 {
                     if (child.tag.Equals("EnemyBody"))
@@ -40,8 +37,6 @@ public class changeShader : MonoBehaviour
                             child.GetComponent<Renderer>().material.shader = shader;
                         }
                     }
-                }
-            }
-        
+                }  
     }
 }

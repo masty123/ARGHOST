@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 877653976}
   - component: {fileID: 877653977}
   - component: {fileID: 877653978}
+  - component: {fileID: 877653979}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -251,6 +252,21 @@ MonoBehaviour:
   closeEnemy: {fileID: 0}
   cameraEffect: {fileID: 0}
   distance: 10
+--- !u!114 &877653979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877653972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f8d147c69673d4cb893af708acf837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1001 &1048698130
 PrefabInstance:
   m_ObjectHideFlags: 0
