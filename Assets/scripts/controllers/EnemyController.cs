@@ -17,10 +17,10 @@ public class EnemyController : MonoBehaviour
 
 
     [Header("Dying Behaviors")]
-    [SerializeField] private float left;
-    [SerializeField] private float right;
-    [SerializeField] private float shakeSpeed;
-    [SerializeField] private float shakeRate;
+   // [SerializeField] private float left;
+   // [SerializeField] private float right;
+  //  [SerializeField] private float shakeSpeed;
+  //  [SerializeField] private float shakeRate;
     [SerializeField] private float deathTime;
     private float currentTime;
     public bool isHit;
@@ -101,7 +101,7 @@ public class EnemyController : MonoBehaviour
     //count down before destroying itself.
     public IEnumerator dying()
     {
-        enemyHurt();
+        //enemyHurt();
         yield return new WaitForSeconds(deathTime);
         //Destroy(transform.parent.gameObject);
         DeadEffect();
@@ -116,14 +116,15 @@ public class EnemyController : MonoBehaviour
     }
 
     // Hurting like hell!
+    /*
     void enemyHurt()
     {       
-
         agent.enabled = false;
         transform.localPosition = Vector3.Lerp(new Vector3(transform.localPosition.x + left,  transform.localPosition.y, transform.localPosition.z),
                                                new Vector3(transform.localPosition.x + right, transform.localPosition.y, transform.localPosition.z),
                                               (Mathf.Sin(shakeSpeed * Time.time) + 1.0f) / shakeRate);
     }
+    */
 
 
 

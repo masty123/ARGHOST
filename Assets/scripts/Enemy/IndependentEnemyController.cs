@@ -57,15 +57,12 @@ public class IndependentEnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        GetAnimator();
+    }
 
-        Debug.Log(transform.parent.localEulerAngles.x.ToString());
-        Debug.Log(transform.parent.localEulerAngles.y.ToString());
-        Debug.Log(transform.parent.localEulerAngles.z.ToString());
-
-        //Debug.Log(transform.localEulerAngles.x.ToString());
-
+    void GetAnimator()
+    {
         foreach (Transform child in transform)
         {
             if (child.name.Equals("Alma"))
@@ -76,26 +73,27 @@ public class IndependentEnemyController : MonoBehaviour
     }
 
 
-    
-
-        // Update is called once per frame
-        void Update()
+    // Update is called once per frame
+    void Update()
     {
+        GhostBeHavior();
+    }
 
+    void GhostBeHavior()
+    {
         if (isOutPortal)
-        {   
-            if(!isRandom)
+        {
+            if (!isRandom)
             {
                 randomPattern = Random.Range(0, 2);
-                Debug.Log(randomPattern.ToString());
                 isRandom = true;
             }
-            
+
             animator.SetBool("isSpawning", true);
             animator.SetBool("isRunning", true);
-            animator.SetInteger("isRunningInt",randomPattern);
+            animator.SetInteger("isRunningInt", randomPattern);
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
-            {                
+            {
                 //Look at player
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
                 //Move to Player
@@ -105,7 +103,7 @@ public class IndependentEnemyController : MonoBehaviour
                 {
                     StartCoroutine(dying());
                 }
-                else if(EnteredTrigger)
+                else if (EnteredTrigger)
                 {
                     StartCoroutine(scare());
                     //StartCoroutine(dying());
@@ -113,10 +111,9 @@ public class IndependentEnemyController : MonoBehaviour
             }
 
         }
-
     }
 
-    public void Defeat()
+     public void Defeat()
     {
         if (showCross)
         {
