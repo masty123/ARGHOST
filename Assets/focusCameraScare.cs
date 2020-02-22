@@ -8,15 +8,26 @@ public class focusCameraScare : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
 
+    private bool isDead;
+
 
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
+    {
+
+        if(isDead)
+        {
+            lookAtGhost();
+        }
+    }
+
+    private void Update()
     {
         getTarget();
     }
 
-     void getTarget()
+    void getTarget()
     {
         if(target == null)
         {   
@@ -35,7 +46,8 @@ public class focusCameraScare : MonoBehaviour
     {
         if(other.tag.Equals("Enemy"))
         {
-            lookAtGhost();
+            Debug.Log("look at ghost");
+            isDead = true;
         }
     }
 }
