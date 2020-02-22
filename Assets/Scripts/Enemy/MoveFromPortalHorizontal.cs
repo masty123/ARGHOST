@@ -25,7 +25,7 @@ public class MoveFromPortalHorizontal : MonoBehaviour
     {
         if(childGhost != null)
         {
-            if (childGhost.transform.localPosition.y < 1.5)
+            if (childGhost.transform.localPosition.y < 2)
             {
                 float speed = childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 8;
                 childGhost.transform.position += childGhost.transform.up * speed  * Time.deltaTime;

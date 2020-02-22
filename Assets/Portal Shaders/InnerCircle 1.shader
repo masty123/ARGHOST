@@ -1,4 +1,4 @@
-﻿Shader "Unlit/InnerCircle"
+﻿Shader "Unlit/InnerCircle2"
 {
 	Properties
 	{
@@ -12,7 +12,8 @@
 			Comp Always
 			Pass Replace
 		}
-		ZWrite Off
+		//ZWrite Off
+		Blend SrcAlpha OneMinusSrcAlpha
 		LOD 100
 
 		Pass
@@ -56,7 +57,9 @@
 				//fixed4 col = tex2D(_MainTex, i.uv);
 				// apply fog
 				//UNITY_APPLY_FOG(i.fogCoord, col);
-				return float4(0,0,0,0);
+				return float4(1, 0, 0, 0);
+				//return float4(0,0,0,0);
+
 			}
 			ENDCG
 		}

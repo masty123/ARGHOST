@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5875293979009803423}
   - component: {fileID: 120776079}
   m_Layer: 0
-  m_Name: PortalWIthGhost
+  m_Name: PortalWIthGhostHorizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,6 +58,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5875293979009803423}
     m_Modifications:
+    - target: {fileID: 1309165111919069831, guid: 3d708b4394d664c2cbe6143fcef0641b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1309165113057552821, guid: 3d708b4394d664c2cbe6143fcef0641b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1349,18 +1354,23 @@ PrefabInstance:
     - target: {fileID: 8106798653946229701, guid: eaccd7a8ae203534d9afda04a518597e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 83.87399
+      value: 95.009544
       objectReference: {fileID: 0}
     - target: {fileID: 8106798653946229701, guid: eaccd7a8ae203534d9afda04a518597e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 83.87399
+      value: 95.009544
       objectReference: {fileID: 0}
     - target: {fileID: 8106798653946229701, guid: eaccd7a8ae203534d9afda04a518597e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 83.87399
+      value: 95.009544
       objectReference: {fileID: 0}
+    - target: {fileID: 8106798653948129573, guid: eaccd7a8ae203534d9afda04a518597e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ee4c8aff2b73c6145a2e1568b625135a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaccd7a8ae203534d9afda04a518597e, type: 3}
 --- !u!1 &7100533456541089059 stripped

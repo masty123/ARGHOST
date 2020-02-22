@@ -10,7 +10,9 @@ public class MoveFromPortalVertical : MonoBehaviour
     public GameObject[] blackholeGameObject;
 
     private void Start()
-    {
+    {   
+
+
         foreach (Transform child in transform)
         {
             if (child.name.Equals("Enemy"))
