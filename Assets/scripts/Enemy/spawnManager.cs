@@ -50,19 +50,23 @@ public class spawnManager : MonoBehaviour
     public float yPosition;
     public float zPosition;
 
-    [Header("Radius away from the player")]
-    [SerializeField]
-    public float xRadius;
-    public float yRadius;
-    public float zRadius;
-    public float distantRadius;
+    // [Header("Radius away from the player")]
+    // [SerializeField]
+    // public float xRadius;
+    // public float yRadius;
+    // public float zRadius;
 
-    [Header("Previously randomized Position")]
-    [SerializeField]
-    public float xSpawn;
-    public float ySpawn;
-    public float zSpawn;
+    // [Header("Previously randomized Position")]
+    // [SerializeField]
+    // public float xSpawn;
+    // public float ySpawn;
+    // public float zSpawn;
 
+    [Header("Distance Radius")]
+    [SerializeField]
+    public float playerRadius;
+    public float spawnRadius;
+    public Vector3 preSpawn = Vector3.zero;
 
     [Header("Range of spawning time")]
     [SerializeField]
@@ -188,6 +192,7 @@ public class spawnManager : MonoBehaviour
         planeIndex = UnityEngine.Random.Range(0, visualizer.Length);
         // get center position from selected plane
         spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
+        spawnPoint = checkSpawnPoint(spawnPoint);
         spawnRotation = visualizer[planeIndex].m_DetectedPlane.CenterPose.rotation;
         
         GameObject enemyPrefeb;
@@ -204,9 +209,25 @@ public class spawnManager : MonoBehaviour
 
         //Spawn ghost into the map and add into live display.
         GameObject ghost = Instantiate(enemyPrefeb, spawnPoint, spawnRotation);
+        preSpawn = spawnPoint;
         enemies.Add(ghost);
     }
 
+    // check spawn point if there are too close to previous spawn point
+    private Vector3 checkSpawnPoint(Vector3 spawn)
+    {
+        float ranDis = 1f;
+        if(Vector3.Distance(spawn, preSpawn) <= spawnRadius)
+        {
+            spawn.x += UnityEngine.Random.Range(-ranDis, ranDis);
+            spawn.y += UnityEngine.Random.Range(-ranDis, ranDis);
+            spawn.z += UnityEngine.Random.Range(-ranDis, ranDis);
+        }
+        return spawn;
+    }
+
+    // filter plane if it is far enought
+    // TODO: better method
     private DetectedPlaneVisualizer[] FilterPlane(DetectedPlaneVisualizer[] visualizer)
     {
         List<DetectedPlaneVisualizer> v = new List<DetectedPlaneVisualizer>();
@@ -221,9 +242,10 @@ public class spawnManager : MonoBehaviour
         return v.ToArray();
     }
 
+    // check if spawn point is far enought from player(camera)
     private bool IsFarEnought(Vector3 spawnpoint)
     {
-        if( Vector3.Distance(spawnpoint, cameraTransform.position) >= distantRadius )
+        if( Vector3.Distance(spawnpoint, cameraTransform.position) >= playerRadius )
         {
             return true;
         }
