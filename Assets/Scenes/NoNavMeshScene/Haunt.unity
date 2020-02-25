@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -186,6 +186,11 @@ PrefabInstance:
     - target: {fileID: 2855425908200462121, guid: c10877f7cd5764de18d46d7b777d1faa,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855425908200462121, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
@@ -197,7 +202,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[0].enemy
       value: 
-      objectReference: {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8,
+      objectReference: {fileID: 733236257580595660, guid: da1c47c52274c274ea71539daa592fd2,
         type: 3}
     - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
         type: 3}
@@ -220,6 +225,28 @@ PrefabInstance:
       propertyPath: planeGenerator
       value: 
       objectReference: {fileID: 2083512465}
+    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: ghostPortalHorizontal
+      value: 
+      objectReference: {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8,
+        type: 3}
+    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: ghostPortalVertical
+      value: 
+      objectReference: {fileID: 5875293979009803422, guid: 66186fc4e2953b04bbf0073a1a320c74,
+        type: 3}
+    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1493372555}
+    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: distantRadius
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c10877f7cd5764de18d46d7b777d1faa, type: 3}
 --- !u!1001 &150429108
@@ -623,6 +650,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1493372555 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4497055787654456, guid: c10877f7cd5764de18d46d7b777d1faa,
+    type: 3}
+  m_PrefabInstance: {fileID: 97747990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1800027001
 GameObject:
   m_ObjectHideFlags: 0

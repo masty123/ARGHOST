@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore.Examples.Common;
@@ -9,11 +10,16 @@ public class spawnManager : MonoBehaviour
     //State of SpawnManager
     public enum SpawnState {SPAWNING, WAITING, COUNTING };
 
+    [SerializeField] Transform cameraTransform;
+
+    [SerializeField] GameObject ghostPortalHorizontal;
+    [SerializeField] GameObject ghostPortalVertical;
+
     [System.Serializable]
     public class Wave
     {
         [Header("Types of enemies")]
-        public GameObject enemy;
+        // public GameObject enemy;
         public int count;
         public float rate;
 
@@ -49,6 +55,7 @@ public class spawnManager : MonoBehaviour
     public float xRadius;
     public float yRadius;
     public float zRadius;
+    public float distantRadius;
 
     [Header("Previously randomized Position")]
     [SerializeField]
@@ -82,6 +89,7 @@ public class spawnManager : MonoBehaviour
     //Remove an enemy from the list if one dies.
     private void Update()
     {
+        Debug.Log("Camera position = " + cameraTransform.position);
         if (state == SpawnState.WAITING)
         {
             RemoveDestroyedEnemy();
@@ -102,20 +110,25 @@ public class spawnManager : MonoBehaviour
             if (state == SpawnState.COUNTING)
             {
                 // get detected plane
-                visualizer = planeGenerator.GetComponentsInChildren<DetectedPlaneVisualizer>();
+                GetVisualizer();
                 if(visualizer.Length > 0)
                 {
                     Debug.Log("Plane Detected!!!");
                     //Start spawning wave
                     StartCoroutine(spawnWave(waves[nextWave]));
                 }
-                Debug.Log("Detected plane = " + visualizer.Length);
             }
         }
         else
         {
             waveCountdown -= Time.deltaTime;
         }
+    }
+
+    private void GetVisualizer()
+    {
+        visualizer = planeGenerator.GetComponentsInChildren<DetectedPlaneVisualizer>();
+        visualizer = FilterPlane(visualizer);
     }
 
     //Destroy enemies will be removed from the list.
@@ -156,7 +169,7 @@ public class spawnManager : MonoBehaviour
         //spawning
         for (int i = 0; i < _wave.count; i++)
         {
-            spawnEnemy(_wave.enemy);
+            spawnEnemy();
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
@@ -165,21 +178,56 @@ public class spawnManager : MonoBehaviour
     }
 
     //Spawn enemies.
-    void spawnEnemy(GameObject _enemy)
+    void spawnEnemy()
     {
+        int planeIndex;
+        Vector3 spawnPoint;
+        Quaternion spawnRotation = Quaternion.identity;
+
         // random Plane from Detected Plane list
-        int planeIndex = Random.Range(0, visualizer.Length);
+        planeIndex = UnityEngine.Random.Range(0, visualizer.Length);
         // get center position from selected plane
-        Vector3 spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
-        Quaternion spawnRotation = visualizer[planeIndex].m_DetectedPlane.CenterPose.rotation;
-        // add random variation
-        // spawnPoint.x += Random.Range(-.1f, .1f);
-        // spawnPoint.z += Random.Range(-.1f, .1f);
-        // spawnPoint.y += 0.6f;
+        spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
+        spawnRotation = visualizer[planeIndex].m_DetectedPlane.CenterPose.rotation;
+        
+        GameObject enemyPrefeb;
+        switch(visualizer[planeIndex].m_DetectedPlane.PlaneType)
+        {
+            case DetectedPlaneType.Vertical:
+                enemyPrefeb = ghostPortalVertical;
+                spawnRotation.y += 90;
+                break;
+            default:
+                enemyPrefeb = ghostPortalHorizontal;
+                break;
+        }
 
         //Spawn ghost into the map and add into live display.
-        GameObject ghost = Instantiate(_enemy, spawnPoint, spawnRotation);
+        GameObject ghost = Instantiate(enemyPrefeb, spawnPoint, spawnRotation);
         enemies.Add(ghost);
+    }
+
+    private DetectedPlaneVisualizer[] FilterPlane(DetectedPlaneVisualizer[] visualizer)
+    {
+        List<DetectedPlaneVisualizer> v = new List<DetectedPlaneVisualizer>();
+        foreach(DetectedPlaneVisualizer p in visualizer)
+        {
+            if( IsFarEnought(p.m_DetectedPlane.CenterPose.position) )
+            // if( p.m_DetectedPlane.PlaneType == DetectedPlaneType.Vertical )
+            {
+                v.Add(p);
+            }
+        }
+        return v.ToArray();
+    }
+
+    private bool IsFarEnought(Vector3 spawnpoint)
+    {
+        if( Vector3.Distance(spawnpoint, cameraTransform.position) >= distantRadius )
+        {
+            return true;
+        }
+        return false;
     }
 
     //Check whether if enemies are alive.
