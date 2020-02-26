@@ -18,11 +18,17 @@ public class LightFlickering : MonoBehaviour
     //Audio time range
     public float audioTime;
 
+    //Random ghost pose
+    private int randomPose;
+    private Animator animator;
+
+
     // Start is called before the first frame update.
     void Start()
     {
         Timer = Random.Range(minTime, maxTime);
         source.time = audioTime;
+        animator = entity.GetComponent<Animator>();
     }
 
     // Update is called once per frame.
@@ -37,15 +43,33 @@ public class LightFlickering : MonoBehaviour
         if (Timer > 0) Timer -= Time.deltaTime;
 
         if(Timer <= 0)
-        {
+        {   
             light.enabled = !light.enabled;
             if (isVisible() && light.enabled)
             {
-                entity.transform.GetComponent<MeshRenderer>().enabled = true;
+                //randomPose = Random.Range(0, 3);
+                //Debug.Log(randomPose.ToString());
+                animator.SetInteger("Pose", randomPose);
+                foreach (Transform child in entity)
+                {   
+                    if(child.transform.GetComponent<SkinnedMeshRenderer>() != null)
+                    {
+                        child.transform.GetComponent<SkinnedMeshRenderer>().enabled = true;
+                    }
+                }
             }
             else
             {
-                entity.transform.GetComponent<MeshRenderer>().enabled = false;
+                randomPose = Random.Range(0, 3);
+                Debug.Log(randomPose.ToString());
+                animator.SetInteger("Pose", randomPose);
+                foreach (Transform child in entity)
+                {
+                    if (child.transform.GetComponent<SkinnedMeshRenderer>() != null)
+                    {
+                        child.transform.GetComponent<SkinnedMeshRenderer>().enabled = false;
+                    }
+                }
             }
 
 

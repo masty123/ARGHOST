@@ -218,7 +218,7 @@ public class spawnManager : MonoBehaviour
 
             //Spawn ghost into the map and add into live display.
             GameObject ghost = Instantiate(_enemy[randomRange], new Vector3(xSpawn, ySpawn, zSpawn), Quaternion.identity);
-            enemies.Add(ghost.gameObject);
+            enemies.Add(GameObject.FindGameObjectWithTag("Enemy"));
         }
     }
 

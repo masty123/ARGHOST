@@ -1,0 +1,28 @@
+# Blender MTL File: 'MRL-279.blend'
+# Material Count: 2
+
+newmtl 24_alma_1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.730675 0.420348 0.791438
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade (Young),FEAR\alma_d.tga
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Alma Wade (Young),FEAR\\alma_n.tga
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Alma Wade (Young),FEAR\\alma_s.tga
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade (Young),FEAR\\alma_d.tga
+
+newmtl 7_hairs_1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.411679 0.481753 0.480631
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Alma Wade (Young),FEAR\alma_d.tga
+map_d D:\\Dropbox\\Shared Files\\XPS\\Alma Wade (Young),FEAR\\alma_d.tga
