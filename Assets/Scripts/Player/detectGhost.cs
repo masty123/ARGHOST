@@ -18,17 +18,20 @@ public class detectGhost : MonoBehaviour
     void Update()
     {
        if(closeEnemy == null)
-        {
+       {
             cameraEffect.intensity = 0f;
             cameraEffect.colorIntensity = 0f;
             closeEnemy = GameObject.FindGameObjectWithTag("Enemy");
-        }
-        gitchIntensity();
+       }
+       else if(closeEnemy != null)
+       {
+            gitchIntensity();
+       }
+        //Debug.Log("cannot detect any ghost");
     }
 
     public void gitchIntensity()
     {
-
             float temp = distance / Vector3.Distance(transform.position, closeEnemy.transform.position);
             cameraEffect.intensity = 0.25f * temp;
             cameraEffect.flipIntensity = 0.25f * temp;
