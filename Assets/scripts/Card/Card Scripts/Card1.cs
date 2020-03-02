@@ -58,7 +58,12 @@ public class Card1 : BaseCard
         {
             SetParticlesEnabled(attackParticleGameObjects, true);
             cooldown = maxCooldown;
-            //TODO: Attack function called here
+            // Attack function called here
+            AttackGhost atk = FindObjectOfType<AttackGhost>();
+            if(atk != null)
+            {
+                atk.attack();
+            }
         }
         isTracking = true;
     }
