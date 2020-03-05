@@ -29,7 +29,7 @@ namespace GoogleARCore.Examples.Common
     /// </summary>
     public class DetectedPlaneVisualizer : MonoBehaviour
     {
-        private DetectedPlane m_DetectedPlane;
+        public DetectedPlane m_DetectedPlane;
 
         // Keep previous frame's mesh polygon to avoid mesh update every frame.
         private List<Vector3> m_PreviousFrameMeshVertices = new List<Vector3>();
@@ -186,6 +186,17 @@ namespace GoogleARCore.Examples.Common
             m_Mesh.SetVertices(m_MeshVertices);
             m_Mesh.SetTriangles(m_MeshIndices, 0);
             m_Mesh.SetColors(m_MeshColors);
+            
+            // Color code vertical plane to red color, downward plane to blue color
+            switch(m_DetectedPlane.PlaneType)
+            {
+                case DetectedPlaneType.Vertical:
+                    m_MeshRenderer.materials[0].SetColor("_GridColor", Color.red);
+                    break;
+                case DetectedPlaneType.HorizontalDownwardFacing:
+                    m_MeshRenderer.materials[0].SetColor("_GridColor", Color.blue);
+                    break;
+            }
         }
 
         private bool _AreVerticesListsEqual(List<Vector3> firstList, List<Vector3> secondList)
