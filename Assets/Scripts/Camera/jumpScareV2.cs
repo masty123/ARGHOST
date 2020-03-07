@@ -38,7 +38,9 @@ public class jumpScareV2 : MonoBehaviour
 
     void startScare(GameObject ghost)
     {
-        ghost.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z + distance);
+        //ghost.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z + distance);
+        ghost.transform.position = transform.position + transform.forward * distance;
+        ghost.transform.rotation = new Quaternion(0.0f, transform.rotation.y, 0.0f, transform.rotation.w);
         ghost.transform.LookAt(mainCamera.transform);
         ghost.transform.parent = mainCamera.transform;
     }
@@ -51,18 +53,5 @@ public class jumpScareV2 : MonoBehaviour
             Debug.Log("look at ghost");
             jumpScare = true;
         }
-    }
-
-
-    void RotateObject()
-    {
-
-    }
-
-
-
-    void ghostHide()
-    {
-
     }
 }

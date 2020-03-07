@@ -443,6 +443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1611453536854693606}
   - component: {fileID: 8707441279150193564}
+  - component: {fileID: 2656485611503734818}
   m_Layer: 0
   m_Name: Agatha
   m_TagString: Untagged
@@ -487,6 +488,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2656485611503734818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2307621661938263285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e593c57e2fc622d4da3fb18ba8f0c72d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2323830379800858768
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +605,7 @@ GameObject:
   - component: {fileID: 3990241022174445722}
   m_Layer: 0
   m_Name: 6_mesh1_0.1_16_16
-  m_TagString: Untagged
+  m_TagString: EnemyBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1048,7 +1061,7 @@ GameObject:
   - component: {fileID: 2818194802453666651}
   m_Layer: 0
   m_Name: 6_mesh2_0.1_16_16
-  m_TagString: Untagged
+  m_TagString: EnemyBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1676,7 +1689,7 @@ GameObject:
   - component: {fileID: 1407471566361139146}
   m_Layer: 0
   m_Name: 6_mesh0_0.1_16_16
-  m_TagString: Untagged
+  m_TagString: EnemyBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

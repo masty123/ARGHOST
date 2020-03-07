@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 1755776761906450644}
   - {fileID: 7810356346756772131}
-  - {fileID: 3960609042864128604}
+  - {fileID: 492790011872731244}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 179.99998, z: 0}
@@ -51,7 +51,8 @@ MonoBehaviour:
   blackholeGameObject:
   - {fileID: 1755776761906744564}
   - {fileID: 7810356345751982609}
---- !u!1001 &5777909367494981562
+  height: 0.5
+--- !u!1001 &6921774113478776202
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -71,7 +72,7 @@ PrefabInstance:
     - target: {fileID: 7411140503840585190, guid: bea4b2ed832e24546a33643a77106d5c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.604
+      value: -0.416
       objectReference: {fileID: 0}
     - target: {fileID: 7411140503840585190, guid: bea4b2ed832e24546a33643a77106d5c,
         type: 3}
@@ -120,11 +121,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bea4b2ed832e24546a33643a77106d5c, type: 3}
---- !u!4 &3960609042864128604 stripped
+--- !u!4 &492790011872731244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7411140503840585190, guid: bea4b2ed832e24546a33643a77106d5c,
     type: 3}
-  m_PrefabInstance: {fileID: 5777909367494981562}
+  m_PrefabInstance: {fileID: 6921774113478776202}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7556169108187095825
 PrefabInstance:
