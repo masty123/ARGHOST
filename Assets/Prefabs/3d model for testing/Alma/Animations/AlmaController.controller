@@ -40,10 +40,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1420408932844483670}
-    m_Position: {x: 840, y: 810, z: 0}
+    m_Position: {x: 820, y: 750, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8589256550363284371}
-    m_Position: {x: 830, y: 610, z: 0}
+    m_Position: {x: 830, y: 550, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4236762943482505051}
     m_Position: {x: 500, y: 440, z: 0}
@@ -52,10 +52,10 @@ AnimatorStateMachine:
     m_Position: {x: 500, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7067704042189127964}
-    m_Position: {x: 430, y: 630, z: 0}
+    m_Position: {x: 160, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2074520292876070773}
-    m_Position: {x: 100, y: 800, z: 0}
+    m_Position: {x: 160, y: 750, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:
@@ -363,31 +363,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isRunning
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isSpawning
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isRunningInt
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isTriggerScare
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

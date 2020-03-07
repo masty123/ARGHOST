@@ -63,13 +63,7 @@ public class IndependentEnemyController : MonoBehaviour
 
     void GetAnimator()
     {
-        foreach (Transform child in transform)
-        {
-            if (child.name.Equals("Alma"))
-            {
-                animator = child.gameObject.GetComponent<Animator>();
-            }
-        }
+        animator = GetComponentInChildren<Animator>();
     }
 
 
@@ -106,7 +100,7 @@ public class IndependentEnemyController : MonoBehaviour
                 else if (EnteredTrigger)
                 {
                     StartCoroutine(scare());
-                    //StartCoroutine(dying());
+                    //StartCoroutine(dying());  // For testing only.
                 }
             }
 
