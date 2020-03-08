@@ -86,7 +86,7 @@ public class IndependentEnemyController : MonoBehaviour
             animator.SetBool("isSpawning", true);
             animator.SetBool("isRunning", true);
             animator.SetInteger("isRunningInt", randomPattern);
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
+           if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
             {
                 //Look at player
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
