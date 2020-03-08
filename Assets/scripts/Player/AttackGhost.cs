@@ -6,12 +6,19 @@ public class AttackGhost : MonoBehaviour
 {
 
     Camera camera;
+    public Bullet bulletPrefab;
 
     private void Start()
     {
         camera = GetComponent<Camera>();
     }
 
+    public void attack()
+    {
+        GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);
+    }
+
+    /*
     public void attack()
     {
         // Bit shift the index of the layer (8) to get a bit mask
@@ -38,4 +45,5 @@ public class AttackGhost : MonoBehaviour
             Debug.Log("Did not Hit");
         }
     }
+    */
 }
