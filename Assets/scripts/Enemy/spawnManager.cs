@@ -93,7 +93,6 @@ public class spawnManager : MonoBehaviour
     //Remove an enemy from the list if one dies.
     private void Update()
     {
-        Debug.Log("Camera position = " + cameraTransform.position);
         if (state == SpawnState.WAITING)
         {
             RemoveDestroyedEnemy();
