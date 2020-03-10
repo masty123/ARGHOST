@@ -43,6 +43,6 @@ public class MoveFromPortalHorizontal : MonoBehaviour
                 }
                 Destroy(gameObject);
             }
-        }  
+        }
     }
 }
