@@ -1,21 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GoogleARCore;
 using UnityEngine;
 
 public class AttackGhost : MonoBehaviour
 {
 
-    Camera camera;
+    public GameObject spawnPosition;
     public Bullet bulletPrefab;
 
+    /*
     private void Start()
     {
-        camera = GetComponent<Camera>();
+        spawnPosition = GameObject.Find("BulletSpawner");
     }
+    */
 
     public void attack()
     {
-        GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);
+        Instantiate(bulletPrefab, spawnPosition.transform.position, spawnPosition.transform.rotation) ;
     }
 
     /*

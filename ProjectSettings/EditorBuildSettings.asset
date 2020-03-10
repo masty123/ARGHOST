@@ -20,13 +20,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/NoNavMeshScene/MainMenu.unity
     guid: 26818abbf228e7747889b15968ccf8e7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NoNavMeshScene/Haunt.unity
     guid: 24a4644d8e11d4a218155843b50f7d42
   - enabled: 0
     path: Assets/Scenes/NoNavMeshScene/GameOver.unity
     guid: 79791b99fa7504622928dad6f18464ca
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Merging.unity
     guid: eb9c00831827e4e18afe1ddab3a56312
   m_configObjects: {}
