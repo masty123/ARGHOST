@@ -8,6 +8,7 @@ public class MoveFromPortalVertical : MonoBehaviour
     private Transform childGhost;
     public ParticleSystem particleGameObject;
     public GameObject[] blackholeGameObject;
+    [SerializeField] float height = -0.5f ;
 
     private void Start()
     {   
@@ -15,7 +16,7 @@ public class MoveFromPortalVertical : MonoBehaviour
 
         foreach (Transform child in transform)
         {
-            if (child.name.Equals("Enemy"))
+            if (child.tag.Equals("Enemy"))
             {
                 childGhost = child.transform;
             }
@@ -27,8 +28,11 @@ public class MoveFromPortalVertical : MonoBehaviour
     {
         if (childGhost != null)
         {
-            if (childGhost.transform.localPosition.x > -0.5)
+            Debug.Log("not null");
+
+            if (childGhost.transform.localPosition.x > height)
             {
+                Debug.Log("moving");
                 float speed = childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 8;
                 childGhost.transform.position += childGhost.transform.forward * speed * Time.deltaTime;
                 outPortal = false;

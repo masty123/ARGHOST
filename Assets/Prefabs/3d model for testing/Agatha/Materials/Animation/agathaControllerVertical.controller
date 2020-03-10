@@ -11,7 +11,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 6094416739686320059}
-    m_Position: {x: -310, y: 130, z: 0}
+    m_Position: {x: -310, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -867121999913955648}
     m_Position: {x: -320, y: 700, z: 0}
@@ -274,7 +274,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: agathaController
+  m_Name: agathaControllerVertical
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isHurt
@@ -327,7 +327,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: climb
+  m_Name: run
   m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions:
@@ -341,7 +341,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d0c2211d05e9f01459b32a732d6e1d22, type: 2}
+  m_Motion: {fileID: 7400000, guid: 574b3a07dbf4e034b8bf76c43ee7543b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
