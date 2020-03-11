@@ -950,7 +950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1871716006
 Transform:
   m_ObjectHideFlags: 0
@@ -1095,8 +1095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd5aa342bf764f34a30de931324ca93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPosition: {fileID: 1871716005}
-  bulletPrefab: {fileID: 5517037716381866439, guid: 93aa9360c5c1e4ba285ee8f3bb3a504e,
+  spawnPosition: {fileID: 1493372549}
+  bulletPrefab: {fileID: 7423025633292500090, guid: d61765f5ee33c45bab9246bf73a8eed0,
     type: 3}
 --- !u!4 &2000013467
 Transform:
