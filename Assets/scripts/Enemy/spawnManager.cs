@@ -8,7 +8,7 @@ using GoogleARCore;
 public class spawnManager : MonoBehaviour
 {
     //State of SpawnManager
-    public enum SpawnState {SPAWNING, WAITING, COUNTING };
+    public enum SpawnState {SPAWNING, WAITING, COUNTING, HALTING };
 
     [SerializeField] Transform cameraTransform;
 
@@ -41,7 +41,7 @@ public class spawnManager : MonoBehaviour
         get { return waveCountdown; }
     }
 
-    public SpawnState state = SpawnState.COUNTING;
+    public SpawnState state = SpawnState.HALTING;
 
 
     [Header("Range of spawning position")]
@@ -88,11 +88,19 @@ public class spawnManager : MonoBehaviour
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
+        // Unhalt();
     }
 
     //Remove an enemy from the list if one dies.
     private void Update()
     {
+        Debug.Log("State = " + state);
+        // Check if manager is halting (waiting for arcore to detect plane)
+        if ( state == SpawnState.HALTING )
+        {
+            return;
+        }
+
         if (state == SpawnState.WAITING)
         {
             RemoveDestroyedEnemy();
@@ -125,6 +133,16 @@ public class spawnManager : MonoBehaviour
         else
         {
             waveCountdown -= Time.deltaTime;
+        }
+    }
+
+    public void Unhalt()
+    {
+        if ( state == SpawnState.HALTING )
+        {
+            Debug.Log("!! -- Unhalt");
+            state = SpawnState.COUNTING;
+            waveCountdown = 0;
         }
     }
 
@@ -199,7 +217,7 @@ public class spawnManager : MonoBehaviour
         {
             case DetectedPlaneType.Vertical:
                 enemyPrefeb = ghostPortalVertical;
-                spawnRotation.y += 90;
+                spawnRotation.y += 180;
                 break;
             default:
                 enemyPrefeb = ghostPortalHorizontal;
