@@ -186,13 +186,28 @@ PrefabInstance:
     - target: {fileID: 2855425908200462121, guid: c10877f7cd5764de18d46d7b777d1faa,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
         type: 3}
-      propertyPath: yRadius
-      value: 10
+      propertyPath: planeGenerator
+      value: 
+      objectReference: {fileID: 2083512465}
+    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: playerRadius
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: spawnRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1493372555}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c10877f7cd5764de18d46d7b777d1faa, type: 3}
 --- !u!1001 &150429108

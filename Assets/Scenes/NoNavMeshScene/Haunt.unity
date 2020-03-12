@@ -206,11 +206,6 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
         type: 3}
-      propertyPath: waves.Array.data[0].count
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
-        type: 3}
       propertyPath: arCol
       value: 
       objectReference: {fileID: 627916103}
@@ -227,18 +222,6 @@ PrefabInstance:
       objectReference: {fileID: 2083512465}
     - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
         type: 3}
-      propertyPath: ghostPortalHorizontal
-      value: 
-      objectReference: {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8,
-        type: 3}
-    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
-        type: 3}
-      propertyPath: ghostPortalVertical
-      value: 
-      objectReference: {fileID: 5875293979009803422, guid: 66186fc4e2953b04bbf0073a1a320c74,
-        type: 3}
-    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
-        type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 1493372555}
@@ -246,16 +229,6 @@ PrefabInstance:
         type: 3}
       propertyPath: distantRadius
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
-        type: 3}
-      propertyPath: playerRadius
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
-        type: 3}
-      propertyPath: spawnRadius
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c10877f7cd5764de18d46d7b777d1faa, type: 3}
