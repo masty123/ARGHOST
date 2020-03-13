@@ -94,7 +94,6 @@ public class spawnManager : MonoBehaviour
     //Remove an enemy from the list if one dies.
     private void Update()
     {
-        Debug.Log("State = " + state);
         // Check if manager is halting (waiting for arcore to detect plane)
         if ( state == SpawnState.HALTING )
         {
@@ -140,7 +139,6 @@ public class spawnManager : MonoBehaviour
     {
         if ( state == SpawnState.HALTING )
         {
-            Debug.Log("!! -- Unhalt");
             state = SpawnState.COUNTING;
             waveCountdown = 0;
         }

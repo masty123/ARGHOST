@@ -128,6 +128,12 @@ namespace GoogleARCore.Examples.Common
         /// </summary>
         private List<DetectedPlane> m_DetectedPlanes = new List<DetectedPlane>();
 
+        [Tooltip("The Game Object that contains the button to start the wave.")]
+        [SerializeField] private GameObject waveStartButton = null;
+
+        [Tooltip("The Game Object that contains spawn manager.")]
+        [SerializeField] private spawnManager manager = null;
+
         /// <summary>
         /// Unity's Start() method.
         /// </summary>
@@ -135,6 +141,9 @@ namespace GoogleARCore.Examples.Common
         {
             m_OpenButton.GetComponent<Button>().onClick.AddListener(_OnOpenButtonClicked);
             m_GotItButton.onClick.AddListener(_OnGotItButtonClicked);
+
+            // waveStart button
+            waveStartButton.GetComponent<Button>().onClick.AddListener(_StartWaveButtonClicked);
 
             _CheckFieldsAreNotNull();
             m_MoreHelpWindow.SetActive(false);
@@ -149,6 +158,7 @@ namespace GoogleARCore.Examples.Common
         {
             m_OpenButton.GetComponent<Button>().onClick.RemoveListener(_OnOpenButtonClicked);
             m_GotItButton.onClick.RemoveListener(_OnGotItButtonClicked);
+            waveStartButton.GetComponent<Button>().onClick.RemoveListener(_StartWaveButtonClicked);
         }
 
         /// <summary>
@@ -171,6 +181,17 @@ namespace GoogleARCore.Examples.Common
             m_FeaturePoints.SetActive(false);
             m_HandAnimation.enabled = false;
             m_SnackBar.SetActive(false);
+        }
+
+        /// <summary>
+        /// Callback executed when the startWave button has been clicked by the user.
+        /// Start wave (by calling Unhalt() )
+        /// </summary>
+        private void _StartWaveButtonClicked()
+        {
+            manager.Unhalt();
+            Debug.Log("Unhalt is f working!!");
+            waveStartButton.SetActive(false);
         }
 
         /// <summary>
