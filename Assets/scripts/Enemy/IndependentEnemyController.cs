@@ -9,9 +9,9 @@ using UnityEngine.SceneManagement;
 public class IndependentEnemyController : MonoBehaviour
 {
 
-    private Transform player;
+    protected Transform player;
     //rotation speed
-    [SerializeField] private float rotationSpeed = 3.0f;
+    [SerializeField] public float rotationSpeed = 3.0f;
     //movement speed
     [SerializeField] public float moveSpeed = 3.0f;
 
@@ -50,22 +50,15 @@ public class IndependentEnemyController : MonoBehaviour
     [SerializeField] protected GameObject defeatParticlePrefab;
     protected GameObject defeatParticleGraphics;
 
-
-    public Animator animator;
+    protected Animator animator;
 
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {   
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        GetAnimator();
-    }
-
-    void GetAnimator()
-    {
         animator = GetComponentInChildren<Animator>();
     }
-
 
     // Update is called once per frame
     void Update()
@@ -73,7 +66,7 @@ public class IndependentEnemyController : MonoBehaviour
         GhostBeHavior();
     }
 
-    void GhostBeHavior()
+    public virtual void GhostBeHavior()
     {
         if (isOutPortal)
         {
