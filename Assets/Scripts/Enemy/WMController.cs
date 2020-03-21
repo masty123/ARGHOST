@@ -14,18 +14,21 @@ public class WMController : IndependentEnemyController
     private float countTime;
     string seconds = "";
 
-
     public override void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
         m_Renderer = GetComponentInChildren<Renderer>();
+        staticDeath = GameObject.FindGameObjectWithTag("staticDeath").transform;
+        staticDeath.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         GhostBeHavior();
+
+
     } 
 
     public override void GhostBeHavior()
@@ -78,8 +81,8 @@ public class WMController : IndependentEnemyController
         {
             countTime = stareTime - Time.time;
             seconds = (countTime % 60).ToString("f2");
-            Debug.Log(seconds.ToString());
-            Debug.Log(stareTime.ToString());
+            //Debug.Log(seconds.ToString());
+            //Debug.Log(stareTime.ToString());
         }
         else
         {

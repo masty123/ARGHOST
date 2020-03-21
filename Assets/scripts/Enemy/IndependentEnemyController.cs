@@ -26,6 +26,7 @@ public class IndependentEnemyController : MonoBehaviour
     public bool showCross;
 
 
+
     [Header("Dying Behaviors")]
     ////Shaking left
     //[SerializeField] private float left;
@@ -44,6 +45,7 @@ public class IndependentEnemyController : MonoBehaviour
     public bool isOutPortal = false;
     private bool isRandom = false;
     private int randomPattern;
+    public Transform staticDeath;
 
 
     [Header("Particle Effect")]
@@ -53,17 +55,21 @@ public class IndependentEnemyController : MonoBehaviour
     protected Animator animator;
 
 
+
     // Start is called before the first frame update
     public virtual void Start()
     {   
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
+        staticDeath = GameObject.FindGameObjectWithTag("staticDeath").transform;
+        staticDeath.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         GhostBeHavior();
+
     }
 
     //Behavior of the ghost such as coming out of the portal, tracking player, dying, and etc.
@@ -124,10 +130,30 @@ public class IndependentEnemyController : MonoBehaviour
     {
 
         enemyScare();
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("GameOver");
+        yield return new WaitForSeconds(1.5f);
 
+        StartCoroutine(LoadAsynchronously(2));
     }
+
+    IEnumerator LoadAsynchronously (int scene)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+        operation.allowSceneActivation = false;
+        while(!operation.isDone)
+        {
+
+            staticDeath.gameObject.SetActive(true);
+            staticDeath.GetComponent<VideoScript>().playVideo();
+            if (operation.progress == 0.9f)
+            {
+                yield return new WaitForSeconds(2.5f);
+                operation.allowSceneActivation = true;
+
+            }
+            yield return null;
+        }
+    }
+
 
     // Effect play when this enemy is dead.
     void DeadEffect()
