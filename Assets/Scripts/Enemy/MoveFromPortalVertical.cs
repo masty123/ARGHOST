@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//This is a script that will move the enemy from the portal on Vertical Axis.
 public class MoveFromPortalVertical : MonoBehaviour
 {
     public bool outPortal;
@@ -11,9 +11,8 @@ public class MoveFromPortalVertical : MonoBehaviour
     [SerializeField] float height = -0.5f ;
 
     private void Start()
-    {   
-
-
+    {
+        //Find child enemy in the transform.
         foreach (Transform child in transform)
         {
             if (child.tag.Equals("Enemy"))
@@ -30,6 +29,7 @@ public class MoveFromPortalVertical : MonoBehaviour
         {
             Debug.Log("not null");
 
+            //Move the enemy from the portal.
             if (childGhost.transform.localPosition.x > height)
             {
                 Debug.Log("moving");
@@ -37,6 +37,8 @@ public class MoveFromPortalVertical : MonoBehaviour
                 childGhost.transform.position += childGhost.transform.forward * speed * Time.deltaTime;
                 outPortal = false;
             }
+
+            //Destroy portal and particle prefab after the enemy successfully came out of the portal
             else
             {
                 outPortal = true;

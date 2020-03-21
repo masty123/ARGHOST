@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Just rotating the particle to make it look like a vortext storm.
 public class ParticleScript : MonoBehaviour
 {
     public Vector3 speed;

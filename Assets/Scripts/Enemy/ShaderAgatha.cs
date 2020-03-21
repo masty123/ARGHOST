@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//All shader need to be changed after coming out of the portal 
+//This one is for Agatha
 public class ShaderAgatha : MonoBehaviour
 {
     private Shader shader;

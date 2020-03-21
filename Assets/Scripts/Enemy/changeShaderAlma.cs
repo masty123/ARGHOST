@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//All of the shader need to be change after out of the portal
+//This one is for Alma
 public class changeShaderAlma : MonoBehaviour
 {
 
     private Shader shader;
-    //Renderer rend;
+
     // Start is called before the first frame update
     void Start()
     {

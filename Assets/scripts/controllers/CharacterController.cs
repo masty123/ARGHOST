@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+//Unused script.
 public class CharacterController : MonoBehaviour
 {   
     private const float speed = .1f;

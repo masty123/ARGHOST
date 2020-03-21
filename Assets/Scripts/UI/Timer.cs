@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+//Timer for checking if the player survive.
 public class Timer : MonoBehaviour
 {
 

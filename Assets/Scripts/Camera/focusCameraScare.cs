@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+//Automatically turn the camera at ghost when you die, for the jumpscare.
+// NOTE: Not used anymore because in AR camera we cannot force player's hand.
 public class focusCameraScare : MonoBehaviour
 {
     public GameObject target;
@@ -43,6 +42,7 @@ public class focusCameraScare : MonoBehaviour
         transform.LookAt(target.transform);
     }
 
+    //Check whether the ghost is in the game or not.
     bool isAlive()
     {
         searchCountdown -= Time.deltaTime;

@@ -66,8 +66,9 @@ public class IndependentEnemyController : MonoBehaviour
         GhostBeHavior();
     }
 
+    //Behavior of the ghost such as coming out of the portal, tracking player, dying, and etc.
     public virtual void GhostBeHavior()
-    {
+    {   
         if (isOutPortal)
         {
             if (!isRandom)
@@ -85,7 +86,7 @@ public class IndependentEnemyController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
                 //Move to Player
                 transform.position += transform.forward * moveSpeed * Time.deltaTime;
-                //if got hit or touch player.
+                //if got hit or touch the  player.
                 if (isHit)
                 {
                     StartCoroutine(dying());
@@ -118,6 +119,7 @@ public class IndependentEnemyController : MonoBehaviour
         DeadEffect();
     }
 
+    //Jumpscare the player
     public IEnumerator scare()
     {
 
@@ -145,6 +147,7 @@ public class IndependentEnemyController : MonoBehaviour
        //                                       (Mathf.Sin(shakeSpeed * Time.time) + 1.0f) / shakeRate);
     }
 
+    //Set jumpscare bool in the animation controller
     public void enemyScare()
     {
         moveSpeed = 0;
