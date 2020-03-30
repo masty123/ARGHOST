@@ -1,21 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//This is a script that will move the enemy from the portal on Vertical Axis.
 public class MoveFromPortalVertical : MonoBehaviour
 {
     public bool outPortal;
     private Transform childGhost;
     public ParticleSystem particleGameObject;
     public GameObject[] blackholeGameObject;
+    [SerializeField] float height = -0.5f ;
 
     private void Start()
-    {   
-
-
+    {
+        //Find child enemy in the transform.
         foreach (Transform child in transform)
         {
-            if (child.name.Equals("Enemy"))
+            if (child.tag.Equals("Enemy"))
             {
                 childGhost = child.transform;
             }
@@ -27,12 +27,18 @@ public class MoveFromPortalVertical : MonoBehaviour
     {
         if (childGhost != null)
         {
-            if (childGhost.transform.localPosition.x > -0.5)
+            Debug.Log("not null");
+
+            //Move the enemy from the portal.
+            if (childGhost.transform.localPosition.x > height)
             {
+                Debug.Log("moving");
                 float speed = childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 8;
                 childGhost.transform.position += childGhost.transform.forward * speed * Time.deltaTime;
                 outPortal = false;
             }
+
+            //Destroy portal and particle prefab after the enemy successfully came out of the portal
             else
             {
                 outPortal = true;

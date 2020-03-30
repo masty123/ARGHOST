@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+// NOTE: Not used anymore because we don't need Navmesh.
 public class EnemyController : MonoBehaviour
 {
     //vision radius of enemy.
@@ -15,12 +15,12 @@ public class EnemyController : MonoBehaviour
     //check if player show cross.
     public bool showCross;
 
-
+    //shake time, shake speed etc.
     [Header("Dying Behaviors")]
    // [SerializeField] private float left;
    // [SerializeField] private float right;
-  //  [SerializeField] private float shakeSpeed;
-  //  [SerializeField] private float shakeRate;
+   // [SerializeField] private float shakeSpeed;
+   // [SerializeField] private float shakeRate;
     [SerializeField] private float deathTime;
     private float currentTime;
     public bool isHit;
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     Transform target;
     //for enemy moving.
     NavMeshAgent agent ;
-    //
+    //For making the AI not falling of the map.
     private Rigidbody rb;
 
     [Header("Particle Effect")]
@@ -69,7 +69,8 @@ public class EnemyController : MonoBehaviour
             }
         }
         if(isHit)
-        {
+        {   
+            //play dying animation
             StartCoroutine(dying());
         }
     }

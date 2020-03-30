@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
-
+//Used to be a gyroscope script for Vulforia, not used anymore.
 public class gyroscopeControl : MonoBehaviour
 {
     private bool gyroEnabled;

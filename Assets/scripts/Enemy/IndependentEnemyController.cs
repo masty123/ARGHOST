@@ -9,9 +9,9 @@ using UnityEngine.SceneManagement;
 public class IndependentEnemyController : MonoBehaviour
 {
 
-    private Transform player;
+    protected Transform player;
     //rotation speed
-    [SerializeField] private float rotationSpeed = 3.0f;
+    [SerializeField] public float rotationSpeed = 3.0f;
     //movement speed
     [SerializeField] public float moveSpeed = 3.0f;
 
@@ -24,6 +24,7 @@ public class IndependentEnemyController : MonoBehaviour
     public bool EnteredTrigger;
     //check if player show cross.
     public bool showCross;
+
 
 
     [Header("Dying Behaviors")]
@@ -44,43 +45,36 @@ public class IndependentEnemyController : MonoBehaviour
     public bool isOutPortal = false;
     private bool isRandom = false;
     private int randomPattern;
+    public Transform staticDeath;
 
 
     [Header("Particle Effect")]
     [SerializeField] protected GameObject defeatParticlePrefab;
     protected GameObject defeatParticleGraphics;
 
+    protected Animator animator;
 
-    public Animator animator;
 
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {   
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        GetAnimator();
+        animator = GetComponentInChildren<Animator>();
+        staticDeath = GameObject.FindGameObjectWithTag("staticDeath").transform;
+        staticDeath.gameObject.SetActive(false);
     }
-
-    void GetAnimator()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.name.Equals("Alma"))
-            {
-                animator = child.gameObject.GetComponent<Animator>();
-            }
-        }
-    }
-
 
     // Update is called once per frame
     void Update()
     {
         GhostBeHavior();
+
     }
 
-    void GhostBeHavior()
-    {
+    //Behavior of the ghost such as coming out of the portal, tracking player, dying, and etc.
+    public virtual void GhostBeHavior()
+    {   
         if (isOutPortal)
         {
             if (!isRandom)
@@ -92,13 +86,13 @@ public class IndependentEnemyController : MonoBehaviour
             animator.SetBool("isSpawning", true);
             animator.SetBool("isRunning", true);
             animator.SetInteger("isRunningInt", randomPattern);
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
+           if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
             {
                 //Look at player
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
                 //Move to Player
                 transform.position += transform.forward * moveSpeed * Time.deltaTime;
-                //if got hit or touch player.
+                //if got hit or touch the  player.
                 if (isHit)
                 {
                     StartCoroutine(dying());
@@ -106,7 +100,7 @@ public class IndependentEnemyController : MonoBehaviour
                 else if (EnteredTrigger)
                 {
                     StartCoroutine(scare());
-                    //StartCoroutine(dying());
+                    //StartCoroutine(dying());  // For testing only.
                 }
             }
 
@@ -131,14 +125,35 @@ public class IndependentEnemyController : MonoBehaviour
         DeadEffect();
     }
 
+    //Jumpscare the player
     public IEnumerator scare()
     {
 
         enemyScare();
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("GameOver");
+        yield return new WaitForSeconds(1.5f);
 
+        StartCoroutine(LoadAsynchronously(2));
     }
+
+    IEnumerator LoadAsynchronously (int scene)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+        operation.allowSceneActivation = false;
+        while(!operation.isDone)
+        {
+
+            staticDeath.gameObject.SetActive(true);
+            staticDeath.GetComponent<VideoScript>().playVideo();
+            if (operation.progress == 0.9f)
+            {
+                yield return new WaitForSeconds(2.5f);
+                operation.allowSceneActivation = true;
+
+            }
+            yield return null;
+        }
+    }
+
 
     // Effect play when this enemy is dead.
     void DeadEffect()
@@ -158,6 +173,7 @@ public class IndependentEnemyController : MonoBehaviour
        //                                       (Mathf.Sin(shakeSpeed * Time.time) + 1.0f) / shakeRate);
     }
 
+    //Set jumpscare bool in the animation controller
     public void enemyScare()
     {
         moveSpeed = 0;

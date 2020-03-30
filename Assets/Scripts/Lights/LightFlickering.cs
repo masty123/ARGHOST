@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Light flickering in the main menu nothing much.
 public class LightFlickering : MonoBehaviour
 {
     //light transform
