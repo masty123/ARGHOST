@@ -8,7 +8,7 @@ using GoogleARCore;
 public class spawnManager : MonoBehaviour
 {
     //State of SpawnManager
-    public enum SpawnState {SPAWNING, WAITING, COUNTING };
+    public enum SpawnState {SPAWNING, WAITING, COUNTING, HALTING };
 
     [SerializeField] Transform cameraTransform;
 
@@ -41,7 +41,7 @@ public class spawnManager : MonoBehaviour
         get { return waveCountdown; }
     }
 
-    public SpawnState state = SpawnState.COUNTING;
+    public SpawnState state = SpawnState.HALTING;
 
 
     [Header("Range of spawning position")]
@@ -88,12 +88,18 @@ public class spawnManager : MonoBehaviour
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
+        // Unhalt();
     }
 
     //Remove an enemy from the list if one dies.
     private void Update()
     {
-        Debug.Log("Camera position = " + cameraTransform.position);
+        // Check if manager is halting (waiting for arcore to detect plane)
+        if ( state == SpawnState.HALTING )
+        {
+            return;
+        }
+
         if (state == SpawnState.WAITING)
         {
             RemoveDestroyedEnemy();
@@ -126,6 +132,15 @@ public class spawnManager : MonoBehaviour
         else
         {
             waveCountdown -= Time.deltaTime;
+        }
+    }
+
+    public void Unhalt()
+    {
+        if ( state == SpawnState.HALTING )
+        {
+            state = SpawnState.COUNTING;
+            waveCountdown = 0;
         }
     }
 
@@ -192,7 +207,7 @@ public class spawnManager : MonoBehaviour
         planeIndex = UnityEngine.Random.Range(0, visualizer.Length);
         // get center position from selected plane
         spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
-        spawnPoint = checkSpawnPoint(spawnPoint);
+        // spawnPoint = checkSpawnPoint(spawnPoint);
         spawnRotation = visualizer[planeIndex].m_DetectedPlane.CenterPose.rotation;
         
         GameObject enemyPrefeb;
@@ -200,7 +215,7 @@ public class spawnManager : MonoBehaviour
         {
             case DetectedPlaneType.Vertical:
                 enemyPrefeb = ghostPortalVertical;
-                spawnRotation.y += 90;
+                spawnRotation.y += 180;
                 break;
             default:
                 enemyPrefeb = ghostPortalHorizontal;
@@ -213,21 +228,7 @@ public class spawnManager : MonoBehaviour
         enemies.Add(ghost);
     }
 
-    // check spawn point if there are too close to previous spawn point
-    private Vector3 checkSpawnPoint(Vector3 spawn)
-    {
-        float ranDis = 1f;
-        if(Vector3.Distance(spawn, preSpawn) <= spawnRadius)
-        {
-            spawn.x += UnityEngine.Random.Range(-ranDis, ranDis);
-            spawn.y += UnityEngine.Random.Range(-ranDis, ranDis);
-            spawn.z += UnityEngine.Random.Range(-ranDis, ranDis);
-        }
-        return spawn;
-    }
-
     // filter plane if it is far enought
-    // TODO: better method
     private DetectedPlaneVisualizer[] FilterPlane(DetectedPlaneVisualizer[] visualizer)
     {
         List<DetectedPlaneVisualizer> v = new List<DetectedPlaneVisualizer>();
