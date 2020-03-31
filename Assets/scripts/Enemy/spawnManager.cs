@@ -12,9 +12,6 @@ public class spawnManager : MonoBehaviour
 
     [SerializeField] Transform cameraTransform;
 
-    [SerializeField] GameObject ghostPortalHorizontal;
-    [SerializeField] GameObject ghostPortalVertical;
-
     [System.Serializable]
     public class Wave
     {
@@ -22,6 +19,7 @@ public class spawnManager : MonoBehaviour
         // public GameObject enemy;
         public int count;
         public float rate;
+        public FullGhostPrefab enemyPrefab;
 
         public void setCount(int newCount)
         {
@@ -188,7 +186,7 @@ public class spawnManager : MonoBehaviour
         //spawning
         for (int i = 0; i < _wave.count; i++)
         {
-            spawnEnemy();
+            spawnEnemy(_wave.enemyPrefab);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
@@ -197,7 +195,7 @@ public class spawnManager : MonoBehaviour
     }
 
     //Spawn enemies.
-    void spawnEnemy()
+    void spawnEnemy(FullGhostPrefab _enemyPrefab)
     {
         int planeIndex;
         Vector3 spawnPoint;
@@ -214,11 +212,11 @@ public class spawnManager : MonoBehaviour
         switch(visualizer[planeIndex].m_DetectedPlane.PlaneType)
         {
             case DetectedPlaneType.Vertical:
-                enemyPrefeb = ghostPortalVertical;
+                enemyPrefeb = _enemyPrefab.ghostPortalVertical;
                 spawnRotation.y += 180;
                 break;
             default:
-                enemyPrefeb = ghostPortalHorizontal;
+                enemyPrefeb = _enemyPrefab.ghostPortalHorizontal;
                 break;
         }
 
