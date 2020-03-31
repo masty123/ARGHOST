@@ -18,8 +18,8 @@ public class VideoScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VideoPlayer.enabled = false;
-        m_RawImageTexture = rawImage.texture;
+        //VideoPlayer.enabled = false;
+        //m_RawImageTexture = rawImage.texture;
     }
 
     // Update is called once per frame

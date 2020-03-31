@@ -19,8 +19,6 @@ public class WMController : IndependentEnemyController
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
         m_Renderer = GetComponentInChildren<Renderer>();
-        staticDeath = GameObject.FindGameObjectWithTag("staticDeath").transform;
-        staticDeath.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -81,8 +79,6 @@ public class WMController : IndependentEnemyController
         {
             countTime = stareTime - Time.time;
             seconds = (countTime % 60).ToString("f2");
-            //Debug.Log(seconds.ToString());
-            //Debug.Log(stareTime.ToString());
         }
         else
         {
