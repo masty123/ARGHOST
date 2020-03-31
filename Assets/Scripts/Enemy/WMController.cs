@@ -10,7 +10,7 @@ public class WMController : IndependentEnemyController
 
     private bool firstSaw;
 
-    [SerializeField] private float stareTime = 3f;
+    [SerializeField] private float stareTime = 3.5f;
     private float countTime;
     string seconds = "";
 

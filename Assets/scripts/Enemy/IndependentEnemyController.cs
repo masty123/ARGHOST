@@ -132,27 +132,34 @@ public class IndependentEnemyController : MonoBehaviour
         enemyScare();
         yield return new WaitForSeconds(1.5f);
 
-        StartCoroutine(LoadAsynchronously(2));
+        StartCoroutine(playstaticDeath());
+        SceneManager.LoadScene("GameOver");
     }
 
-    IEnumerator LoadAsynchronously (int scene)
+    IEnumerator playstaticDeath()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
-        operation.allowSceneActivation = false;
-        while(!operation.isDone)
-        {
-
-            staticDeath.gameObject.SetActive(true);
-            staticDeath.GetComponent<VideoScript>().playVideo();
-            if (operation.progress == 0.9f)
-            {
-                yield return new WaitForSeconds(2.5f);
-                operation.allowSceneActivation = true;
-
-            }
-            yield return null;
-        }
+        staticDeath.gameObject.SetActive(true);
+        staticDeath.GetComponent<VideoScript>().playVideo();
+        yield return new WaitForSeconds(2.5f);
     }
+    //IEnumerator LoadAsynchronously (string scene)
+    //{
+    //    AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+    //    operation.allowSceneActivation = false;
+    //    while(!operation.isDone)
+    //    {
+
+    //        staticDeath.gameObject.SetActive(true);
+    //        staticDeath.GetComponent<VideoScript>().playVideo();
+    //        if (operation.progress == 0.9f)
+    //        {
+    //            yield return new WaitForSeconds(2.5f);
+    //            operation.allowSceneActivation = true;
+
+    //        }
+    //        yield return null;
+    //    }
+    //}
 
 
     // Effect play when this enemy is dead.
