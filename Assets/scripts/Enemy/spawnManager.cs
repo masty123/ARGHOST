@@ -19,7 +19,7 @@ public class spawnManager : MonoBehaviour
         // public GameObject enemy;
         public int count;
         public float rate;
-        public FullGhostPrefab enemyPrefab;
+        public GameObject enemyPrefab;
 
         public void setCount(int newCount)
         {
@@ -186,7 +186,7 @@ public class spawnManager : MonoBehaviour
         //spawning
         for (int i = 0; i < _wave.count; i++)
         {
-            spawnEnemy(_wave.enemyPrefab);
+            spawnEnemy(_wave.enemyPrefab.GetComponent<FullGhostPrefab>());
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
