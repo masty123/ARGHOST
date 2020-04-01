@@ -8,12 +8,9 @@ using GoogleARCore;
 public class spawnManager : MonoBehaviour
 {
     //State of SpawnManager
-    public enum SpawnState {SPAWNING, WAITING, COUNTING };
+    public enum SpawnState {SPAWNING, WAITING, COUNTING, HALTING };
 
     [SerializeField] Transform cameraTransform;
-
-    [SerializeField] GameObject ghostPortalHorizontal;
-    [SerializeField] GameObject ghostPortalVertical;
 
     [System.Serializable]
     public class Wave
@@ -22,6 +19,7 @@ public class spawnManager : MonoBehaviour
         // public GameObject enemy;
         public int count;
         public float rate;
+        public GameObject enemyPrefab;
 
         public void setCount(int newCount)
         {
@@ -41,7 +39,7 @@ public class spawnManager : MonoBehaviour
         get { return waveCountdown; }
     }
 
-    public SpawnState state = SpawnState.COUNTING;
+    public SpawnState state = SpawnState.HALTING;
 
 
     [Header("Range of spawning position")]
@@ -88,12 +86,18 @@ public class spawnManager : MonoBehaviour
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
+        // Unhalt();
     }
 
     //Remove an enemy from the list if one dies.
     private void Update()
     {
-        Debug.Log("Camera position = " + cameraTransform.position);
+        // Check if manager is halting (waiting for arcore to detect plane)
+        if ( state == SpawnState.HALTING )
+        {
+            return;
+        }
+
         if (state == SpawnState.WAITING)
         {
             RemoveDestroyedEnemy();
@@ -126,6 +130,15 @@ public class spawnManager : MonoBehaviour
         else
         {
             waveCountdown -= Time.deltaTime;
+        }
+    }
+
+    public void Unhalt()
+    {
+        if ( state == SpawnState.HALTING )
+        {
+            state = SpawnState.COUNTING;
+            waveCountdown = 0;
         }
     }
 
@@ -173,7 +186,7 @@ public class spawnManager : MonoBehaviour
         //spawning
         for (int i = 0; i < _wave.count; i++)
         {
-            spawnEnemy();
+            spawnEnemy(_wave.enemyPrefab.GetComponent<FullGhostPrefab>());
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
@@ -182,7 +195,7 @@ public class spawnManager : MonoBehaviour
     }
 
     //Spawn enemies.
-    void spawnEnemy()
+    void spawnEnemy(FullGhostPrefab _enemyPrefab)
     {
         int planeIndex;
         Vector3 spawnPoint;
@@ -192,18 +205,18 @@ public class spawnManager : MonoBehaviour
         planeIndex = UnityEngine.Random.Range(0, visualizer.Length);
         // get center position from selected plane
         spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
-        spawnPoint = checkSpawnPoint(spawnPoint);
+        // spawnPoint = checkSpawnPoint(spawnPoint);
         spawnRotation = visualizer[planeIndex].m_DetectedPlane.CenterPose.rotation;
         
         GameObject enemyPrefeb;
         switch(visualizer[planeIndex].m_DetectedPlane.PlaneType)
         {
             case DetectedPlaneType.Vertical:
-                enemyPrefeb = ghostPortalVertical;
-                spawnRotation.y += 90;
+                enemyPrefeb = _enemyPrefab.ghostPortalVertical;
+                spawnRotation.y += 180;
                 break;
             default:
-                enemyPrefeb = ghostPortalHorizontal;
+                enemyPrefeb = _enemyPrefab.ghostPortalHorizontal;
                 break;
         }
 
@@ -213,21 +226,7 @@ public class spawnManager : MonoBehaviour
         enemies.Add(ghost);
     }
 
-    // check spawn point if there are too close to previous spawn point
-    private Vector3 checkSpawnPoint(Vector3 spawn)
-    {
-        float ranDis = 1f;
-        if(Vector3.Distance(spawn, preSpawn) <= spawnRadius)
-        {
-            spawn.x += UnityEngine.Random.Range(-ranDis, ranDis);
-            spawn.y += UnityEngine.Random.Range(-ranDis, ranDis);
-            spawn.z += UnityEngine.Random.Range(-ranDis, ranDis);
-        }
-        return spawn;
-    }
-
     // filter plane if it is far enought
-    // TODO: better method
     private DetectedPlaneVisualizer[] FilterPlane(DetectedPlaneVisualizer[] visualizer)
     {
         List<DetectedPlaneVisualizer> v = new List<DetectedPlaneVisualizer>();
