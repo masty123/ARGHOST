@@ -43,8 +43,8 @@ public class IndependentEnemyController : MonoBehaviour
     public bool isHit;
 
     public bool isOutPortal = false;
-    private bool isRandom = false;
-    private int randomPattern;
+    protected bool isRandom = false;
+    protected int randomPattern;
     public Transform staticDeath;
 
 
