@@ -19,13 +19,15 @@ public class spawnManager : MonoBehaviour
         // public GameObject enemy;
         public int count;
         public float rate;
-        public GameObject enemyPrefab;
+        public GameObject[] enemyTypes;
 
-        public void setCount(int newCount)
+        // pop enemy randomly
+        public GameObject popEnemy()
         {
-            this.count = newCount;
+            System.Random rnd = new System.Random();
+            int selectedEne = rnd.Next(enemyTypes.Length-1);
+            return enemyTypes[selectedEne];
         }
-
     }
 
     //Wave properties
@@ -186,7 +188,8 @@ public class spawnManager : MonoBehaviour
         //spawning
         for (int i = 0; i < _wave.count; i++)
         {
-            spawnEnemy(_wave.enemyPrefab.GetComponent<FullGhostPrefab>());
+            GameObject popEne = _wave.popEnemy();
+            spawnEnemy(popEne.GetComponent<FullGhostPrefab>());
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
