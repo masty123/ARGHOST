@@ -43,8 +43,8 @@ public class IndependentEnemyController : MonoBehaviour
     public bool isHit;
 
     public bool isOutPortal = false;
-    private bool isRandom = false;
-    private int randomPattern;
+    protected bool isRandom = false;
+    protected int randomPattern;
     private hideVideo hidVidObj;
 
 
@@ -56,7 +56,7 @@ public class IndependentEnemyController : MonoBehaviour
 
     // Start is called before the first frame update
     public virtual void Start()
-    {   
+    {
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
         hidVidObj = GameObject.FindGameObjectWithTag("hideVidSwitch").transform.GetComponent<hideVideo>();
@@ -71,7 +71,7 @@ public class IndependentEnemyController : MonoBehaviour
 
     //Behavior of the ghost such as coming out of the portal, tracking player, dying, and etc.
     public virtual void GhostBeHavior()
-    {   
+    {
         if (isOutPortal)
         {
             if (!isRandom)

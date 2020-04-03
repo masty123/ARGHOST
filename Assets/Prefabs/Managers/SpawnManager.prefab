@@ -43,10 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b118a77b703a44b4e87aac957a271d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 0}
+  ghostPortalHorizontal: {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8,
+    type: 3}
+  ghostPortalVertical: {fileID: 5875293979009803422, guid: 66186fc4e2953b04bbf0073a1a320c74,
+    type: 3}
   waves:
-  - enemy:
-    - {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8, type: 3}
-    count: 1
+  - count: 4
     rate: 1
   timeBetweenWaves: 5
   waveCountdown: 3
@@ -54,12 +57,10 @@ MonoBehaviour:
   xPosition: 40
   yPosition: 20
   zPosition: 40
-  xRadius: 10
-  yRadius: 10
-  zRadius: 10
-  xSpawn: 10
-  ySpawn: 10
-  zSpawn: 10
+  playerRadius: 3
+  spawnRadius: 3
+  preSpawn: {x: 0, y: 0, z: 0}
   minTime: 5
   maxTime: 10
   enemies: []
+  planeGenerator: {fileID: 0}

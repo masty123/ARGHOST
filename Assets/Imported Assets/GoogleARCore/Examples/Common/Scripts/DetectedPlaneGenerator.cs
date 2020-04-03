@@ -78,7 +78,7 @@ namespace GoogleARCore.Examples.Common
 
         public void stopTracking()
         {
-           
+
         }
     }
 }
