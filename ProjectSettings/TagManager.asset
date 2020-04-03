@@ -8,6 +8,7 @@ TagManager:
   - ManipulationSystem
   - EnemyBody
   - staticDeath
+  - hideVidSwitch
   layers:
   - Default
   - TransparentFX

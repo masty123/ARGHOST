@@ -45,7 +45,7 @@ public class IndependentEnemyController : MonoBehaviour
     public bool isOutPortal = false;
     protected bool isRandom = false;
     protected int randomPattern;
-    public Transform staticDeath;
+    private hideVideo hidVidObj;
 
 
     [Header("Particle Effect")]
@@ -54,27 +54,24 @@ public class IndependentEnemyController : MonoBehaviour
 
     protected Animator animator;
 
-
-
     // Start is called before the first frame update
     public virtual void Start()
-    {   
+    {
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
-        staticDeath = GameObject.FindGameObjectWithTag("staticDeath").transform;
-        staticDeath.gameObject.SetActive(false);
+        hidVidObj = GameObject.FindGameObjectWithTag("hideVidSwitch").transform.GetComponent<hideVideo>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         GhostBeHavior();
-
     }
 
     //Behavior of the ghost such as coming out of the portal, tracking player, dying, and etc.
     public virtual void GhostBeHavior()
-    {   
+    {
         if (isOutPortal)
         {
             if (!isRandom)
@@ -99,14 +96,15 @@ public class IndependentEnemyController : MonoBehaviour
                 }
                 else if (EnteredTrigger)
                 {
-                    StartCoroutine(scare());
-                    //StartCoroutine(dying());  // For testing only.
+                    //StartCoroutine(scare());
+                    StartCoroutine(dying());  // For testing only.
                 }
             }
 
         }
     }
 
+    //Ghost got killed.
      public void Defeat()
     {
         if (showCross)
@@ -132,20 +130,31 @@ public class IndependentEnemyController : MonoBehaviour
         enemyScare();
         yield return new WaitForSeconds(1.5f);
 
-        StartCoroutine(LoadAsynchronously(2));
+        //StartCoroutine(playstaticDeath());
+        //SceneManager.LoadScene("GameOver");
+        StartCoroutine(LoadAsynchronously("GameOver"));
     }
 
-    IEnumerator LoadAsynchronously (int scene)
+    //Start playing static video after the player got jumpscared.
+    //IEnumerator playstaticDeath()
+    //{
+    //    if(hidVidObj != null)
+    //    {
+    //        hidVidObj.isActive = true;
+    //        yield return new WaitForSeconds(2.5f);
+    //    }
+    //}
+
+    IEnumerator LoadAsynchronously(string scene)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
         operation.allowSceneActivation = false;
-        while(!operation.isDone)
+        while (!operation.isDone)
         {
 
-            staticDeath.gameObject.SetActive(true);
-            staticDeath.GetComponent<VideoScript>().playVideo();
-            if (operation.progress == 0.9f)
+            if (operation.progress == 0.9f && hidVidObj != null)
             {
+                hidVidObj.isActive = true;
                 yield return new WaitForSeconds(2.5f);
                 operation.allowSceneActivation = true;
 

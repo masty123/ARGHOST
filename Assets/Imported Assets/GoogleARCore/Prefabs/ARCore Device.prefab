@@ -13,6 +13,10 @@ GameObject:
   - component: {fileID: 114963366853050710}
   - component: {fileID: 114876698896786350}
   - component: {fileID: 1590864402887918696}
+  - component: {fileID: 7573330099185801001}
+  - component: {fileID: 820966853312317986}
+  - component: {fileID: 754913026577481049}
+  - component: {fileID: 1486986820410592671}
   m_Layer: 0
   m_Name: First Person Camera
   m_TagString: MainCamera
@@ -116,6 +120,67 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637996540812124}
   m_Enabled: 1
+--- !u!65 &7573330099185801001
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637996540812124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &820966853312317986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637996540812124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35463d34cf428478eae96cb9bc67b784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displacementMap: {fileID: 2800000, guid: 8d737bdd5b03a4b2b9cf496c20f1901f, type: 3}
+  Shader: {fileID: 4800000, guid: 5ae8143a5d9fc43a28f7cb296988173f, type: 3}
+  intensity: 1
+  flipIntensity: 0
+  colorIntensity: 0.51
+--- !u!114 &754913026577481049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637996540812124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3518e2a98312a84c897f0a8962e5fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostObj: {fileID: 0}
+  jumpScare: 0
+  distance: 1
+  smooth: 0
+--- !u!114 &1486986820410592671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637996540812124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac953c09856dd4ac7a6ad9c7915852d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeEnemy: {fileID: 0}
+  cameraEffect: {fileID: 0}
+  distance: 0
 --- !u!1 &1772147192650458
 GameObject:
   m_ObjectHideFlags: 0
