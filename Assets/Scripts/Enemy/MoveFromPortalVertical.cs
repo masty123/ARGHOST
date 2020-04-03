@@ -33,7 +33,7 @@ public class MoveFromPortalVertical : MonoBehaviour
             if (childGhost.transform.localPosition.x > height)
             {
                 Debug.Log("moving");
-                float speed = childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 8;
+                float speed = childGhost.GetComponentInParent<IndependentEnemyController>().maxSpeed / 8;
                 childGhost.transform.position += childGhost.transform.forward * speed * Time.deltaTime;
                 outPortal = false;
             }

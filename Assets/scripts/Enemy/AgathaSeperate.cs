@@ -54,7 +54,7 @@ public class AgathaSeperate : IndependentEnemyController
                     //Look at player
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
                     //Move to Player
-                    transform.position += transform.forward * moveSpeed * Time.deltaTime;
+                    transform.position += transform.forward * maxSpeed * Time.deltaTime;
                     //if got hit or touch the  player.
                     if (isHit)
                     {

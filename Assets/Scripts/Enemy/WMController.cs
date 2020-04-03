@@ -25,8 +25,6 @@ public class WMController : IndependentEnemyController
     void Update()
     {
         GhostBeHavior();
-
-
     } 
 
     public override void GhostBeHavior()
@@ -60,7 +58,7 @@ public class WMController : IndependentEnemyController
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
         //Move to Player
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        transform.position += transform.forward * maxSpeed * Time.deltaTime;
         //if got hit or touch player.
         if (isHit)
         {

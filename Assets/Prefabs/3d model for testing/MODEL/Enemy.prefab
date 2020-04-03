@@ -46,21 +46,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6152ed2d953435696fef5998f0d616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 2
-  moveSpeed: 2
+  rotationSpeed: 3
+  maxSpeed: 4
+  moveSpeed: 0
+  accelSpeed: 0
+  timeZeroToMaxSpeed: 2.5
+  animatorMaxSpeed: 2.5
+  animatorSpeed: 0
+  animatorAcelSpeed: 0
+  timeZeroToAnim: 4
   lookRadius: 10
   EnteredTrigger: 0
   showCross: 0
-  left: 0.25
-  right: -0.25
-  shakeSpeed: 100
-  shakeRate: 2
   deathTime: 0.75
   isHit: 0
   isOutPortal: 0
   defeatParticlePrefab: {fileID: 6454576854534941436, guid: 7c6e1354371411d4eb14fb469fc1c921,
     type: 3}
-  animator: {fileID: 0}
 --- !u!136 &6801159677932000196
 CapsuleCollider:
   m_ObjectHideFlags: 0
