@@ -25,13 +25,13 @@ public class IndependentEnemyController : MonoBehaviour
 
 
     // animation max speed
-    public float animatorMaxSpeed = 1.5f;
+    public float animatorMaxSpeed = 1.75f;
     //animation speed
     public float animatorSpeed;
     //acecelerate animation speed
     public float animatorAcelSpeed;
     //time before max speed
-    public float timeZeroToAnim = 4f;
+    public float timeZeroToAnim = 2.5f;
 
 
     //vision radius of enemy.
@@ -72,7 +72,7 @@ public class IndependentEnemyController : MonoBehaviour
         accelSpeed = maxSpeed / timeZeroToMaxSpeed;
         moveSpeed = 0f;
         animatorAcelSpeed = animatorMaxSpeed / timeZeroToAnim;
-        animatorSpeed = 1f;
+        animatorSpeed = 0.5f;
 
     }
     // Start is called before the first frame update
@@ -115,7 +115,7 @@ public class IndependentEnemyController : MonoBehaviour
                     moveSpeed += accelSpeed * Time.deltaTime;
                     animatorSpeed += animatorAcelSpeed * Time.deltaTime;
                 }
-                //animator.SetFloat("accelSpd", animatorSpeed);
+                animator.SetFloat("accelSpd", animatorSpeed);
                 transform.position += transform.forward * moveSpeed * Time.deltaTime;
                 //if got hit or touch the  player.
                 if (isHit)
