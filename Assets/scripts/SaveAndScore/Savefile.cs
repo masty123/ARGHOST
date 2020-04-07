@@ -8,12 +8,12 @@ public class Savefile
 {
 
     public string PlayerName = "";
-    public int HighScore = 0;
+    public float HighScore = 0;
     public int Gold = 0;
     public Dictionary<string,int> Upgrades;
 
     public int overallGhostKilled = 0;
-    public int overallTimeSurvived = 0;
+    public float overallTimeSurvived = 0;
 
     public Savefile()
     {

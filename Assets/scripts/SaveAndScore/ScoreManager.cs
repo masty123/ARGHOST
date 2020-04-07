@@ -24,4 +24,21 @@ public class ScoreManager
             + (SurviveTime * TIMER_SCORE_MULTIPLIER);
     }
 
+    public static bool IsHighScore()
+    {
+        return GetScore() > UserInfo.savefile.HighScore;
+    }
+
+    public static float GetHighScore()
+    {
+        if (IsHighScore())
+        {
+            return GetScore();
+        }
+        else
+        {
+            return UserInfo.savefile.HighScore;
+        }
+    }
+
 }
