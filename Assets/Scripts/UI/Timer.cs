@@ -26,6 +26,8 @@ public class Timer : MonoBehaviour
 
         timerText.text = minutes + " AM";
 
+        ScoreManager.SurviveTime += t;
+
         if(minutes.Equals("6"))
         {
             SceneManager.LoadScene("Survive");
