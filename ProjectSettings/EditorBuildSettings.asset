@@ -20,16 +20,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NoNavMeshScene/MainMenu.unity
     guid: 26818abbf228e7747889b15968ccf8e7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/NoNavMeshScene/Haunt_EZ.unity
     guid: 24a4644d8e11d4a218155843b50f7d42
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/NoNavMeshScene/GameOver.unity
     guid: 79791b99fa7504622928dad6f18464ca
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/NoNavMeshScene/Survive.unity
     guid: 9c233fd9853114e719ebce1ec6abd845
   - enabled: 1
     path: Assets/Scenes/Printto/Create Savefile.unity
     guid: 567a4b9583e9e49eeb85b6d7199d1d7b
+  - enabled: 1
+    path: Assets/Scenes/Printto/Highscore.unity
+    guid: c9d8d434d1acd4e7ebb970707f101e1f
   m_configObjects: {}

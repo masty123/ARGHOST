@@ -40,11 +40,12 @@ public class HighScoreSystem : MonoBehaviour
         if (scoreDownloaded && highscoreBoardText != null)
         {
             scoreDownloaded = false;
-            foreach (Highscore highscore in highscoresList)
+
+            for(int i = 0; i < highscoresList.Length; i++)
             {
-                highscoreBoardText.text += ""
-                    + highscore.username + "\n"
-                    + highscore.score + "\n\n";
+                highscoreBoardText.text += (i+1) + "."
+                    + highscoresList[i].username + "\n"
+                    + highscoresList[i].score + "\n\n";
             }
         }
     }
@@ -70,6 +71,7 @@ public class HighScoreSystem : MonoBehaviour
             float score = float.Parse(entryInfo[1]);
             highscoresList[i] = new Highscore(username, score);
         }
+        scoreDownloaded = true;
     }
 
     IEnumerator UploadNewHighScore(string username, float score)
@@ -93,8 +95,7 @@ public class HighScoreSystem : MonoBehaviour
         yield return www;
         if (string.IsNullOrEmpty(www.error))
         {
-            print(www.text);
-            scoreDownloaded = true;
+            FormatHighscores(www.text);
         }
         else
         {
