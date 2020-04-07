@@ -30,7 +30,7 @@ public class MoveFromPortalHorizontal : MonoBehaviour
             //Move the enemy from the portal.
             if (childGhost.transform.localPosition.y < height)
             {
-                float speed = childGhost.GetComponentInParent<IndependentEnemyController>().moveSpeed / 8;
+                float speed = childGhost.GetComponentInParent<IndependentEnemyController>().maxSpeed / 8;
                 childGhost.transform.position += childGhost.transform.up * speed  * Time.deltaTime;
                 outPortal = false;
             }

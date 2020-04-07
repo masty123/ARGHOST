@@ -77,7 +77,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 3
+  maxSpeed: 3
   moveSpeed: 4
+  accelSpeed: 3
+  timeZeroToMax: 2.5
+  animatorSpeed: 0
   lookRadius: 10
   EnteredTrigger: 0
   showCross: 0
