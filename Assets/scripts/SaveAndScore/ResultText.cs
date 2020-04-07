@@ -16,11 +16,16 @@ public class ResultText : MonoBehaviour
         {
             text.text = "New High Score!\n" + (int)ScoreManager.GetScore();
             UserInfo.savefile.HighScore = ScoreManager.GetScore();
+            HighScoreSystem hss = GameObject.FindObjectOfType<HighScoreSystem>();
+            if (hss != null)
+            {
+                hss.AddNewHighscore(UserInfo.savefile.PlayerName, UserInfo.savefile.HighScore);
+            }
         }
         else
         {
             text.text = "Score\n" + (int)ScoreManager.GetScore()
-                + "High Score\n" + (int)ScoreManager.GetHighScore();
+                + "\n\nHigh Score\n" + (int)ScoreManager.GetHighScore();
         }
 
         UserInfo.savefile.overallGhostKilled += ScoreManager.KilledGhosts;

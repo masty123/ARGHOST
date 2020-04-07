@@ -50,7 +50,7 @@ public class HighScoreSystem : MonoBehaviour
         }
     }
 
-    public void AddNewHighscore(string username, int score)
+    public void AddNewHighscore(string username, float score)
     {
         StartCoroutine(UploadNewHighScore(username, score));
     }
@@ -76,7 +76,7 @@ public class HighScoreSystem : MonoBehaviour
 
     IEnumerator UploadNewHighScore(string username, float score)
     {
-        WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
+        WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + (int)score);
         yield return www;
 
         if (string.IsNullOrEmpty(www.error))
