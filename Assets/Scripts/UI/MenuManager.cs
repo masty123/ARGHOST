@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 /*
- *  Manage all the buttons in the main menu scene.
- */
+*  Manage all the buttons in the main menu scene.
+*/
 public class MenuManager : MonoBehaviour
 {   
     public GameObject menuCanvas;
@@ -26,6 +27,7 @@ public class MenuManager : MonoBehaviour
     {
         //Load game scene.
         SceneManager.LoadScene("Haunt");
+        ScoreManager.ResetScore();
     }
 
     public void highscore()
@@ -36,6 +38,7 @@ public class MenuManager : MonoBehaviour
     public void mainmenu()
     {
         SceneManager.LoadScene("MainMenu");
+        ScoreManager.ResetScore();
     }
 
     //Might use something to login
