@@ -28,6 +28,16 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Haunt");
     }
 
+    public void highscore()
+    {
+        SceneManager.LoadScene("Highscore");
+    }
+
+    public void mainmenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     //Might use something to login
     public void Login()
     {
