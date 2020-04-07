@@ -25,7 +25,7 @@ public class IndependentEnemyController : MonoBehaviour
     //check if player show cross.
     public bool showCross;
 
-
+    public int Gold = 1;
 
     [Header("Dying Behaviors")]
     ////Shaking left
@@ -107,6 +107,8 @@ public class IndependentEnemyController : MonoBehaviour
     //Ghost got killed.
      public void Defeat()
     {
+        ScoreManager.KilledGhosts += 1;
+        UserInfo.savefile.Gold += Gold;
         if (showCross)
         {
             //react something.
