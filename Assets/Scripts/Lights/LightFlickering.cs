@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightFlickering : MonoBehaviour
 {
     //light transform
-    public Light light;
+    public Light compLight;
     // minimum and maxmium time that light stay on.
     public float minTime, maxTime;
     public float Timer;
@@ -44,8 +44,8 @@ public class LightFlickering : MonoBehaviour
 
         if(Timer <= 0)
         {   
-            light.enabled = !light.enabled;
-            if (isVisible() && light.enabled)
+            compLight.enabled = !compLight.enabled;
+            if (isVisible() && compLight.enabled)
             {
                 //randomPose = Random.Range(0, 3);
                 //Debug.Log(randomPose.ToString());
@@ -75,7 +75,7 @@ public class LightFlickering : MonoBehaviour
 
             Timer = Random.Range(minTime, maxTime);
             
-            if(lightAudio != null && light.enabled)
+            if(lightAudio != null && compLight.enabled)
             {      
                 source.PlayOneShot(lightAudio);        
             }

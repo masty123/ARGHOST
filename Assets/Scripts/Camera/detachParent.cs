@@ -5,7 +5,6 @@ using UnityEngine;
 public class detachParent : MonoBehaviour
 {
     [SerializeField] float seconds;
-    private bool detachChild;
 
     // Update is called once per frame
     void Update()
