@@ -649,7 +649,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waveStartButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1987155952}
     - target: {fileID: 223986510026342770, guid: c539aa4fa1bac4b4da61761b0699b48b,
         type: 3}
       propertyPath: m_Camera
@@ -927,6 +927,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1987155952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5592104545465478542, guid: c539aa4fa1bac4b4da61761b0699b48b,
+    type: 3}
+  m_PrefabInstance: {fileID: 688001843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2083512464
 GameObject:
   m_ObjectHideFlags: 0
