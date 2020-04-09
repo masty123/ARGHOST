@@ -277,4 +277,11 @@ public class spawnManager : MonoBehaviour
         Gizmos.DrawLine(transform.position - new Vector3(xPosition, 0, 0), transform.position + new Vector3(xPosition, 0, 0));
         Gizmos.DrawLine(transform.position - new Vector3(0, 0, zPosition), transform.position + new Vector3(0, 0, zPosition));
     }
+
+    public bool IsEnoughPlane()
+    {
+        GetVisualizer();
+        Debug.Log("Plane n = " + visualizer.Length);
+        return visualizer.Length >= 1;
+    }
 }

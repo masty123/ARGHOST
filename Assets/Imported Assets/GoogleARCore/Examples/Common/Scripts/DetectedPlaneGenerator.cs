@@ -87,15 +87,28 @@ namespace GoogleARCore.Examples.Common
         {
             if( arSession.SessionConfig.PlaneFindingMode == DetectedPlaneFindingMode.Disabled )
             {
-                arSession.SessionConfig.PlaneFindingMode = DetectedPlaneFindingMode.HorizontalAndVertical;
-                Debug.Log("PlaneMode: Finding");
-            } 
+                startDetecting();
+            }
             else
             {
-                arSession.SessionConfig.PlaneFindingMode = DetectedPlaneFindingMode.Disabled;
-                Debug.Log("PlaneMode: Disabled");
+                stopDetecting();
             }
+        }
+
+        // Start detecting plane
+        public void startDetecting()
+        {
+            arSession.SessionConfig.PlaneFindingMode = DetectedPlaneFindingMode.HorizontalAndVertical;
             arSession.OnEnable();
+            Debug.Log("PlaneMode: Finding");
+        }
+
+        // Stop detecting plane
+        public void stopDetecting()
+        {
+            arSession.SessionConfig.PlaneFindingMode = DetectedPlaneFindingMode.Disabled;
+            arSession.OnEnable();
+            Debug.Log("PlaneMode: Disabled");
         }
 
         public DetectedPlaneFindingMode getPlaneFindingMode()

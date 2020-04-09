@@ -140,6 +140,10 @@ namespace GoogleARCore.Examples.Common
         [Tooltip("The Game Object that contains spawn manager.")]
         [SerializeField] private spawnManager manager = null;
 
+        // track state of plane find button
+        private enum planeFindButtonState {NotEnough, Enough };
+        private planeFindButtonState p_state = planeFindButtonState.NotEnough;
+
         /// <summary>
         /// Unity's Start() method.
         /// </summary>
@@ -176,6 +180,7 @@ namespace GoogleARCore.Examples.Common
         {
             _UpdateDetectedPlaneTrackingState();
             _UpdateUI();
+            _UpdatePlaneFind();
         }
 
         /// <summary>
@@ -191,22 +196,38 @@ namespace GoogleARCore.Examples.Common
             m_SnackBar.SetActive(false);
         }
 
+        private void _UpdatePlaneFind()
+        {
+            if( !manager.IsEnoughPlane() )
+            {
+                planeFindingButton.SetActive(true);
+            }
+
+            if( manager.IsEnoughPlane() )
+            {
+                p_state = planeFindButtonState.Enough;
+                planeFindingButton.GetComponentInChildren<Text>().text 
+                    = "PRESS TO STOP PLANE SCANNING";
+            }
+            else
+            {
+                p_state = planeFindButtonState.NotEnough;
+                planeFindingButton.GetComponentInChildren<Text>().text 
+                    = "KEEP SCANNING AROUND";
+            }
+        }
+
         /// <summary>
         /// Callback executed when the planeFinding button has been clicked by the user.
         /// </summary>
         private void _PlaneFindingButtonClicked()
         {
-            planeGenerator.switchDetecting();
-            switch( planeGenerator.getPlaneFindingMode() )
+            if( p_state == planeFindButtonState.NotEnough )
             {
-                case DetectedPlaneFindingMode.HorizontalAndVertical:
-                    planeFindingButton.GetComponentInChildren<Text>().text = "PRESS TO STOP PLANE SCANNING";
-                    break;
-                case DetectedPlaneFindingMode.Disabled:
-                    planeFindingButton.GetComponentInChildren<Text>().text = "PRESS TO START PLANE SCANNING";
-                    break;
+                return;
             }
-            // planeFindingButton.SetActive(false);
+            planeGenerator.stopDetecting();
+            planeFindingButton.SetActive(false);
         }
 
         /// <summary>
