@@ -131,6 +131,12 @@ namespace GoogleARCore.Examples.Common
         [Tooltip("The Game Object that contains the button to start the wave.")]
         [SerializeField] private GameObject waveStartButton = null;
 
+        [Tooltip("The Game Object that contains the button to pause/unpause the plane finding.")]
+        [SerializeField] private GameObject planeFindingButton = null;
+
+        [Tooltip("The Game Object that contains DetectedPlaneGenerator.")]
+        [SerializeField] private DetectedPlaneGenerator planeGenerator = null;
+
         [Tooltip("The Game Object that contains spawn manager.")]
         [SerializeField] private spawnManager manager = null;
 
@@ -144,6 +150,8 @@ namespace GoogleARCore.Examples.Common
 
             // waveStart button
             waveStartButton.GetComponent<Button>().onClick.AddListener(_StartWaveButtonClicked);
+            // planeFinding button
+            planeFindingButton.GetComponent<Button>().onClick.AddListener(_PlaneFindingButtonClicked);
 
             _CheckFieldsAreNotNull();
             m_MoreHelpWindow.SetActive(false);
@@ -181,6 +189,24 @@ namespace GoogleARCore.Examples.Common
             m_FeaturePoints.SetActive(false);
             m_HandAnimation.enabled = false;
             m_SnackBar.SetActive(false);
+        }
+
+        /// <summary>
+        /// Callback executed when the planeFinding button has been clicked by the user.
+        /// </summary>
+        private void _PlaneFindingButtonClicked()
+        {
+            planeGenerator.switchDetecting();
+            switch( planeGenerator.getPlaneFindingMode() )
+            {
+                case DetectedPlaneFindingMode.HorizontalAndVertical:
+                    planeFindingButton.GetComponentInChildren<Text>().text = "PRESS TO STOP PLANE SCANNING";
+                    break;
+                case DetectedPlaneFindingMode.Disabled:
+                    planeFindingButton.GetComponentInChildren<Text>().text = "PRESS TO START PLANE SCANNING";
+                    break;
+            }
+            // planeFindingButton.SetActive(false);
         }
 
         /// <summary>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore.Examples.Common;
 using GoogleARCore;
+
 //This script will spawn enemy with random time invertal and random location.
 public class spawnManager : MonoBehaviour
 {
