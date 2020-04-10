@@ -206,12 +206,14 @@ namespace GoogleARCore.Examples.Common
             if( manager.IsEnoughPlane() )
             {
                 p_state = planeFindButtonState.Enough;
+                planeFindingButton.GetComponentInChildren<Text>().color = Color.green;
                 planeFindingButton.GetComponentInChildren<Text>().text 
                     = "PRESS TO STOP PLANE SCANNING";
             }
             else
             {
                 p_state = planeFindButtonState.NotEnough;
+                planeFindingButton.GetComponentInChildren<Text>().color = Color.red;
                 planeFindingButton.GetComponentInChildren<Text>().text 
                     = "KEEP SCANNING AROUND";
             }
