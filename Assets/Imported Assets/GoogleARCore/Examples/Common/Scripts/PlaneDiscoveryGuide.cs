@@ -230,6 +230,7 @@ namespace GoogleARCore.Examples.Common
             }
             planeGenerator.stopDetecting();
             planeFindingButton.SetActive(false);
+            waveStartButton.SetActive(true);
         }
 
         /// <summary>
@@ -239,7 +240,6 @@ namespace GoogleARCore.Examples.Common
         private void _StartWaveButtonClicked()
         {
             manager.Unhalt();
-            Debug.Log("Unhalt is f working!!");
             waveStartButton.SetActive(false);
         }
 
