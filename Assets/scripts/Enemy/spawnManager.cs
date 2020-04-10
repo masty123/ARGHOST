@@ -1,9 +1,10 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore.Examples.Common;
 using GoogleARCore;
+
 //This script will spawn enemy with random time invertal and random location.
 public class spawnManager : MonoBehaviour
 {
@@ -188,6 +189,7 @@ public class spawnManager : MonoBehaviour
         //spawning
         for (int i = 0; i < _wave.count; i++)
         {
+            Debug.Log("Start wave spawn!");
             GameObject popEne = _wave.popEnemy();
             spawnEnemy(popEne.GetComponent<FullGhostPrefab>());
             yield return new WaitForSeconds(1f / _wave.rate);
@@ -201,14 +203,22 @@ public class spawnManager : MonoBehaviour
     void spawnEnemy(FullGhostPrefab _enemyPrefab)
     {
         int planeIndex;
+        DetectedPlane selectedPlane;
         Vector3 spawnPoint;
         Quaternion spawnRotation = Quaternion.identity;
 
         // random Plane from Detected Plane list
         planeIndex = UnityEngine.Random.Range(0, visualizer.Length);
+        selectedPlane = visualizer[planeIndex].m_DetectedPlane;
+
         // get center position from selected plane
-        spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
-        // spawnPoint = checkSpawnPoint(spawnPoint);
+        List<Vector3> boundaryPolygon = new List<Vector3>();
+        selectedPlane.GetBoundaryPolygon(boundaryPolygon);
+        List<Vector3> filterPolygon = boundaryPolygon.Where( _p => Vector3.Distance(_p, cameraTransform.position) >= playerRadius ).ToList();
+        Vector3 p1 = filterPolygon[UnityEngine.Random.Range(0, filterPolygon.Count)] ;
+        Vector3 p2 = filterPolygon[UnityEngine.Random.Range(0, filterPolygon.Count)] ;
+        spawnPoint = new Vector3((p1.x + p2.x)/2 , (p1.y+p2.y)/2 , (p1.z+p2.z)/2 ) ;
+
         spawnRotation = visualizer[planeIndex].m_DetectedPlane.CenterPose.rotation;
         
         GameObject enemyPrefeb;
@@ -235,7 +245,8 @@ public class spawnManager : MonoBehaviour
         List<DetectedPlaneVisualizer> v = new List<DetectedPlaneVisualizer>();
         foreach(DetectedPlaneVisualizer p in visualizer)
         {
-            if( IsFarEnought(p.m_DetectedPlane.CenterPose.position) )
+            if( IsBoundaryFarEnough(p) )
+            // if( IsFarEnought(p.m_DetectedPlane.CenterPose.position) )
             // if( p.m_DetectedPlane.PlaneType == DetectedPlaneType.Vertical )
             {
                 v.Add(p);
@@ -250,6 +261,21 @@ public class spawnManager : MonoBehaviour
         if( Vector3.Distance(spawnpoint, cameraTransform.position) >= playerRadius )
         {
             return true;
+        }
+        return false;
+    }
+
+    // check if atleast 1 of boundary polygon is far enough
+    private bool IsBoundaryFarEnough(DetectedPlaneVisualizer _v)
+    {
+        List<Vector3> boundaryPolygon = new List<Vector3>();
+        _v.m_DetectedPlane.GetBoundaryPolygon(boundaryPolygon);
+        foreach(Vector3 point in boundaryPolygon)
+        {
+            if( Vector3.Distance(point, cameraTransform.position) >= playerRadius )
+            {
+                return true;
+            }
         }
         return false;
     }
@@ -275,5 +301,12 @@ public class spawnManager : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position - new Vector3(xPosition, 0, 0), transform.position + new Vector3(xPosition, 0, 0));
         Gizmos.DrawLine(transform.position - new Vector3(0, 0, zPosition), transform.position + new Vector3(0, 0, zPosition));
+    }
+
+    public bool IsEnoughPlane()
+    {
+        GetVisualizer();
+        // Debug.Log("Plane n = " + visualizer.Length);
+        return visualizer.Length >= 1;
     }
 }

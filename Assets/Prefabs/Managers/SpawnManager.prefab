@@ -44,13 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 0}
-  ghostPortalHorizontal: {fileID: 5875293979009803422, guid: 925b22f1d3bce461f984cf1a097ebfd8,
-    type: 3}
-  ghostPortalVertical: {fileID: 5875293979009803422, guid: 66186fc4e2953b04bbf0073a1a320c74,
-    type: 3}
   waves:
   - count: 4
     rate: 1
+    enemyTypes: []
   timeBetweenWaves: 5
   waveCountdown: 3
   state: 2
@@ -63,4 +60,5 @@ MonoBehaviour:
   minTime: 5
   maxTime: 10
   enemies: []
-  planeGenerator: {fileID: 0}
+  planeGenerator: {fileID: 3670218671957926774, guid: ad2ad198618f94f6f92e16297718b492,
+    type: 3}

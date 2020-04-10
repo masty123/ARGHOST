@@ -33,7 +33,7 @@ namespace GoogleARCore.Examples.Common
         /// A prefab for tracking and visualizing detected planes.
         /// </summary>
         public GameObject DetectedPlanePrefab;
-        //[SerializeField] GameObject arCoreSessionPrefab;
+        [SerializeField] GameObject arCoreSessionPrefab;
 
         /// <summary>
         /// A list to hold new planes ARCore began tracking in the current frame. This object is
@@ -41,13 +41,14 @@ namespace GoogleARCore.Examples.Common
         /// </summary>
         private List<DetectedPlane> m_NewPlanes = new List<DetectedPlane>();
 
-        private bool isStopped;
-        private ARCoreSession aRCoreSession;
+        private ARCoreSession arSession;
 
         private void Start()
         {
-            //aRCoreSession = arCoreSessionPrefab.GetComponent<GoogleARCore.ARCoreSession>();
-            //aRCoreSession.enabled = true;
+            arSession = arCoreSessionPrefab.GetComponent<GoogleARCore.ARCoreSession>();
+            arSession.SessionConfig.PlaneFindingMode = DetectedPlaneFindingMode.HorizontalAndVertical;
+            arSession.OnEnable();
+            Debug.Log("PlaneMode: " + arSession.SessionConfig.PlaneFindingMode );
         }
 
 
@@ -79,6 +80,40 @@ namespace GoogleARCore.Examples.Common
         public void stopTracking()
         {
 
+        }
+
+        // Switch between detecting and not detecting plane (but still tracking)
+        public void switchDetecting()
+        {
+            if( arSession.SessionConfig.PlaneFindingMode == DetectedPlaneFindingMode.Disabled )
+            {
+                startDetecting();
+            }
+            else
+            {
+                stopDetecting();
+            }
+        }
+
+        // Start detecting plane
+        public void startDetecting()
+        {
+            arSession.SessionConfig.PlaneFindingMode = DetectedPlaneFindingMode.HorizontalAndVertical;
+            arSession.OnEnable();
+            Debug.Log("PlaneMode: Finding");
+        }
+
+        // Stop detecting plane
+        public void stopDetecting()
+        {
+            arSession.SessionConfig.PlaneFindingMode = DetectedPlaneFindingMode.Disabled;
+            arSession.OnEnable();
+            Debug.Log("PlaneMode: Disabled");
+        }
+
+        public DetectedPlaneFindingMode getPlaneFindingMode()
+        {
+            return arSession.SessionConfig.PlaneFindingMode;
         }
     }
 }

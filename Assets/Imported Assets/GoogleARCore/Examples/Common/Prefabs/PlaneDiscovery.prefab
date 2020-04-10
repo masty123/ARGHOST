@@ -55,7 +55,10 @@ MonoBehaviour:
   m_MoreHelpWindow: {fileID: 2131982916393587775}
   m_GotItButton: {fileID: 2131982917095714407}
   waveStartButton: {fileID: 5592104545465478542}
-  manager: {fileID: 0}
+  planeFindingButton: {fileID: 5936435575845394687}
+  planeGenerator: {fileID: 3670218671957926774, guid: ad2ad198618f94f6f92e16297718b492,
+    type: 3}
+  manager: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430, type: 3}
 --- !u!1 &1947850325268790
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: staticDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377800950759380239, guid: dc22b3e3c956e7845bc62c257d051f2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3514944853622431644, guid: dc22b3e3c956e7845bc62c257d051f2f,
         type: 3}
@@ -453,6 +461,12 @@ MonoBehaviour:
 --- !u!1 &5592104545465478542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1377800950759380239, guid: dc22b3e3c956e7845bc62c257d051f2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6811074167998544001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5936435575845394687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 929922312749572222, guid: dc22b3e3c956e7845bc62c257d051f2f,
     type: 3}
   m_PrefabInstance: {fileID: 6811074167998544001}
   m_PrefabAsset: {fileID: 0}
