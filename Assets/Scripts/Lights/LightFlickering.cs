@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightFlickering : MonoBehaviour
 {
     //light transform
-    public Light compLight;
+    private Light compLight;
     // minimum and maxmium time that light stay on.
     public float minTime, maxTime;
     public float Timer;
@@ -29,6 +29,7 @@ public class LightFlickering : MonoBehaviour
         Timer = Random.Range(minTime, maxTime);
         source.time = audioTime;
         animator = entity.GetComponent<Animator>();
+        compLight = transform.GetComponent<Light>();
     }
 
     // Update is called once per frame.
