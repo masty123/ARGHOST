@@ -131,9 +131,6 @@ namespace GoogleARCore.Examples.Common
         [Tooltip("The Game Object that contains the button to start the wave.")]
         [SerializeField] private GameObject waveStartButton = null;
 
-        [Tooltip("The Game Object that contains the button to pause/unpause the plane finding.")]
-        [SerializeField] private GameObject planeFindingButton = null;
-
         [Tooltip("The Game Object that contains DetectedPlaneGenerator.")]
         [SerializeField] private DetectedPlaneGenerator planeGenerator = null;
 
@@ -154,8 +151,6 @@ namespace GoogleARCore.Examples.Common
 
             // waveStart button
             waveStartButton.GetComponent<Button>().onClick.AddListener(_StartWaveButtonClicked);
-            // planeFinding button
-            planeFindingButton.GetComponent<Button>().onClick.AddListener(_PlaneFindingButtonClicked);
 
             _CheckFieldsAreNotNull();
             m_MoreHelpWindow.SetActive(false);
@@ -196,41 +191,28 @@ namespace GoogleARCore.Examples.Common
             m_SnackBar.SetActive(false);
         }
 
+        // track plane status
         private void _UpdatePlaneFind()
         {
             if( !manager.IsEnoughPlane() )
             {
-                planeFindingButton.SetActive(true);
+                waveStartButton.SetActive(true);
             }
 
             if( manager.IsEnoughPlane() )
             {
                 p_state = planeFindButtonState.Enough;
-                planeFindingButton.GetComponentInChildren<Text>().color = Color.green;
-                planeFindingButton.GetComponentInChildren<Text>().text 
+                waveStartButton.GetComponentInChildren<Text>().color = Color.green;
+                waveStartButton.GetComponentInChildren<Text>().text 
                     = "PRESS TO STOP PLANE SCANNING";
             }
             else
             {
                 p_state = planeFindButtonState.NotEnough;
-                planeFindingButton.GetComponentInChildren<Text>().color = Color.red;
-                planeFindingButton.GetComponentInChildren<Text>().text 
-                    = "KEEP SCANNING AROUND";
+                waveStartButton.GetComponentInChildren<Text>().color = Color.red;
+                waveStartButton.GetComponentInChildren<Text>().text 
+                    = "KEEP SCANNING";
             }
-        }
-
-        /// <summary>
-        /// Callback executed when the planeFinding button has been clicked by the user.
-        /// </summary>
-        private void _PlaneFindingButtonClicked()
-        {
-            if( p_state == planeFindButtonState.NotEnough )
-            {
-                return;
-            }
-            planeGenerator.stopDetecting();
-            planeFindingButton.SetActive(false);
-            waveStartButton.SetActive(true);
         }
 
         /// <summary>
@@ -239,6 +221,11 @@ namespace GoogleARCore.Examples.Common
         /// </summary>
         private void _StartWaveButtonClicked()
         {
+            if( p_state == planeFindButtonState.NotEnough )
+            {
+                return;
+            }
+            planeGenerator.stopDetecting();
             manager.Unhalt();
             waveStartButton.SetActive(false);
         }
