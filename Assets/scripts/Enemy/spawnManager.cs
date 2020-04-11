@@ -212,12 +212,13 @@ public class spawnManager : MonoBehaviour
         selectedPlane = visualizer[planeIndex].m_DetectedPlane;
 
         // get center position from selected plane
-        List<Vector3> boundaryPolygon = new List<Vector3>();
-        selectedPlane.GetBoundaryPolygon(boundaryPolygon);
-        List<Vector3> filterPolygon = boundaryPolygon.Where( _p => Vector3.Distance(_p, cameraTransform.position) >= playerRadius ).ToList();
-        Vector3 p1 = filterPolygon[UnityEngine.Random.Range(0, filterPolygon.Count)] ;
-        Vector3 p2 = filterPolygon[UnityEngine.Random.Range(0, filterPolygon.Count)] ;
-        spawnPoint = new Vector3((p1.x + p2.x)/2 , (p1.y+p2.y)/2 , (p1.z+p2.z)/2 ) ;
+        // List<Vector3> boundaryPolygon = new List<Vector3>();
+        // selectedPlane.GetBoundaryPolygon(boundaryPolygon);
+        // List<Vector3> filterPolygon = boundaryPolygon.Where( _p => Vector3.Distance(_p, cameraTransform.position) >= playerRadius ).ToList();
+        // Vector3 p1 = filterPolygon[UnityEngine.Random.Range(0, filterPolygon.Count)] ;
+        // Vector3 p2 = filterPolygon[UnityEngine.Random.Range(0, filterPolygon.Count)] ;
+        // spawnPoint = new Vector3((p1.x + p2.x)/2 , (p1.y+p2.y)/2 , (p1.z+p2.z)/2 ) ;
+        spawnPoint = visualizer[planeIndex].m_DetectedPlane.CenterPose.position;
 
         spawnRotation = visualizer[planeIndex].m_DetectedPlane.CenterPose.rotation;
         
@@ -245,8 +246,8 @@ public class spawnManager : MonoBehaviour
         List<DetectedPlaneVisualizer> v = new List<DetectedPlaneVisualizer>();
         foreach(DetectedPlaneVisualizer p in visualizer)
         {
-            if( IsBoundaryFarEnough(p) )
-            // if( IsFarEnought(p.m_DetectedPlane.CenterPose.position) )
+            // if( IsBoundaryFarEnough(p) )
+            if( IsFarEnought(p.m_DetectedPlane.CenterPose.position) )
             // if( p.m_DetectedPlane.PlaneType == DetectedPlaneType.Vertical )
             {
                 v.Add(p);
