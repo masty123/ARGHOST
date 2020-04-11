@@ -8,6 +8,7 @@ public class Card1 : BaseCard
 
     public ParticleSystem[] particleGameObjects;
     public ParticleSystem[] attackParticleGameObjects;
+    public GameObject[] otherObjects;
     public TextMeshPro cooldownText;
     public float maxCooldown = 3;
 
@@ -16,6 +17,11 @@ public class Card1 : BaseCard
     protected float cooldown = 0f;
 
     bool isTracking = false;
+
+    public GameObject FrameLowerLeft;
+    public GameObject FrameLowerRight;
+    public GameObject FrameUpperLeft;
+    public GameObject FrameUpperRight;
 
     private void Start()
     {
@@ -50,6 +56,20 @@ public class Card1 : BaseCard
                 SetParticlesEnabled(particleGameObjects, false);
             }
         }
+
+        if(Image != null)
+        {
+            float halfWidth = Image.ExtentX / 2;
+            float halfHeight = Image.ExtentZ / 2;
+            FrameLowerLeft.transform.localPosition =
+                (halfWidth * Vector3.left) + (halfHeight * Vector3.back);
+            FrameLowerRight.transform.localPosition =
+                (halfWidth * Vector3.right) + (halfHeight * Vector3.back);
+            FrameUpperLeft.transform.localPosition =
+                (halfWidth * Vector3.left) + (halfHeight * Vector3.forward);
+            FrameUpperRight.transform.localPosition =
+                (halfWidth * Vector3.right) + (halfHeight * Vector3.forward);
+        }
     }
 
     public override void OnDetected()
@@ -66,12 +86,20 @@ public class Card1 : BaseCard
             }
         }
         isTracking = true;
+        foreach (GameObject gobj in otherObjects)
+        {
+            gobj.SetActive(true);
+        }
     }
 
     public override void OnUndetected()
     {
         isTracking = false;
         SetParticlesEnabled(false);
+        foreach (GameObject gobj in otherObjects)
+        {
+            gobj.SetActive(false);
+        }
     }
 
     void SetParticlesEnabled(bool play)

@@ -8,24 +8,27 @@ public class Bullet : MonoBehaviour
 {
 
     public float speed = 2.0f;
-    public float destroyDistance = 100.0f;
-    Camera camera;
+    public float destroyDistance = 100.000000f;
+    GameObject camera;
 
     public List<ParticleSystem> particles;
 
     private void Start()
     {
-        camera = FindObjectOfType<Camera>();
+        camera = GameObject.FindGameObjectWithTag("BulletSpawnerPosition");
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position += Time.deltaTime * speed * transform.forward;
-        if(Vector3.Distance(transform.position, camera.transform.position) >= destroyDistance)
+        if(camera != null)
         {
-            StopAllParticles();
-            Destroy(gameObject);
+            if (Vector3.Distance(transform.position, camera.transform.position) >= destroyDistance)
+            {
+                StopAllParticles();
+                Destroy(gameObject);
+            }
         }
     }
 

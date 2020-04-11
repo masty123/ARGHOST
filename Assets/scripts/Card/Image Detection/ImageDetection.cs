@@ -15,7 +15,7 @@ public class ImageDetection : MonoBehaviour
     /// <summary>
     /// The overlay containing the fit to scan user guide.
     /// </summary>
-    public GameObject FitToScanOverlay;
+    //public GameObject FitToScanOverlay;
 
     protected Dictionary<int, BaseCard> m_Visualizers
         = new Dictionary<int, BaseCard>();
@@ -80,27 +80,27 @@ public class ImageDetection : MonoBehaviour
         }
 
         // Show the fit-to-scan overlay if there are no images that are Tracking.
-        foreach (var visualizer in m_Visualizers.Values)
-        {
-            if (visualizer.Image.TrackingMethod == AugmentedImageTrackingMethod.FullTracking)
+            foreach (var visualizer in m_Visualizers.Values)
             {
-                FitToScanOverlay.SetActive(false);
-                //VDebug.Instance.Log("Card detection: Card got tracked in card detection");
-                m_Visualizers[0].OnDetected();
+                if (visualizer.Image.TrackingMethod == AugmentedImageTrackingMethod.FullTracking)
+                {
+                    //FitToScanOverlay.SetActive(false);
+                    //VDebug.Instance.Log("Card detection: Card got tracked in card detection");
+                    m_Visualizers[0].OnDetected();
+                }
+                else if (visualizer.Image.TrackingMethod == AugmentedImageTrackingMethod.LastKnownPose)
+                {
+                    //VDebug.Instance.Log("Card detection: Card tracking method is last known position");
+                    m_Visualizers[0].OnUndetected();
+                    //FitToScanOverlay.SetActive(true);
+                }
+                else
+                {
+                    //VDebug.Instance.Log("Card detection: Card tracking method is not tranked");
+                    m_Visualizers[0].OnUndetected();
+                    //FitToScanOverlay.SetActive(true);
+                }
             }
-            else if (visualizer.Image.TrackingMethod == AugmentedImageTrackingMethod.LastKnownPose)
-            {
-                //VDebug.Instance.Log("Card detection: Card tracking method is last known position");
-                m_Visualizers[0].OnUndetected();
-                FitToScanOverlay.SetActive(true);
-            }
-            else
-            {
-                //VDebug.Instance.Log("Card detection: Card tracking method is not tranked");
-                m_Visualizers[0].OnUndetected();
-                FitToScanOverlay.SetActive(true);
-            }
-        }
     }
 
 }

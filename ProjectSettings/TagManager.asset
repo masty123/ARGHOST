@@ -9,6 +9,7 @@ TagManager:
   - EnemyBody
   - staticDeath
   - hideVidSwitch
+  - BulletSpawnerPosition
   layers:
   - Default
   - TransparentFX

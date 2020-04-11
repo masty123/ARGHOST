@@ -26,7 +26,7 @@ public class MenuManager : MonoBehaviour
     public void enterGame()
     {
         //Load game scene.
-        SceneManager.LoadScene("Haunt_EZ");
+        SceneManager.LoadScene("mapChoose 2");
         ScoreManager.ResetScore();
     }
 
