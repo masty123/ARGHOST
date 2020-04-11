@@ -21,7 +21,7 @@ public class ScoreManager
     public static float GetScore()
     {
         return (KilledGhosts * GHOST_SCORE_MULTIPLIER)
-            + (SurviveTime * TIMER_SCORE_MULTIPLIER);
+            + ((SurviveTime * TIMER_SCORE_MULTIPLIER)/1000);
     }
 
     public static bool IsHighScore()
