@@ -8,6 +8,7 @@ public class ScoreManager
 
     static float GHOST_SCORE_MULTIPLIER = 100f;
     static float TIMER_SCORE_MULTIPLIER = 1f;
+    static float TIMER_SCORE_DEVIDER = 1000f;
 
     public static int KilledGhosts = 0;
     public static float SurviveTime = 0f;
@@ -21,7 +22,7 @@ public class ScoreManager
     public static float GetScore()
     {
         return (KilledGhosts * GHOST_SCORE_MULTIPLIER)
-            + ((SurviveTime * TIMER_SCORE_MULTIPLIER)/1000);
+            + ((SurviveTime * TIMER_SCORE_MULTIPLIER)/TIMER_SCORE_DEVIDER);
     }
 
     public static bool IsHighScore()
