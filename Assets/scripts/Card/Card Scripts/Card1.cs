@@ -18,6 +18,11 @@ public class Card1 : BaseCard
 
     bool isTracking = false;
 
+    public GameObject FrameLowerLeft;
+    public GameObject FrameLowerRight;
+    public GameObject FrameUpperLeft;
+    public GameObject FrameUpperRight;
+
     private void Start()
     {
         Debug.Log("New particle intantiated");
@@ -33,27 +38,15 @@ public class Card1 : BaseCard
             if (isTracking)
             {
                 cooldownText.gameObject.SetActive(true);
-                foreach(GameObject gobj in otherObjects)
-                {
-                    gobj.SetActive(true);
-                }
             }
             else
             {
                 cooldownText.gameObject.SetActive(false);
-                foreach (GameObject gobj in otherObjects)
-                {
-                    gobj.SetActive(false);
-                }
             }
         }
         else
         {
             cooldownText.gameObject.SetActive(false);
-            foreach (GameObject gobj in otherObjects)
-            {
-                gobj.SetActive(false);
-            }
             if (isTracking)
             {
                 SetParticlesEnabled(particleGameObjects, true);
@@ -62,6 +55,20 @@ public class Card1 : BaseCard
             {
                 SetParticlesEnabled(particleGameObjects, false);
             }
+        }
+
+        if(Image != null)
+        {
+            float halfWidth = Image.ExtentX / 2;
+            float halfHeight = Image.ExtentZ / 2;
+            FrameLowerLeft.transform.localPosition =
+                (halfWidth * Vector3.left) + (halfHeight * Vector3.back);
+            FrameLowerRight.transform.localPosition =
+                (halfWidth * Vector3.right) + (halfHeight * Vector3.back);
+            FrameUpperLeft.transform.localPosition =
+                (halfWidth * Vector3.left) + (halfHeight * Vector3.forward);
+            FrameUpperRight.transform.localPosition =
+                (halfWidth * Vector3.right) + (halfHeight * Vector3.forward);
         }
     }
 
@@ -79,12 +86,20 @@ public class Card1 : BaseCard
             }
         }
         isTracking = true;
+        foreach (GameObject gobj in otherObjects)
+        {
+            gobj.SetActive(true);
+        }
     }
 
     public override void OnUndetected()
     {
         isTracking = false;
         SetParticlesEnabled(false);
+        foreach (GameObject gobj in otherObjects)
+        {
+            gobj.SetActive(false);
+        }
     }
 
     void SetParticlesEnabled(bool play)

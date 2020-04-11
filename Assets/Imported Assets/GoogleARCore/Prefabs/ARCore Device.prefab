@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &60361198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60361199}
+  m_Layer: 0
+  m_Name: BulletSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &60361199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60361198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4497055787654456}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1637996540812124
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,7 +64,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 60361199}
   m_Father: {fileID: 4442908887562770}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91,8 +122,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Device: 0
   m_PoseSource: 6
   m_PoseProviderComponent: {fileID: 0}
@@ -109,8 +140,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb172c260d42e4f62945afda50892c0c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   BackgroundMaterial: {fileID: 2100000, guid: 03ad0130a037647aeb60218f61aca114, type: 2}
 --- !u!81 &1590864402887918696
 AudioListener:
@@ -180,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeEnemy: {fileID: 0}
   cameraEffect: {fileID: 0}
-  distance: 0
+  distance: 10
 --- !u!1 &1772147192650458
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +222,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4442908887562770}
   - component: {fileID: 114451889682527732}
+  - component: {fileID: 1010116405}
+  - component: {fileID: 3878341429568591289}
   m_Layer: 0
   m_Name: ARCore Device
   m_TagString: Untagged
@@ -224,11 +257,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4ca0c6a3af6b4635b7e98c6ea0a0cf9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   DeviceCameraDirection: 0
   SessionConfig: {fileID: 11400000, guid: 9586a84d6c32f46b6ab7aeb6042f160d, type: 2}
   CameraConfigFilter: {fileID: 11400000, guid: 200b4cba649e3413088e285251ccf44e, type: 2}
+--- !u!114 &1010116405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772147192650458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86227bddeda60894fb948a49440ddb85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  isVisible: 0
+--- !u!114 &3878341429568591289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772147192650458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86227bddeda60894fb948a49440ddb85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  isVisible: 0
 --- !u!1001 &2993357694109236748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,23 +304,65 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
         type: 3}
-      propertyPath: xPosition
-      value: 40
+      propertyPath: waves.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
         type: 3}
-      propertyPath: zPosition
-      value: 40
+      propertyPath: waves.Array.data[0].enemyTypes.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
         type: 3}
-      propertyPath: xRadius
-      value: 10
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 4497055787654456}
+    - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
+        type: 3}
+      propertyPath: waves.Array.data[0].count
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
         type: 3}
-      propertyPath: zRadius
-      value: 10
+      propertyPath: waves.Array.data[0].enemyTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: 8007967959000268636, guid: fc9579e1d71e31a43bff153b4a65c89f,
+        type: 3}
+    - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
+        type: 3}
+      propertyPath: waves.Array.data[0].enemyTypes.Array.data[1]
+      value: 
+      objectReference: {fileID: 1859261867893362772, guid: 52d36ccebeb2a384f8f6e46ff1a703ea,
+        type: 3}
+    - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
+        type: 3}
+      propertyPath: waves.Array.data[1].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
+        type: 3}
+      propertyPath: waves.Array.data[1].rate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
+        type: 3}
+      propertyPath: timeBetweenWaves
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
+        type: 3}
+      propertyPath: state
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
+        type: 3}
+      propertyPath: maxTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020637381749664038, guid: 0893527e72233e34484486808f8c5430,
+        type: 3}
+      propertyPath: planeGenerator
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1020637381749664039, guid: 0893527e72233e34484486808f8c5430,
         type: 3}
