@@ -34,11 +34,12 @@ public class WMController : IndependentEnemyController
         {
             firstSaw = true;
             animator.SetBool("lookAway", false);
+            Debug.Log("Object is visible");
             stareTimer();
         }
         else if (!m_Renderer.isVisible && firstSaw)
         {
-            //Debug.Log("Object is no longer visible");
+            Debug.Log("Object is no longer visible");
             animator.SetBool("lookAway", true);
             huntPlayer();
             //Jumpscare.
@@ -46,7 +47,7 @@ public class WMController : IndependentEnemyController
 
         else if (m_Renderer.isVisible && firstSaw)
         {
-            //Debug.Log("Object is no longer visible");
+            Debug.Log("Object is visible");
             //Jumpscare.
             animator.SetBool("lookAway", false);
             stareTimer();
