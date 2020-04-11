@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff66f41530d5421a95fb5eae256719c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostPortalHorizontal: {fileID: 7411140503840585189, guid: bea4b2ed832e24546a33643a77106d5c,
+  ghostPortalHorizontal: {fileID: 3125164549798417737, guid: 5f5d3619782499c4fb2d7e63ce77323a,
     type: 3}
-  ghostPortalVertical: {fileID: 1995462676693982886, guid: 282a198ee2dd0eb46af8c3e29f4b0363,
+  ghostPortalVertical: {fileID: 6752637764357297214, guid: ed289fd1acf9cfc42b78921480dc83a7,
     type: 3}
