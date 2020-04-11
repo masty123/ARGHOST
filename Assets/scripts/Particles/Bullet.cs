@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 {
 
     public float speed = 2.0f;
-    public float destroyDistance = 100.0f;
+    public float destroyDistance = 100.000000f;
     GameObject camera;
 
     public List<ParticleSystem> particles;
