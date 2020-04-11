@@ -54,7 +54,7 @@ MonoBehaviour:
   m_OpenButton: {fileID: 2131982917595915904}
   m_MoreHelpWindow: {fileID: 2131982916393587775}
   m_GotItButton: {fileID: 2131982917095714407}
-  waveStartButton: {fileID: 5592104545465478542}
+  waveStartButton: {fileID: 9203886294912154432}
   planeFindingButton: {fileID: 5936435575845394687}
   planeGenerator: {fileID: 3670218671957926774, guid: ad2ad198618f94f6f92e16297718b492,
     type: 3}
@@ -458,9 +458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &5592104545465478542 stripped
+--- !u!1 &9203886294912154432 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1377800950759380239, guid: dc22b3e3c956e7845bc62c257d051f2f,
+  m_CorrespondingSourceObject: {fileID: 2395648974359315393, guid: dc22b3e3c956e7845bc62c257d051f2f,
     type: 3}
   m_PrefabInstance: {fileID: 6811074167998544001}
   m_PrefabAsset: {fileID: 0}
