@@ -19,12 +19,21 @@ public class WMController : IndependentEnemyController
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
         m_Renderer = GetComponentInChildren<Renderer>();
+        hidVidObj = GameObject.FindGameObjectWithTag("hideVidSwitch").transform.GetComponent<hideVideo>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         GhostBeHavior();
+
+        if (EnteredTrigger)
+        {
+            countTime = 999f;
+            StartCoroutine(scare());
+        }
+
     } 
 
     public override void GhostBeHavior()
@@ -34,42 +43,53 @@ public class WMController : IndependentEnemyController
         {
             firstSaw = true;
             animator.SetBool("lookAway", false);
-            Debug.Log("Object is visible");
+            //Debug.Log("Object is visible");
             stareTimer();
         }
         else if (!m_Renderer.isVisible && firstSaw)
         {
-            Debug.Log("Object is no longer visible");
+            //Debug.Log("Object is no longer visible");
             animator.SetBool("lookAway", true);
             huntPlayer();
-            //Jumpscare.
         }
 
         else if (m_Renderer.isVisible && firstSaw)
         {
-            Debug.Log("Object is visible");
-            //Jumpscare.
+            //Debug.Log("Object is visible");
             animator.SetBool("lookAway", false);
             stareTimer();
-
         }
     }
+
+    public override IEnumerator scare()
+    {
+
+        enemyScare();
+        yield return new WaitForSeconds(1.5f);
+
+        //StartCoroutine(playstaticDeath());
+        //SceneManager.LoadScene("GameOver");
+        StartCoroutine(LoadAsynchronously("GameOver"));
+    }
+
+    //Start playing static video after the player got jumpscared.
+    //IEnumerator playstaticDeath()
+    //{
+    //    if(hidVidObj != null)
+    //    {
+    //        hidVidObj.isActive = true;
+    //        yield return new WaitForSeconds(2.5f);
+    //    }
+    //}
+
 
     void huntPlayer()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
         //Move to Player
         transform.position += transform.forward * maxSpeed * Time.deltaTime;
-        //if got hit or touch player.
-        if (isHit)
-        {
-            StartCoroutine(dying());
-        }
-        else if (EnteredTrigger)
-        {
-            StartCoroutine(scare());
-            //StartCoroutine(dying());  // For testing only.
-        }
+
+       
     }
 
     void stareTimer()

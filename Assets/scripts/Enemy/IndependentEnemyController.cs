@@ -58,7 +58,7 @@ public class IndependentEnemyController : MonoBehaviour
     public bool isOutPortal = false;
     protected bool isRandom = false;
     protected int randomPattern;
-    private hideVideo hidVidObj;
+    public hideVideo hidVidObj;
 
 
     [Header("Particle Effect")]
@@ -154,7 +154,7 @@ public class IndependentEnemyController : MonoBehaviour
     }
 
     //Jumpscare the player
-    public IEnumerator scare()
+    public virtual IEnumerator scare()
     {
 
         enemyScare();
@@ -167,7 +167,7 @@ public class IndependentEnemyController : MonoBehaviour
 
 
     //load the scene, asynchronously
-    IEnumerator LoadAsynchronously(string scene)
+    public  IEnumerator LoadAsynchronously(string scene)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
         operation.allowSceneActivation = false;
@@ -214,7 +214,7 @@ public class IndependentEnemyController : MonoBehaviour
         if (other.tag.Equals("MainCamera"))
         {
             EnteredTrigger = true;
-            scare();
+           //scare();
         }
     }
 
