@@ -8,6 +8,7 @@ public class Card1 : BaseCard
 
     public ParticleSystem[] particleGameObjects;
     public ParticleSystem[] attackParticleGameObjects;
+    public GameObject[] otherObjects;
     public TextMeshPro cooldownText;
     public float maxCooldown = 3;
 
@@ -32,15 +33,27 @@ public class Card1 : BaseCard
             if (isTracking)
             {
                 cooldownText.gameObject.SetActive(true);
+                foreach(GameObject gobj in otherObjects)
+                {
+                    gobj.SetActive(true);
+                }
             }
             else
             {
                 cooldownText.gameObject.SetActive(false);
+                foreach (GameObject gobj in otherObjects)
+                {
+                    gobj.SetActive(false);
+                }
             }
         }
         else
         {
             cooldownText.gameObject.SetActive(false);
+            foreach (GameObject gobj in otherObjects)
+            {
+                gobj.SetActive(false);
+            }
             if (isTracking)
             {
                 SetParticlesEnabled(particleGameObjects, true);
