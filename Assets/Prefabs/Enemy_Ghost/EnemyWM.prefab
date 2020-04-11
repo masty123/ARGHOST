@@ -80,17 +80,21 @@ MonoBehaviour:
   maxSpeed: 3
   moveSpeed: 4
   accelSpeed: 3
-  timeZeroToMax: 2.5
+  timeZeroToMaxSpeed: 2.5
+  animatorMaxSpeed: 1.75
   animatorSpeed: 0
+  animatorAcelSpeed: 0
+  timeZeroToAnim: 2.5
   lookRadius: 10
   EnteredTrigger: 0
   showCross: 0
+  Gold: 1
   deathTime: 0
   isHit: 0
   isOutPortal: 0
   defeatParticlePrefab: {fileID: 6454576854534941436, guid: 7c6e1354371411d4eb14fb469fc1c921,
     type: 3}
-  stareTime: 3
+  stareTime: 10
 --- !u!1001 &8007967958347755723
 PrefabInstance:
   m_ObjectHideFlags: 0
