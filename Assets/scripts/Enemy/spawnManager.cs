@@ -26,7 +26,7 @@ public class spawnManager : MonoBehaviour
         public GameObject popEnemy()
         {
             System.Random rnd = new System.Random();
-            int selectedEne = rnd.Next(enemyTypes.Length-1);
+            int selectedEne = rnd.Next(enemyTypes.Length);
             return enemyTypes[selectedEne];
         }
     }

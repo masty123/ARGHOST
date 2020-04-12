@@ -58,9 +58,11 @@ MonoBehaviour:
   lookRadius: 10
   EnteredTrigger: 0
   showCross: 0
+  Gold: 1
   deathTime: 0.75
   isHit: 0
   isOutPortal: 0
+  hidVidObj: {fileID: 0}
   defeatParticlePrefab: {fileID: 6454576854534941436, guid: 7c6e1354371411d4eb14fb469fc1c921,
     type: 3}
 --- !u!136 &7411140503840585191
@@ -71,7 +73,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7411140503840585189}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.29
   m_Height: 1.45

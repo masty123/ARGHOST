@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         EnemyController temp = collision.gameObject.GetComponent<EnemyController>();
         if (temp != null)
