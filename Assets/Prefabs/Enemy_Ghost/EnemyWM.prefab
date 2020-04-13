@@ -58,7 +58,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8007967959000268636}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 3.3693814
@@ -92,6 +92,7 @@ MonoBehaviour:
   deathTime: 0
   isHit: 0
   isOutPortal: 0
+  hidVidObj: {fileID: 0}
   defeatParticlePrefab: {fileID: 6454576854534941436, guid: 7c6e1354371411d4eb14fb469fc1c921,
     type: 3}
   stareTime: 10

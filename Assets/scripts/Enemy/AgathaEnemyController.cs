@@ -5,6 +5,8 @@ using UnityEngine;
 public class AgathaEnemyController : IndependentEnemyController
 {
 
+    public float outportalMaxSpeed = 0.5f;
+
     public float timeUntilSeperate = 2f;
     public AgathaSeperate seperateGhostPrefab;
 
@@ -19,6 +21,7 @@ public class AgathaEnemyController : IndependentEnemyController
     {
         if (isOutPortal)
         {
+            maxSpeed = outportalMaxSpeed;
             if (!isRandom)
             {
                 randomPattern = Random.Range(0, 2);

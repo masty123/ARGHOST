@@ -228,6 +228,11 @@ namespace GoogleARCore.Examples.Common
             planeGenerator.stopDetecting();
             manager.Unhalt();
             waveStartButton.SetActive(false);
+            Timer tempTimer = FindObjectOfType<Timer>();
+            if(tempTimer != null)
+            {
+                tempTimer.StartTimer();
+            }
         }
 
         /// <summary>

@@ -16,6 +16,7 @@ public class WMController : IndependentEnemyController
 
     public override void Start()
     {
+        countTime = stareTime;
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
         m_Renderer = GetComponentInChildren<Renderer>();
@@ -96,7 +97,7 @@ public class WMController : IndependentEnemyController
     {
         if(countTime >= 0)
         {
-            countTime = stareTime - Time.time;
+            countTime = countTime - Time.deltaTime;
             seconds = (countTime % 60).ToString("f2");
         }
         else

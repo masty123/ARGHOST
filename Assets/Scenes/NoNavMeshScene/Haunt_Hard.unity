@@ -185,6 +185,12 @@ PrefabInstance:
       propertyPath: planeGenerator
       value: 
       objectReference: {fileID: 2083512465}
+    - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: waves.Array.data[0].enemyTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1859261867893362772, guid: c0e4314a7a8a4a64785afd1d15a45107,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c10877f7cd5764de18d46d7b777d1faa, type: 3}
 --- !u!1 &97747991 stripped
@@ -813,7 +819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2046395084
 MonoBehaviour:
   m_ObjectHideFlags: 0
