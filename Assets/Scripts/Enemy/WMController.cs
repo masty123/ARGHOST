@@ -13,6 +13,8 @@ public class WMController : IndependentEnemyController
     [SerializeField] private float stareTime = 3.5f;
     private float countTime;
     string seconds = "";
+    public AudioSource stunSound;
+    public AudioSource footSound;
 
     public override void Start()
     {
@@ -21,6 +23,11 @@ public class WMController : IndependentEnemyController
         animator = GetComponentInChildren<Animator>();
         m_Renderer = GetComponentInChildren<Renderer>();
         hidVidObj = GameObject.FindGameObjectWithTag("hideVidSwitch").transform.GetComponent<hideVideo>();
+        stunSound = GameObject.FindGameObjectWithTag("stun").GetComponent<AudioSource>();
+        footSound = GameObject.FindGameObjectWithTag("footstep").GetComponent<AudioSource>();
+
+        stunSound.gameObject.SetActive(false);
+        footSound.gameObject.SetActive(false);
 
     }
 
@@ -46,12 +53,19 @@ public class WMController : IndependentEnemyController
             animator.SetBool("lookAway", false);
             //Debug.Log("Object is visible");
             stareTimer();
+
+            stunSound.gameObject.SetActive(true);
+            footSound.gameObject.SetActive(false);
+
+
         }
         else if (!m_Renderer.isVisible && firstSaw)
         {
             //Debug.Log("Object is no longer visible");
             animator.SetBool("lookAway", true);
             huntPlayer();
+
+            stunSound.gameObject.SetActive(false);
         }
 
         else if (m_Renderer.isVisible && firstSaw)
@@ -59,6 +73,11 @@ public class WMController : IndependentEnemyController
             //Debug.Log("Object is visible");
             animator.SetBool("lookAway", false);
             stareTimer();
+
+            stunSound.gameObject.SetActive(true);
+            footSound.gameObject.SetActive(false);
+
+
         }
     }
 
@@ -86,6 +105,8 @@ public class WMController : IndependentEnemyController
 
     void huntPlayer()
     {
+        footSound.gameObject.SetActive(true);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
         //Move to Player
         transform.position += transform.forward * maxSpeed * Time.deltaTime;

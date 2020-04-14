@@ -10,6 +10,8 @@ TagManager:
   - staticDeath
   - hideVidSwitch
   - BulletSpawnerPosition
+  - footstep
+  - stun
   layers:
   - Default
   - TransparentFX
