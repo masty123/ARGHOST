@@ -106,7 +106,6 @@ public class WMController : IndependentEnemyController
     void huntPlayer()
     {
         footSound.gameObject.SetActive(true);
-
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
         //Move to Player
         transform.position += transform.forward * maxSpeed * Time.deltaTime;
