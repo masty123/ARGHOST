@@ -59,12 +59,12 @@ public class IndependentEnemyController : MonoBehaviour
     protected bool isRandom = false;
     protected int randomPattern;
     public hideVideo hidVidObj;
+    public AudioSource jumpScare;
 
 
     [Header("Particle Effect")]
     [SerializeField] protected GameObject defeatParticlePrefab;
     protected GameObject defeatParticleGraphics;
-
     protected Animator animator;
 
     private void Awake()
@@ -81,6 +81,10 @@ public class IndependentEnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
         hidVidObj = GameObject.FindGameObjectWithTag("hideVidSwitch").transform.GetComponent<hideVideo>();
+        jumpScare = GameObject.FindGameObjectWithTag("jumpScareAudio").GetComponentInChildren<AudioSource>();
+
+
+        jumpScare.gameObject.SetActive(false);
 
     }
 
@@ -158,7 +162,7 @@ public class IndependentEnemyController : MonoBehaviour
     {
 
         enemyScare();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.25f);
 
         //StartCoroutine(playstaticDeath());
         //SceneManager.LoadScene("GameOver");
@@ -206,6 +210,8 @@ public class IndependentEnemyController : MonoBehaviour
     {
         maxSpeed = 0;
         animator.SetBool("isTriggerScare", true);
+        jumpScare.gameObject.SetActive(true);
+
     }
 
     //do something when enemy hit player (Orignally jumpscare) right now, kill themself.

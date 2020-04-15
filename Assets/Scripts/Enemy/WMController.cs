@@ -13,8 +13,9 @@ public class WMController : IndependentEnemyController
     [SerializeField] private float stareTime = 3.5f;
     private float countTime;
     string seconds = "";
-    public AudioSource stunSound;
-    public AudioSource footSound;
+
+    private AudioSource stunSound;
+    private AudioSource footSound;
 
     public override void Start()
     {
@@ -23,11 +24,15 @@ public class WMController : IndependentEnemyController
         animator = GetComponentInChildren<Animator>();
         m_Renderer = GetComponentInChildren<Renderer>();
         hidVidObj = GameObject.FindGameObjectWithTag("hideVidSwitch").transform.GetComponent<hideVideo>();
-        stunSound = GameObject.FindGameObjectWithTag("stun").GetComponent<AudioSource>();
-        footSound = GameObject.FindGameObjectWithTag("footstep").GetComponent<AudioSource>();
+        stunSound = GameObject.FindGameObjectWithTag("stun").GetComponentInChildren<AudioSource>();
+        footSound = GameObject.FindGameObjectWithTag("footstep").GetComponentInChildren<AudioSource>();
+        jumpScare = GameObject.FindGameObjectWithTag("jumpScareAudio").GetComponentInChildren<AudioSource>();
+
 
         stunSound.gameObject.SetActive(false);
         footSound.gameObject.SetActive(false);
+        jumpScare.gameObject.SetActive(false);
+
 
     }
 
@@ -39,6 +44,8 @@ public class WMController : IndependentEnemyController
         if (EnteredTrigger)
         {
             countTime = 999f;
+            stunSound.gameObject.SetActive(false);
+            footSound.gameObject.SetActive(false);
             StartCoroutine(scare());
         }
 
@@ -83,24 +90,10 @@ public class WMController : IndependentEnemyController
 
     public override IEnumerator scare()
     {
-
         enemyScare();
         yield return new WaitForSeconds(1.5f);
-
-        //StartCoroutine(playstaticDeath());
-        //SceneManager.LoadScene("GameOver");
         StartCoroutine(LoadAsynchronously("GameOver"));
     }
-
-    //Start playing static video after the player got jumpscared.
-    //IEnumerator playstaticDeath()
-    //{
-    //    if(hidVidObj != null)
-    //    {
-    //        hidVidObj.isActive = true;
-    //        yield return new WaitForSeconds(2.5f);
-    //    }
-    //}
 
 
     void huntPlayer()

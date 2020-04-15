@@ -12,6 +12,7 @@ TagManager:
   - BulletSpawnerPosition
   - footstep
   - stun
+  - jumpScareAudio
   layers:
   - Default
   - TransparentFX
