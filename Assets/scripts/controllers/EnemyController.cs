@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
    // [SerializeField] private float right;
    // [SerializeField] private float shakeSpeed;
    // [SerializeField] private float shakeRate;
-    [SerializeField] private float deathTime;
+    //[SerializeField] private float deathTime;
     private float currentTime;
     public bool isHit;
 
@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         rb = this.GetComponent<Rigidbody>();
-        currentTime = deathTime;
+        //currentTime = deathTime;
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour
         if(isHit)
         {   
             //play dying animation
-            StartCoroutine(dying());
+           // StartCoroutine(dying());
         }
     }
 
@@ -100,6 +100,7 @@ public class EnemyController : MonoBehaviour
     }
 
     //count down before destroying itself.
+    /*
     public IEnumerator dying()
     {
         //enemyHurt();
@@ -107,6 +108,7 @@ public class EnemyController : MonoBehaviour
         //Destroy(transform.parent.gameObject);
         DeadEffect();
     }
+    */
 
     // Effect play when this enemy is dead.
     void DeadEffect()
@@ -137,7 +139,7 @@ public class EnemyController : MonoBehaviour
         if (other.tag.Equals("MainCamera"))
         {
             EnteredTrigger = true;
-            dying();
+            //dying();
             //Destroy(transform.parent.gameObject);
         }
     }

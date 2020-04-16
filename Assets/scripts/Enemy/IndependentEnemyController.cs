@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 */
 public class IndependentEnemyController : MonoBehaviour
 {
-
     protected Transform player;
 
     [Header("AI Speed")]
@@ -50,7 +49,7 @@ public class IndependentEnemyController : MonoBehaviour
 
     [Header("Dying Behaviors")]
     ////Time before destroying the prefab
-    [SerializeField] private float deathTime;
+    [SerializeField] private float deathTime = 0.75f;
 
     //Checking if got hit by player.
     public bool isHit;
@@ -151,7 +150,6 @@ public class IndependentEnemyController : MonoBehaviour
     //count down before destroying itself.
     public IEnumerator dying()
     {
-
         enemyHurt();
         yield return new WaitForSeconds(deathTime);
         DeadEffect();
@@ -160,12 +158,8 @@ public class IndependentEnemyController : MonoBehaviour
     //Jumpscare the player
     public virtual IEnumerator scare()
     {
-
         enemyScare();
         yield return new WaitForSeconds(1.25f);
-
-        //StartCoroutine(playstaticDeath());
-        //SceneManager.LoadScene("GameOver");
         StartCoroutine(LoadAsynchronously("GameOver"));
     }
 
