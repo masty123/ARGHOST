@@ -9,11 +9,29 @@ using UnityEngine.SocialPlatforms.Impl;
 public class MenuManager : MonoBehaviour
 {   
     public GameObject menuCanvas;
+    public GameObject tutorialCanvas;
+    public GameObject tutorialMenu;
+
+
+    [SerializeField]private List<GameObject> tutorialList;
  
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(tutorialCanvas != null)
+        {
+            tutorialMenu = GameObject.FindGameObjectWithTag("tutorialUI");
+
+                foreach(Transform child in tutorialCanvas.transform)
+                {   
+                    tutorialList.Add(child.gameObject);
+                }
+            tutorialCanvas.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Tutorial menu is missing...");
+        }
     }
 
     // Update is called once per frame
@@ -28,6 +46,12 @@ public class MenuManager : MonoBehaviour
         //Load game scene.
         SceneManager.LoadScene("mapChoose 2");
         ScoreManager.ResetScore();
+    }
+
+    public void tutorial()
+    {
+        menuCanvas.SetActive(false);
+        tutorialCanvas.SetActive(false);
     }
 
     public void highscore()

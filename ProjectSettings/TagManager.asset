@@ -13,6 +13,7 @@ TagManager:
   - footstep
   - stun
   - jumpScareAudio
+  - tutorialUI
   layers:
   - Default
   - TransparentFX

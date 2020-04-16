@@ -31695,7 +31695,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fd78e8b2473e84121a169dae515c4276, type: 3}
+    m_Font: {fileID: 12800000, guid: c979147c2e45767449a03afab37ebd59, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 1
@@ -31707,7 +31707,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Back
+  m_Text: BACK
 --- !u!222 &1882366308
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34874,7 +34874,7 @@ GameObject:
   - component: {fileID: 2045454256}
   - component: {fileID: 2045454259}
   m_Layer: 5
-  m_Name: RetryButton
+  m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
