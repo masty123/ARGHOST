@@ -12,7 +12,7 @@ public class ShaderAgatha : MonoBehaviour
     void Start()
     {
         shader = Shader.Find("Standard");
-        shader2 = Shader.Find("Unlit/Transparent Cutout");
+       // shader2 = Shader.Find("Unlit/Transparent Cutout");
 
     }
 
@@ -32,7 +32,7 @@ public class ShaderAgatha : MonoBehaviour
                 {
                     if (child.name.Equals("6_mesh1_0.1_16_16"))
                     {
-                        child.GetComponent<Renderer>().material.shader = shader2;
+                        child.GetComponent<Renderer>().material.shader = shader;
                         child.GetComponent<Renderer>().material.SetFloat("_Mode", 2); //Fade
                         child.GetComponent<Renderer>().material.SetInt("_ZWrite", 1);
                         child.GetComponent<Renderer>().material.EnableKeyword("_ALPHATEST_ON");
