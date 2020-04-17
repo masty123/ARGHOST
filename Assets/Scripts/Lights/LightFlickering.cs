@@ -62,7 +62,7 @@ public class LightFlickering : MonoBehaviour
             else
             {
                 randomPose = Random.Range(0, 3);
-                Debug.Log(randomPose.ToString());
+                //Debug.Log(randomPose.ToString());
                 animator.SetInteger("Pose", randomPose);
                 foreach (Transform child in entity)
                 {

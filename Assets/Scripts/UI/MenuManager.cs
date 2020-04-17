@@ -10,23 +10,20 @@ public class MenuManager : MonoBehaviour
 {   
     public GameObject menuCanvas;
     public GameObject tutorialCanvas;
-    public GameObject tutorialMenu;
+    public GameObject ghostCanvas;
 
 
-    [SerializeField]private List<GameObject> tutorialList;
+    //[SerializeField]private List<GameObject> tutorialList;
  
     // Start is called before the first frame update
     void Start()
     {
-        if(tutorialCanvas != null)
+        //if(tutorialCanvas != null)
+        if (tutorialCanvas != null && ghostCanvas != null)
         {
-            tutorialMenu = GameObject.FindGameObjectWithTag("tutorialUI");
 
-                foreach(Transform child in tutorialCanvas.transform)
-                {   
-                    tutorialList.Add(child.gameObject);
-                }
             tutorialCanvas.SetActive(false);
+            ghostCanvas.SetActive(false);
         }
         else
         {
@@ -51,8 +48,16 @@ public class MenuManager : MonoBehaviour
     public void tutorial()
     {
         menuCanvas.SetActive(false);
-        tutorialCanvas.SetActive(false);
+        tutorialCanvas.SetActive(true);
     }
+
+    public void ghost()
+    {
+        menuCanvas.SetActive(false);
+        ghostCanvas.SetActive(true);
+    }
+
+
 
     public void highscore()
     {
@@ -63,6 +68,18 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         ScoreManager.ResetScore();
+    }
+
+    public void tutorialbackMenu()
+    {
+        menuCanvas.SetActive(true);
+        tutorialCanvas.SetActive(false);
+    }
+
+    public void ghostbackMenu()
+    {
+        menuCanvas.SetActive(true);
+        tutorialCanvas.SetActive(false);
     }
 
     //Might use something to login
