@@ -79,7 +79,7 @@ public class MenuManager : MonoBehaviour
     public void ghostbackMenu()
     {
         menuCanvas.SetActive(true);
-        tutorialCanvas.SetActive(false);
+        ghostCanvas.SetActive(false);
     }
 
     //Might use something to login
