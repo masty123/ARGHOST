@@ -13,6 +13,7 @@ TagManager:
   - footstep
   - stun
   - jumpScareAudio
+  - MapText
   layers:
   - Default
   - TransparentFX
