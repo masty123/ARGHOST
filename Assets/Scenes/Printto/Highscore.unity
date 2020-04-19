@@ -213,7 +213,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fd78e8b2473e84121a169dae515c4276, type: 3}
+    m_Font: {fileID: 12800000, guid: c979147c2e45767449a03afab37ebd59, type: 3}
     m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 1
@@ -655,6 +655,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuCanvas: {fileID: 0}
+  tutorialCanvas: {fileID: 0}
+  ghostCanvas: {fileID: 0}
 --- !u!1 &643469262
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,21 +713,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fd78e8b2473e84121a169dae515c4276, type: 3}
+    m_Font: {fileID: 12800000, guid: c979147c2e45767449a03afab37ebd59, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 70
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Highscores
+  m_Text: 'HIGHSCORES
 
-    around the globe'
+    AROUND THE GLOBE'
 --- !u!222 &643469265
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -998,7 +1000,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: c979147c2e45767449a03afab37ebd59, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -1101,7 +1103,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 609812659}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1198,7 +1200,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fd78e8b2473e84121a169dae515c4276, type: 3}
+    m_Font: {fileID: 12800000, guid: c979147c2e45767449a03afab37ebd59, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 1
@@ -1210,7 +1212,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Back
+  m_Text: BACK
 --- !u!222 &1882366308
 CanvasRenderer:
   m_ObjectHideFlags: 0
