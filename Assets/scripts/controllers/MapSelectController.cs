@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct MapSelection
@@ -20,6 +21,7 @@ public class MapSelectController : MonoBehaviour
     public Transform cameraTransform;
     public Transform cameraPoint;
     public float lerpTime = 2f;
+    public Text levelText;
 
     List<Transform> selectableBuildings;
     int currentMap = 0;
@@ -40,9 +42,11 @@ public class MapSelectController : MonoBehaviour
             if (!selectableBuildings.Contains(buildings[temp].GetComponentInChildren<TextMeshPro>().transform))
             {
                 buildings[temp].SetActive(true);
+                /*
                 buildings[temp].GetComponentInChildren<TextMeshPro>().text = maps[i].sceneText;
                 buildings[temp].GetComponentInChildren<TextMeshPro>().color = maps[i].textColor;
-                selectableBuildings.Add(buildings[temp].GetComponentInChildren<TextMeshPro>().transform);
+                */
+                selectableBuildings.Add(buildings[temp].transform);
                 i++;
             }
         }
