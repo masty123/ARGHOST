@@ -11,6 +11,7 @@ public struct MapSelection
     public string sceneText;
     public string sceneName;
     public Color textColor;
+    public Material buildingMaterial;
 }
 
 public class MapSelectController : MonoBehaviour
@@ -31,21 +32,39 @@ public class MapSelectController : MonoBehaviour
     {
         selectableBuildings = new List<Transform>();
         cameraLookAt = cameraTransform.GetComponent<SimpleLookAt>();
+        /*
         foreach(GameObject building in buildings)
         {
             building.SetActive(false);
         }
+        */
         int i = 0;
         while (i < maps.Count)
         {
             int temp = Random.Range(0, buildings.Count);
-            if (!selectableBuildings.Contains(buildings[temp].GetComponentInChildren<TextMeshPro>().transform))
+            if (!selectableBuildings.Contains(buildings[temp].transform))
             {
                 buildings[temp].SetActive(true);
                 /*
                 buildings[temp].GetComponentInChildren<TextMeshPro>().text = maps[i].sceneText;
                 buildings[temp].GetComponentInChildren<TextMeshPro>().color = maps[i].textColor;
                 */
+                foreach (Transform child in buildings[temp].transform)
+                {
+                    Renderer tempRenderer = child.GetComponent<Renderer>();
+                    if (tempRenderer != null)
+                    {
+                        tempRenderer.material = maps[i].buildingMaterial;
+                    }
+                    foreach (Transform grandChild in child.transform)
+                    {
+                        Renderer tempGrandRenderer = grandChild.GetComponent<Renderer>();
+                        if (tempGrandRenderer != null)
+                        {
+                            tempGrandRenderer.material = maps[i].buildingMaterial;
+                        }
+                    }
+                }
                 selectableBuildings.Add(buildings[temp].transform);
                 i++;
             }
@@ -54,14 +73,16 @@ public class MapSelectController : MonoBehaviour
 
     private void Update()
     {
-        if(cameraTransform != null && cameraPoint != null)
+        if (cameraTransform != null && cameraPoint != null)
         {
             cameraTransform.position = Vector3.Lerp(cameraTransform.position, cameraPoint.position, lerpTime * Time.deltaTime);
         }
-        if(cameraLookAt != null)
+        if (cameraLookAt != null)
         {
             cameraLookAt.targetObj = selectableBuildings[currentMap];
         }
+        levelText.text = maps[currentMap].sceneText;
+        levelText.color = maps[currentMap].textColor;
     }
 
     public void NextBuilding()
