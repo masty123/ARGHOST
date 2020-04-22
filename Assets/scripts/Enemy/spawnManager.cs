@@ -311,6 +311,6 @@ public class spawnManager : MonoBehaviour
     public bool IsEnoughPlane()
     {
         GetVisualizer();
-        return visualizer.Length >= planeRequire;
+        return visualizer.Length > planeRequire;
     }
 }
