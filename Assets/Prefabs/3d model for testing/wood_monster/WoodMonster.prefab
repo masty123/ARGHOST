@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 1328408976680167996}
   m_Layer: 0
   m_Name: Footstep
-  m_TagString: Untagged
+  m_TagString: footstep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2551,7 +2551,7 @@ GameObject:
   - component: {fileID: 3311051941418693678}
   m_Layer: 0
   m_Name: JumpScare
-  m_TagString: Untagged
+  m_TagString: jumpScareAudio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2993,7 +2993,7 @@ GameObject:
   - component: {fileID: 8840244346338519378}
   m_Layer: 0
   m_Name: stun
-  m_TagString: Untagged
+  m_TagString: stun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

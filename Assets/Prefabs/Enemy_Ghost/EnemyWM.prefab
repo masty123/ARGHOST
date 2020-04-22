@@ -93,6 +93,7 @@ MonoBehaviour:
   isHit: 0
   isOutPortal: 0
   hidVidObj: {fileID: 0}
+  jumpScare: {fileID: 0}
   defeatParticlePrefab: {fileID: 6454576854534941436, guid: 7c6e1354371411d4eb14fb469fc1c921,
     type: 3}
   stareTime: 10
@@ -387,6 +388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9723557
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972085431398470728, guid: def8fe859a2610b449157f5cd081ccbc,
+        type: 3}
+      propertyPath: m_TagString
+      value: footstep
       objectReference: {fileID: 0}
     - target: {fileID: 1978815863573207771, guid: def8fe859a2610b449157f5cd081ccbc,
         type: 3}
