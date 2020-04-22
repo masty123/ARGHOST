@@ -138,7 +138,7 @@ namespace GoogleARCore.Examples.Common
         [SerializeField] private spawnManager manager = null;
 
         // track state of plane find button
-        private enum planeFindButtonState {NotEnough, Enough };
+        private enum planeFindButtonState {NotEnough, Enough, Started };
         private planeFindButtonState p_state = planeFindButtonState.NotEnough;
 
         /// <summary>
@@ -194,6 +194,22 @@ namespace GoogleARCore.Examples.Common
         // track plane status
         private void _UpdatePlaneFind()
         {
+            // change behavior when button is already clicked
+            if( p_state == planeFindButtonState.Started )
+            {
+                if( manager.IsEnoughPlane() )
+                {
+                    waveStartButton.SetActive(false);
+                }
+                else
+                {
+                    waveStartButton.GetComponentInChildren<Text>().color = Color.red;
+                    waveStartButton.GetComponentInChildren<Text>().text 
+                        = "PLANE LOSS! KEEP SCANNING";
+                }
+                return;
+            }
+
             if( !manager.IsEnoughPlane() )
             {
                 waveStartButton.SetActive(true);
@@ -221,12 +237,13 @@ namespace GoogleARCore.Examples.Common
         /// </summary>
         private void _StartWaveButtonClicked()
         {
-            if( p_state == planeFindButtonState.NotEnough )
+            if( p_state != planeFindButtonState.Enough )
             {
                 return;
             }
             planeGenerator.stopDetecting();
             manager.Unhalt();
+            p_state = planeFindButtonState.Started;
             waveStartButton.SetActive(false);
             Timer tempTimer = FindObjectOfType<Timer>();
             if(tempTimer != null)
