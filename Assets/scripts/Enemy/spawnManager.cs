@@ -309,6 +309,6 @@ public class spawnManager : MonoBehaviour
     {
         GetVisualizer();
         // Debug.Log("Plane n = " + visualizer.Length);
-        return visualizer.Length >= 1;
+        return visualizer.Length > 1;
     }
 }
