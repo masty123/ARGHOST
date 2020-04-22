@@ -224,11 +224,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fd78e8b2473e84121a169dae515c4276, type: 3}
-    m_FontSize: 30
+    m_Font: {fileID: 12800000, guid: c979147c2e45767449a03afab37ebd59, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -236,9 +236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Survive until
-
-    6 AM'
+  m_Text: SURVIVE UNTIL 6AM
 --- !u!1 &2395648974359315393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,7 +2324,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fd78e8b2473e84121a169dae515c4276, type: 3}
+    m_Font: {fileID: 12800000, guid: c979147c2e45767449a03afab37ebd59, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0

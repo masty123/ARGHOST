@@ -42,7 +42,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7411140503840585189}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.29
   m_Height: 1.45
@@ -77,14 +77,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 3
-  moveSpeed: 3
+  maxSpeed: 0.3
+  moveSpeed: 0
+  accelSpeed: 0
+  timeZeroToMaxSpeed: 2.5
+  animatorMaxSpeed: 1.75
+  animatorSpeed: 0
+  animatorAcelSpeed: 0
+  timeZeroToAnim: 2.5
   lookRadius: 10
   EnteredTrigger: 0
   showCross: 0
+  Gold: 1
   deathTime: 0.75
   isHit: 0
   isOutPortal: 1
-  staticDeath: {fileID: 0}
+  hidVidObj: {fileID: 0}
   defeatParticlePrefab: {fileID: 6454576854534941436, guid: 7c6e1354371411d4eb14fb469fc1c921,
     type: 3}
   speed: 2

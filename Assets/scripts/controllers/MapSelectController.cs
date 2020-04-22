@@ -1,29 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct MapSelection
 {
-    public GameObject building;
+    public string sceneText;
     public string sceneName;
+    public Color textColor;
 }
 
 public class MapSelectController : MonoBehaviour
 {
 
     public List<MapSelection> maps;
+    public List<GameObject> buildings;
     public Transform cameraTransform;
     public Transform cameraPoint;
     public float lerpTime = 2f;
 
+    List<Transform> selectableBuildings;
     int currentMap = 0;
     SimpleLookAt cameraLookAt;
 
     private void Start()
     {
+        selectableBuildings = new List<Transform>();
         cameraLookAt = cameraTransform.GetComponent<SimpleLookAt>();
+        foreach(GameObject building in buildings)
+        {
+            building.SetActive(false);
+        }
+        int i = 0;
+        while (i < maps.Count)
+        {
+            int temp = Random.Range(0, buildings.Count);
+            if (!selectableBuildings.Contains(buildings[temp].GetComponentInChildren<TextMeshPro>().transform))
+            {
+                buildings[temp].SetActive(true);
+                buildings[temp].GetComponentInChildren<TextMeshPro>().text = maps[i].sceneText;
+                buildings[temp].GetComponentInChildren<TextMeshPro>().color = maps[i].textColor;
+                selectableBuildings.Add(buildings[temp].GetComponentInChildren<TextMeshPro>().transform);
+                i++;
+            }
+        }
     }
 
     private void Update()
@@ -34,7 +56,7 @@ public class MapSelectController : MonoBehaviour
         }
         if(cameraLookAt != null)
         {
-            cameraLookAt.targetObj = maps[currentMap].building.transform;
+            cameraLookAt.targetObj = selectableBuildings[currentMap];
         }
     }
 

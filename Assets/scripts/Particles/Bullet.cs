@@ -34,10 +34,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        EnemyController temp = collision.gameObject.GetComponent<EnemyController>();
-        if (temp != null)
+        WMController temp = collision.gameObject.GetComponent<WMController>();
+        if(temp != null)
         {
-            temp.Defeat();
+            StopAllParticles();
+            Destroy(gameObject);
+            return;
+        }
+        EnemyController temp1 = collision.gameObject.GetComponent<EnemyController>();
+        if (temp1 != null)
+        {
+            temp1.Defeat();
             StopAllParticles();
             Destroy(gameObject);
         }

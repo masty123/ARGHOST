@@ -10,7 +10,7 @@ public class VideoScript : MonoBehaviour
 {
     public RawImage rawImage;
     public VideoPlayer VideoPlayer;
-    private Texture m_RawImageTexture;
+    Texture m_RawImageTexture;
     //public bool toggleVid;
 
 

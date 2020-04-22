@@ -11,7 +11,7 @@ public class spawnManager : MonoBehaviour
     //State of SpawnManager
     public enum SpawnState {SPAWNING, WAITING, COUNTING, HALTING };
 
-    [SerializeField] Transform cameraTransform;
+    public Transform cameraTransform;
 
     [System.Serializable]
     public class Wave
@@ -81,7 +81,7 @@ public class spawnManager : MonoBehaviour
     private float searchCountdown = 1f;
     
     // Plane Generator, Parent Object of all detected plane.
-    [SerializeField] DetectedPlaneGenerator planeGenerator;
+    public DetectedPlaneGenerator planeGenerator;
     // Visualizer, Hold DetectedPlane inside, can be found as child of DetectedPlaneGenerater Object.
     DetectedPlaneVisualizer[] visualizer;
 

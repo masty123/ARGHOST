@@ -9,11 +9,26 @@ using UnityEngine.SocialPlatforms.Impl;
 public class MenuManager : MonoBehaviour
 {   
     public GameObject menuCanvas;
+    public GameObject tutorialCanvas;
+    public GameObject ghostCanvas;
+
+
+    //[SerializeField]private List<GameObject> tutorialList;
  
     // Start is called before the first frame update
     void Start()
     {
-        
+        //if(tutorialCanvas != null)
+        if (tutorialCanvas != null && ghostCanvas != null)
+        {
+
+            tutorialCanvas.SetActive(false);
+            ghostCanvas.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Tutorial menu is missing...");
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +45,20 @@ public class MenuManager : MonoBehaviour
         ScoreManager.ResetScore();
     }
 
+    public void tutorial()
+    {
+        menuCanvas.SetActive(false);
+        tutorialCanvas.SetActive(true);
+    }
+
+    public void ghost()
+    {
+        menuCanvas.SetActive(false);
+        ghostCanvas.SetActive(true);
+    }
+
+
+
     public void highscore()
     {
         SceneManager.LoadScene("Highscore");
@@ -39,6 +68,18 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         ScoreManager.ResetScore();
+    }
+
+    public void tutorialbackMenu()
+    {
+        menuCanvas.SetActive(true);
+        tutorialCanvas.SetActive(false);
+    }
+
+    public void ghostbackMenu()
+    {
+        menuCanvas.SetActive(true);
+        ghostCanvas.SetActive(false);
     }
 
     //Might use something to login

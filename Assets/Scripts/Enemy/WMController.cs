@@ -14,12 +14,25 @@ public class WMController : IndependentEnemyController
     private float countTime;
     string seconds = "";
 
+    private AudioSource stunSound;
+    private AudioSource footSound;
+
     public override void Start()
     {
+        countTime = stareTime;
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
         m_Renderer = GetComponentInChildren<Renderer>();
         hidVidObj = GameObject.FindGameObjectWithTag("hideVidSwitch").transform.GetComponent<hideVideo>();
+        stunSound = GameObject.FindGameObjectWithTag("stun").GetComponentInChildren<AudioSource>();
+        footSound = GameObject.FindGameObjectWithTag("footstep").GetComponentInChildren<AudioSource>();
+        jumpScare = GameObject.FindGameObjectWithTag("jumpScareAudio").GetComponentInChildren<AudioSource>();
+
+
+        stunSound.gameObject.SetActive(false);
+        footSound.gameObject.SetActive(false);
+        jumpScare.gameObject.SetActive(false);
+
 
     }
 
@@ -31,6 +44,8 @@ public class WMController : IndependentEnemyController
         if (EnteredTrigger)
         {
             countTime = 999f;
+            stunSound.gameObject.SetActive(false);
+            footSound.gameObject.SetActive(false);
             StartCoroutine(scare());
         }
 
@@ -45,12 +60,19 @@ public class WMController : IndependentEnemyController
             animator.SetBool("lookAway", false);
             //Debug.Log("Object is visible");
             stareTimer();
+
+            stunSound.gameObject.SetActive(true);
+            footSound.gameObject.SetActive(false);
+
+
         }
         else if (!m_Renderer.isVisible && firstSaw)
         {
             //Debug.Log("Object is no longer visible");
             animator.SetBool("lookAway", true);
             huntPlayer();
+
+            stunSound.gameObject.SetActive(false);
         }
 
         else if (m_Renderer.isVisible && firstSaw)
@@ -58,33 +80,25 @@ public class WMController : IndependentEnemyController
             //Debug.Log("Object is visible");
             animator.SetBool("lookAway", false);
             stareTimer();
+
+            stunSound.gameObject.SetActive(true);
+            footSound.gameObject.SetActive(false);
+
+
         }
     }
 
     public override IEnumerator scare()
     {
-
         enemyScare();
         yield return new WaitForSeconds(1.5f);
-
-        //StartCoroutine(playstaticDeath());
-        //SceneManager.LoadScene("GameOver");
         StartCoroutine(LoadAsynchronously("GameOver"));
     }
-
-    //Start playing static video after the player got jumpscared.
-    //IEnumerator playstaticDeath()
-    //{
-    //    if(hidVidObj != null)
-    //    {
-    //        hidVidObj.isActive = true;
-    //        yield return new WaitForSeconds(2.5f);
-    //    }
-    //}
 
 
     void huntPlayer()
     {
+        footSound.gameObject.SetActive(true);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.position - transform.position), rotationSpeed * Time.deltaTime);
         //Move to Player
         transform.position += transform.forward * maxSpeed * Time.deltaTime;
@@ -96,7 +110,7 @@ public class WMController : IndependentEnemyController
     {
         if(countTime >= 0)
         {
-            countTime = stareTime - Time.time;
+            countTime = countTime - Time.deltaTime;
             seconds = (countTime % 60).ToString("f2");
         }
         else
