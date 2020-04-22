@@ -85,6 +85,9 @@ public class spawnManager : MonoBehaviour
     // Visualizer, Hold DetectedPlane inside, can be found as child of DetectedPlaneGenerater Object.
     DetectedPlaneVisualizer[] visualizer;
 
+    [Tooltip("Number of planes require to start waves.")]
+    [SerializeField] private int planeRequire = 1;
+
     //Randomly spawn enemies.
     private void Start()
     {
@@ -308,7 +311,6 @@ public class spawnManager : MonoBehaviour
     public bool IsEnoughPlane()
     {
         GetVisualizer();
-        // Debug.Log("Plane n = " + visualizer.Length);
-        return visualizer.Length >= 1;
+        return visualizer.Length >= planeRequire;
     }
 }
