@@ -43,8 +43,9 @@ public class HighScoreSystem : MonoBehaviour
 
             for(int i = 0; i < highscoresList.Length; i++)
             {
-                highscoreBoardText.text += (i+1) + "."
-                    + highscoresList[i].username + "\n"
+                string name = highscoresList[i].username.ToUpper();
+                highscoreBoardText.text += (i + 1) + "."
+                    + name + "\n"
                     + highscoresList[i].score + "\n\n";
             }
         }

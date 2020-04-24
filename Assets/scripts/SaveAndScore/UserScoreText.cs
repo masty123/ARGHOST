@@ -10,11 +10,13 @@ public class UserScoreText : MonoBehaviour
     {
         if(UserInfo.savefile != null)
         {
-            GetComponent<Text>().text = UserInfo.savefile.PlayerName + ": " + UserInfo.savefile.HighScore;
+            string playerName = UserInfo.savefile.PlayerName.ToUpper();
+            GetComponent<Text>().text = playerName + ": " + UserInfo.savefile.HighScore;
+            GetComponent<Text>().text.ToUpper();
         }
         else
         {
-            GetComponent<Text>().text = "Debug player: 3000";
+            GetComponent<Text>().text = "DEBUG PLAYER: 3000";
         }
     }
 
