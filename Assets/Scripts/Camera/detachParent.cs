@@ -15,7 +15,6 @@ public class detachParent : MonoBehaviour
     IEnumerator DetachParent()
     {
         yield return new WaitForSeconds(seconds);
-        transform.parent = null;
-        
+        transform.parent = null;      
     }
 }
