@@ -14,7 +14,7 @@ public class ResultText : MonoBehaviour
 
         if (ScoreManager.IsHighScore())
         {
-            text.text = "New High Score!\n" + (int)ScoreManager.GetScore();
+            text.text = "NEW HIGH SCORE!\n" + (int)ScoreManager.GetScore();
             UserInfo.savefile.HighScore = ScoreManager.GetScore();
             HighScoreSystem hss = GameObject.FindObjectOfType<HighScoreSystem>();
             if (hss != null)
@@ -24,8 +24,8 @@ public class ResultText : MonoBehaviour
         }
         else
         {
-            text.text = "Score\n" + (int)ScoreManager.GetScore()
-                + "\n\nHigh Score\n" + (int)ScoreManager.GetHighScore();
+            text.text = "SCORE\n" + (int)ScoreManager.GetScore()
+                + "\n\nHIGH SCORE\n" + (int)ScoreManager.GetHighScore();
         }
 
         UserInfo.savefile.overallGhostKilled += ScoreManager.KilledGhosts;
