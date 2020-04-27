@@ -17,12 +17,14 @@ public class WMController : IndependentEnemyController
     private AudioSource stunSound;
     private AudioSource footSound;
 
+
     public override void Start()
     {
         countTime = stareTime;
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         animator = GetComponentInChildren<Animator>();
         m_Renderer = GetComponentInChildren<Renderer>();
+        scareSystem = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<jumpScareV2>();
         hidVidObj = GameObject.FindGameObjectWithTag("hideVidSwitch").transform.GetComponent<hideVideo>();
         stunSound = GameObject.FindGameObjectWithTag("stun").GetComponentInChildren<AudioSource>();
         footSound = GameObject.FindGameObjectWithTag("footstep").GetComponentInChildren<AudioSource>();
@@ -47,6 +49,11 @@ public class WMController : IndependentEnemyController
             stunSound.gameObject.SetActive(false);
             footSound.gameObject.SetActive(false);
             StartCoroutine(scare());
+        }
+
+        if (scareSystem.jumpScare)
+        {
+            moveSpeed = 0;
         }
 
     } 

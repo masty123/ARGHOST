@@ -24,17 +24,17 @@ public class jumpScareV2 : MonoBehaviour
         //Checks if the ghost is in the game or not
         //if not: find it
         //if in the game: checks jumpscare loop.
-        if (ghostObj == null)
-        {   
-            ghostObj = GameObject.FindGameObjectWithTag("Enemy");
-        }
-        else if (ghostObj != null)
-        {
+        //if (ghostObj == null)
+        //{   
+        //    ghostObj = GameObject.FindGameObjectWithTag("Enemy");
+        //}
+        //else if (ghostObj != null)
+        //{
             if (jumpScare)
             {
                 startScare(ghostObj);
             }
-        }
+        //}
     }
 
   
@@ -53,6 +53,7 @@ public class jumpScareV2 : MonoBehaviour
         if (other.tag.Equals("Enemy"))
         {
             Debug.Log("look at ghost");
+            ghostObj = other.transform.gameObject;
             jumpScare = true;
         }
     }

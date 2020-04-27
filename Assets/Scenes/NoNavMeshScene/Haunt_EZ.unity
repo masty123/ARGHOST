@@ -175,6 +175,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 754913026577481049, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 3}
+      propertyPath: distance
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 2855425908200462122, guid: c10877f7cd5764de18d46d7b777d1faa,
         type: 3}
       propertyPath: waves.Array.size
