@@ -49,7 +49,7 @@ public class IndependentEnemyController : MonoBehaviour
 
     [Header("Dying Behaviors")]
     ////Time before destroying the prefab
-    [SerializeField] private float deathTime = 0.75f;
+    [SerializeField] private float deathTime = 0.55f;
 
     //Checking if got hit by player.
     public bool isHit;
