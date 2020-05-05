@@ -13,16 +13,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 3
+  maxSpeed: 3
   moveSpeed: 2
+  accelSpeed: 0
+  timeZeroToMaxSpeed: 2.5
+  animatorMaxSpeed: 1.75
+  animatorSpeed: 0
+  animatorAcelSpeed: 0
+  timeZeroToAnim: 2.5
   lookRadius: 10
   EnteredTrigger: 0
   showCross: 0
+  Gold: 1
   deathTime: 0.75
   isHit: 0
   isOutPortal: 0
-  staticDeath: {fileID: 0}
+  hidVidObj: {fileID: 0}
+  jumpScare: {fileID: 0}
   defeatParticlePrefab: {fileID: 6454576854534941436, guid: 7c6e1354371411d4eb14fb469fc1c921,
     type: 3}
+  outportalMaxSpeed: 0.5
   timeUntilSeperate: 0.5
   seperateGhostPrefab: {fileID: 4814696071937085739, guid: adc6e93fe084140e6a8d32b82a1c52b1,
     type: 3}
@@ -152,6 +162,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957574402504817918, guid: bea4b2ed832e24546a33643a77106d5c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616321589302040226, guid: bea4b2ed832e24546a33643a77106d5c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7411140503840585189, guid: bea4b2ed832e24546a33643a77106d5c,
         type: 3}
