@@ -35,7 +35,7 @@ public class AgathaEnemyController : IndependentEnemyController
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
             {
                 timeUntilSeperate -= Time.deltaTime;
-                if(timeUntilSeperate <= 0 && !isSeperated)
+                if(timeUntilSeperate <= 0 && !isSeperated && !isHit)
                 {
                     //Set to false and wait until seperated ghosts call back
                     isWalking = false;
