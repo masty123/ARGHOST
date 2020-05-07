@@ -13,7 +13,6 @@ public class changeShaderAlma : MonoBehaviour
     void Start()
     {
         shader = Shader.Find("Standard");
-        shader2 = Shader.Find("Unlit/Transparent Cutout");
 
     }
 
@@ -33,7 +32,7 @@ public class changeShaderAlma : MonoBehaviour
                     {
                         if (child.name.Equals("7_almahairs_0_3_0"))
                         {
-                            child.GetComponent<Renderer>().material.shader = shader2;
+                            child.GetComponent<Renderer>().material.shader = shader;
                             child.GetComponent<Renderer>().material.SetFloat("_Mode", 2); //Fade
                             child.GetComponent<Renderer>().material.SetInt("_ZWrite", 1);
                             child.GetComponent<Renderer>().material.EnableKeyword("_ALPHATEST_ON");
