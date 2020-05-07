@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+// NOTE: Not used anymore because we don't need Navmesh.
 public class EnemyController : MonoBehaviour
 {
     //vision radius of enemy.
@@ -15,13 +15,13 @@ public class EnemyController : MonoBehaviour
     //check if player show cross.
     public bool showCross;
 
-
+    //shake time, shake speed etc.
     [Header("Dying Behaviors")]
-    [SerializeField] private float left;
-    [SerializeField] private float right;
-    [SerializeField] private float shakeSpeed;
-    [SerializeField] private float shakeRate;
-    [SerializeField] private float deathTime;
+   // [SerializeField] private float left;
+   // [SerializeField] private float right;
+   // [SerializeField] private float shakeSpeed;
+   // [SerializeField] private float shakeRate;
+    //[SerializeField] private float deathTime;
     private float currentTime;
     public bool isHit;
 
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     Transform target;
     //for enemy moving.
     NavMeshAgent agent ;
-    //
+    //For making the AI not falling of the map.
     private Rigidbody rb;
 
     [Header("Particle Effect")]
@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         rb = this.GetComponent<Rigidbody>();
-        currentTime = deathTime;
+        //currentTime = deathTime;
     }
 
     // Update is called once per frame
@@ -69,8 +69,9 @@ public class EnemyController : MonoBehaviour
             }
         }
         if(isHit)
-        {
-            StartCoroutine(dying());
+        {   
+            //play dying animation
+           // StartCoroutine(dying());
         }
     }
 
@@ -93,31 +94,40 @@ public class EnemyController : MonoBehaviour
     {
         if(showCross)
         {
-           //react something.
-            defeatParticleGraphics = Instantiate(defeatParticlePrefab, transform.position, Quaternion.identity);
-            Destroy(transform.parent.gameObject);   // destroy this enemy
-            Destroy(defeatParticlePrefab, 1.5f);    // destroy particle object
+            //react something.
+            DeadEffect();
         }
     }
 
     //count down before destroying itself.
+    /*
     public IEnumerator dying()
     {
-        enemyHurt();
+        //enemyHurt();
         yield return new WaitForSeconds(deathTime);
-        Destroy(transform.parent.gameObject);
+        //Destroy(transform.parent.gameObject);
+        DeadEffect();
+    }
+    */
 
+    // Effect play when this enemy is dead.
+    void DeadEffect()
+    {
+        defeatParticleGraphics = Instantiate(defeatParticlePrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);                    // destroy this enemy
+        Destroy(defeatParticleGraphics, 1.5f);  // destroy particle object
     }
 
     // Hurting like hell!
+    /*
     void enemyHurt()
     {       
-
         agent.enabled = false;
         transform.localPosition = Vector3.Lerp(new Vector3(transform.localPosition.x + left,  transform.localPosition.y, transform.localPosition.z),
                                                new Vector3(transform.localPosition.x + right, transform.localPosition.y, transform.localPosition.z),
                                               (Mathf.Sin(shakeSpeed * Time.time) + 1.0f) / shakeRate);
     }
+    */
 
 
 
@@ -129,7 +139,8 @@ public class EnemyController : MonoBehaviour
         if (other.tag.Equals("MainCamera"))
         {
             EnteredTrigger = true;
-            Destroy(transform.parent.gameObject);
+            //dying();
+            //Destroy(transform.parent.gameObject);
         }
     }
 }
