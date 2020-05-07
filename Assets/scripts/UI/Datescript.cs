@@ -11,8 +11,14 @@ public class Datescript : MonoBehaviour
     void Start()
     {
         text = this.GetComponent<Text>();
-        string time = System.DateTime.Now.ToLocalTime().ToString("MMM. dd yyyy");
-        text.text = time;
+        string old = System.DateTime.Now.ToLocalTime().ToString("yyyy");
+        int oldInt = int.Parse(old);
+        while(oldInt != 1987)
+        {
+            oldInt -= 1;
+        }
+        string time = System.DateTime.Now.ToLocalTime().ToString("MMM. dd");
+        text.text = time+" "+oldInt;
     }
 
     // Update is called once per frame

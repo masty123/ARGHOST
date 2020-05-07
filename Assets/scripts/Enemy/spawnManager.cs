@@ -144,7 +144,6 @@ public class spawnManager : MonoBehaviour
         if ( state == SpawnState.HALTING )
         {
             state = SpawnState.COUNTING;
-            waveCountdown = 0;
         }
     }
 

@@ -49,7 +49,7 @@ public class IndependentEnemyController : MonoBehaviour
 
     [Header("Dying Behaviors")]
     ////Time before destroying the prefab
-    [SerializeField] private float deathTime = 0.75f;
+    [SerializeField] private float deathTime = 0.55f;
 
     //Checking if got hit by player.
     public bool isHit;
@@ -66,6 +66,8 @@ public class IndependentEnemyController : MonoBehaviour
     protected GameObject defeatParticleGraphics;
     protected Animator animator;
 
+    public jumpScareV2 scareSystem;
+
     private void Awake()
     {
         accelSpeed = maxSpeed / timeZeroToMaxSpeed;
@@ -78,6 +80,7 @@ public class IndependentEnemyController : MonoBehaviour
     public virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        scareSystem = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<jumpScareV2>();
         animator = GetComponentInChildren<Animator>();
         hidVidObj = GameObject.FindGameObjectWithTag("hideVidSwitch").transform.GetComponent<hideVideo>();
         jumpScare = GameObject.FindGameObjectWithTag("jumpScareAudio").GetComponentInChildren<AudioSource>();
@@ -91,6 +94,15 @@ public class IndependentEnemyController : MonoBehaviour
     void Update()
     {
         GhostBeHavior();
+        CheckJumpscare();
+    }
+
+    void CheckJumpscare()
+    {
+        if (scareSystem.jumpScare)
+        {
+            moveSpeed = 0;
+        }
     }
 
     //Behavior of the ghost such as coming out of the portal, tracking player, dying, and etc.
@@ -159,7 +171,7 @@ public class IndependentEnemyController : MonoBehaviour
     public virtual IEnumerator scare()
     {
         enemyScare();
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(0.75f);
         StartCoroutine(LoadAsynchronously("GameOver"));
     }
 
