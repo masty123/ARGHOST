@@ -35,7 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Printto/Highscore.unity
     guid: c9d8d434d1acd4e7ebb970707f101e1f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Merging.unity
     guid: eb9c00831827e4e18afe1ddab3a56312
   - enabled: 1
