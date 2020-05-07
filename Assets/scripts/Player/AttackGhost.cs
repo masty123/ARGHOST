@@ -9,12 +9,10 @@ public class AttackGhost : MonoBehaviour
     public GameObject spawnPosition;
     public Bullet bulletPrefab;
 
-    /*
     private void Start()
     {
-        spawnPosition = GameObject.Find("BulletSpawner");
+        ScoreManager.ResetScore();
     }
-    */
 
     public void attack()
     {
