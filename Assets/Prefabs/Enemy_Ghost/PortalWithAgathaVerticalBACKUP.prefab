@@ -1,103 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5392263491306486883
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5413586834698004646}
-  m_Layer: 0
-  m_Name: Right
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5413586834698004646
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5392263491306486883}
-  m_LocalRotation: {x: -0.00000035282278, y: 0.13052653, z: -0.00000033614472, w: 0.9914448}
-  m_LocalPosition: {x: -0.915, y: -0.95, z: -0.16749993}
-  m_LocalScale: {x: 250, y: 250, z: 250}
-  m_Children: []
-  m_Father: {fileID: 6087973490217243673}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5839427477703687292
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8657619181158105020}
-  m_Layer: 0
-  m_Name: Left
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8657619181158105020
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5839427477703687292}
-  m_LocalRotation: {x: -0.00000035282278, y: 0.13052653, z: -0.00000033614472, w: 0.9914448}
-  m_LocalPosition: {x: 0.5338886, y: -0.95000005, z: -0.5557295}
-  m_LocalScale: {x: 250, y: 250, z: 250}
-  m_Children: []
-  m_Father: {fileID: 6087973490217243673}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6201779221920075699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6087973490217243674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e7e10422391478ca43f4513431aceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 3
-  maxSpeed: 3
-  moveSpeed: 0
-  accelSpeed: 0
-  timeZeroToMaxSpeed: 2.5
-  animatorMaxSpeed: 1.75
-  animatorSpeed: 0
-  animatorAcelSpeed: 0
-  timeZeroToAnim: 2.5
-  lookRadius: 10
-  EnteredTrigger: 0
-  showCross: 0
-  Gold: 1
-  deathTime: 0.75
-  isHit: 0
-  isOutPortal: 0
-  hidVidObj: {fileID: 0}
-  jumpScare: {fileID: 0}
-  defeatParticlePrefab: {fileID: 0}
-  outportalMaxSpeed: 0.5
-  timeUntilSeperate: 2
-  seperateGhostPrefab: {fileID: 4814696071937085739, guid: adc6e93fe084140e6a8d32b82a1c52b1,
-    type: 3}
-  target1: {fileID: 5413586834698004646}
-  target2: {fileID: 8657619181158105020}
-  isWalking: 1
 --- !u!1 &6752637764357297214
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,15 +327,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyAgathaVertical
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1995462676693982891, guid: 282a198ee2dd0eb46af8c3e29f4b0363, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 282a198ee2dd0eb46af8c3e29f4b0363, type: 3}
---- !u!1 &6087973490217243674 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1995462676693982886, guid: 282a198ee2dd0eb46af8c3e29f4b0363,
-    type: 3}
-  m_PrefabInstance: {fileID: 5750425030467111612}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6087973490217243673 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1995462676693982885, guid: 282a198ee2dd0eb46af8c3e29f4b0363,
