@@ -24,11 +24,12 @@
 ![GUI](ImagePreview/core_gameflow.png)
 
 ### Installation
-Download the zip file
+- Download and install the .apk file
+- Print out the card provided
 
 |Android|
 |:----------------:|
-|[here]()
+|[here](https://github.com/masty123/ARGHOST/releases/tag/Version-1)
 
 ### Developers roles and responsibilities
 
